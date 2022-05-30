@@ -12,8 +12,8 @@ const Header = () => {
             </p>
             <form className='flex items-center bg-white px-2 py-1 rounded-md mb-4 border border-2 border-gray-300'>
                 <FaMapMarkerAlt style={{fontSize:'20px',color:'#002853'}} />
-                <input type='search' placeholder= 'Search by location...' className='bg-white py-2 w-3/4 px-4' />
-                <button className='inline-block px-8 py-2 bg-[#002853] text-lg font-[700] rounded-md'>Search</button>
+                <input type='search' placeholder= 'Search by location...' className='bg-white py-2 w-[90%] px-2 text-black' />
+                <button className='inline-block px-4 py-2 bg-[#002853] text-lg font-[700] rounded-md'>Search</button>
             </form>
             <div className="flex items-center justify-between">
                 <div className='m-2 p-2 '>
@@ -40,9 +40,9 @@ const Header = () => {
             </div>
         </div>
         <div className='flex-1 relative flex justify-center'>
-            <div className='self-end bg-gradient-to-b from-[#002853] via-[#040C18] to-white w-[310px] h-[384px] rounded-t-[160px]'></div>
-            <div className='flex absolute w-[300px] h-[400px] overflow-hidden items-end'>
-                <img src={homeImg} alt="homeImg" className='w-full h-full rounded-t-[140px] rounded-b-[10px]' />
+            <div className='self-end bg-gradient-to-b from-[#002853] via-[#040C18] to-white w-[260px] h-[284px] md:w-[350px] md:h-[500px] rounded-t-[160px] md:rounded-t-[170px]'></div>
+            <div className='absolute w-[250px] h-[300px] overflow-hidden self-end mb-[-20px] md:w-[330px] md:h-[520px]'>
+                <img src={homeImg} alt="homeImg" className='w-full h-full rounded-t-[140px] rounded-b-[10px] md:rounded-t-[170px] ' />
             </div>
         </div>
     </div>
