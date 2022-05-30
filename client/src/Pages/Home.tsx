@@ -1,9 +1,15 @@
 import React from 'react'
+import Navbar from '../Components/Navbar'
+import Header from '../Components/Header'
+import Logos from '../Components/Logos'
+
 
 const Home = () => {
   return (
-    <div className='text-blue-700 font-[700]'>
-        Home
+    <div>
+       <Navbar />
+       <Header />
+       <Logos />
     </div>
   )
 }
