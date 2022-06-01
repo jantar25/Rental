@@ -15,7 +15,7 @@ const Navbar = () => {
       window.addEventListener('scroll',changeBackground)
 
   return (
-    <div className={`sticky top-0 z-50 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-32 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
+    <div className={`sticky top-0 z-50 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
         <div className='flex flex-col'>
             <div className='flex items-center justify-between'>
                 <div className='flex items-center'>

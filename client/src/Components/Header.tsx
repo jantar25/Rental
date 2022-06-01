@@ -4,7 +4,7 @@ const homeImg = require("../Images/home.jpg")
 
 const Header = () => {
   return (
-    <div className='flex flex-col md:flex-row bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-32 pt-8'>
+    <div className='flex flex-col md:flex-row bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 pt-8'>
         <div className='flex-1 mb-8'>
             <h1 className='text-5xl font-[600] leading-tight mb-4'>Discover <br />Most Suitable <br />Property</h1>
             <p className='text-gray-500 text-md mb-8'>Find a variety of properties that suit you very easily,
