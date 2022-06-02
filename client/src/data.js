@@ -1,9 +1,22 @@
+
 const Logo1 = require("./Images/image1.png")
 const Logo2 = require("./Images/image2.png")
 const Logo3 = require("./Images/image3.png")
 const Logo4 = require("./Images/image4.png")
 const Logo5 = require("./Images/image5.png")
 const Logo6 = require("./Images/image6.png")
+
+const House1 = require("./Images/house1.jpg")
+const House2 = require("./Images/house2.jpg")
+const House3 = require("./Images/house3.jpg")
+const House4 = require("./Images/house4.png")
+const House5 = require("./Images/house5.jpg")
+const House6 = require("./Images/house6.jpg")
+
+const District1 = require("./Images/district1.jpg")
+const District2 = require("./Images/district2.jpg")
+const District3 = require("./Images/district3.jpg")
+
 
 export const logos = [
     {
@@ -30,4 +43,83 @@ export const logos = [
     id:6,
     image:Logo6
     },  
+];
+
+
+export const residencesAvailables = [
+    {
+        id:1,
+        title:'Gisozi Gheto',
+        address: 'Cafe Gisozi/Rukeri No 503',
+        coordinates: "27.2046° N, 77.4977° E",
+        price: '40 000',
+        FrontImage:House1,
+        OtherImages:{} 
+    },
+    {
+        id:2,
+        title:'Class Gheto House',
+        address: 'ULK Gisozi/Ruhango No 503',
+        coordinates: "27.2046° N, 77.4977° E",
+        price: '150 000',
+        FrontImage:House2,
+        OtherImages:{} 
+    },
+    {
+        id:3,
+        title:'Smart Gisozi House',
+        address: 'Cafe Gisozi/Rukeri No 503',
+        coordinates: "27.2046° N, 77.4977° E",
+        price: '40 000',
+        FrontImage:House3,
+        OtherImages:{} 
+    },
+    {
+        id:4,
+        title:'Green Garden House',
+        address: 'ULK Gisozi/Ruhango No 503',
+        coordinates: "27.2046° N, 77.4977° E",
+        price: '250 000',
+        FrontImage:House4,
+        OtherImages:{} 
+    },
+    {
+        id:5,
+        title:'Smart Apartement',
+        address: 'Cafe Gisozi/Rukeri No 503',
+        coordinates: "27.2046° N, 77.4977° E",
+        price: '40 000',
+        FrontImage:House5,
+        OtherImages:{} 
+    },
+    {
+        id:6,
+        title:'Home House',
+        address: 'Kibagabaga/Rukeri No 503',
+        coordinates: "27.2046° N, 77.4977° E",
+        price: '40 000',
+        FrontImage:House6,
+        OtherImages:{} 
+    }
+]
+
+export const districtResidences = [
+    {
+        id:1,
+        district:'Nyarugenge',
+        properties:2456,
+        townImage:District1
+    },
+    {
+        id:2,
+        district:'Gasabo',
+        properties:890,
+        townImage:District2
+    },
+    {
+        id:3,
+        district:'Kicukiro',
+        properties:449,
+        townImage:District3
+    },
 ]

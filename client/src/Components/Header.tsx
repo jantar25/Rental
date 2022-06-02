@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <div className='flex flex-col md:flex-row bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 pt-8'>
         <div className='flex-1 mb-8'>
-            <h1 className='text-5xl font-[600] leading-tight mb-4'>Discover <br />Most Suitable <br />Property</h1>
-            <p className='text-gray-500 text-md mb-8'>Find a variety of properties that suit you very easily,
+            <h1 className='text-3xl md:text-5xl font-[600] leading-tight mb-4'>Discover <br />Most Suitable <br />Property</h1>
+            <p className='text-gray-500 text-sm md:text-md mb-8'>Find a variety of properties that suit you very easily,
             forget all dificulties in finding a residnce for you.
             </p>
             <form className='flex items-center bg-white px-2 py-1 rounded-md mb-4 border border-2 border-gray-300'>
@@ -40,9 +40,10 @@ const Header = () => {
             </div>
         </div>
         <div className='flex-1 relative flex justify-center'>
-            <div className='self-end bg-gradient-to-b from-[#002853] via-[#040C18] to-white w-[260px] h-[284px] md:w-[350px] md:h-[500px] rounded-t-[160px] md:rounded-t-[170px]'></div>
-            <div className='absolute w-[250px] h-[300px] overflow-hidden self-end mb-[-20px] md:w-[330px] md:h-[520px]'>
-                <img src={homeImg} alt="homeImg" className='w-full h-full rounded-t-[140px] rounded-b-[10px] md:rounded-t-[170px] ' />
+            <div className='self-end bg-gradient-to-b from-[#040C18] via-[#002853] to-white w-[260px] h-[284px] 
+            md:w-[350px] md:h-[500px] rounded-t-[160px] md:rounded-t-[170px]'></div>
+            <div className='absolute w-[245px] h-[300px] overflow-hidden self-end mb-[-30px] md:w-[335px] md:h-[524px]'>
+                <img src={homeImg} alt="homeImg" className='w-full h-full rounded-t-[140px] rounded-b-[10px] md:rounded-t-[170px] object-fit' />
             </div>
         </div>
     </div>
