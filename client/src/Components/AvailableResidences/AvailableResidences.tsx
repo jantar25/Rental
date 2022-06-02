@@ -11,7 +11,7 @@ const AvailableResidences = () => {
     <div className='px-4 lg:px-20 py-8'>
         <div>
             <h3 className="text-orange-600 text-lg font-[600]">Best Choise</h3>
-            <h1 className="text-purple-900 my-2 text-3xl font-[700]">Available Residences.</h1>
+            <h1 className="text-purple-900 my-2 text-3xl font-[700]">Available Residences<span className="text-pink-500 ">.</span></h1>
             <div className='w-[80px] h-[5px] bg-gradient-to-r from-purple-400 via-pink-500 to-[#FF8A71] 
                 shadow-lg mb-[5px]'/>
         </div>

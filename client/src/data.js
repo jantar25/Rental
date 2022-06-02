@@ -61,7 +61,7 @@ export const residencesAvailables = [
         title:'Class Gheto House',
         address: 'ULK Gisozi/Ruhango No 503',
         coordinates: "27.2046° N, 77.4977° E",
-        price: '150 000',
+        price: '70 000',
         FrontImage:House2,
         OtherImages:{} 
     },
@@ -70,7 +70,7 @@ export const residencesAvailables = [
         title:'Smart Gisozi House',
         address: 'Cafe Gisozi/Rukeri No 503',
         coordinates: "27.2046° N, 77.4977° E",
-        price: '40 000',
+        price: '200 000',
         FrontImage:House3,
         OtherImages:{} 
     },
@@ -88,7 +88,7 @@ export const residencesAvailables = [
         title:'Smart Apartement',
         address: 'Cafe Gisozi/Rukeri No 503',
         coordinates: "27.2046° N, 77.4977° E",
-        price: '40 000',
+        price: '100 000',
         FrontImage:House5,
         OtherImages:{} 
     },
@@ -97,7 +97,7 @@ export const residencesAvailables = [
         title:'Home House',
         address: 'Kibagabaga/Rukeri No 503',
         coordinates: "27.2046° N, 77.4977° E",
-        price: '40 000',
+        price: '150 000',
         FrontImage:House6,
         OtherImages:{} 
     }
