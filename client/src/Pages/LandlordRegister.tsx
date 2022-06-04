@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 
 const LandlordRegister = () => {
   return (
@@ -8,6 +9,7 @@ const LandlordRegister = () => {
         <div className="">
           Register
         </div>
+        <Footer />
     </div>
   )
 }

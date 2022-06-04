@@ -6,6 +6,7 @@ import DistrictResidences from '../Components/ResidenseByDistrict/DistrictReside
 import AvailableResidences from '../Components/AvailableResidences/AvailableResidences'
 import Value from '../Components/Value'
 import LandlordLogin from '../Components/landlordLogin'
+import Footer from '../Components/Footer'
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
        <AvailableResidences />
        <Value />
        <LandlordLogin />
+       <Footer />
     </div>
   )
 }

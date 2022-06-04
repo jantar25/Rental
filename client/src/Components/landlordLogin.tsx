@@ -15,7 +15,7 @@ const landlordLogin = () => {
                     <input type="text" placeholder='Email' className="px-4 py-2 my-2 rounded" />
                     <input type="password" placeholder='Password' className='px-4 py-2 my-2 rounded' />
                 </div>
-                <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md">Login</button>
+                <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg">Login</button>
                 <div className="flex items-center mt-4">
                     <p className="text-sm text-gray-600">Don't you have yet an account?</p>
                     <Link to='/register'>

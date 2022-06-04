@@ -8,7 +8,7 @@ const Logos = () => {
       <div className='flex justify-around items-center flex-wrap'>
             {logos.map((logo)=>(
             <div key={logo.id} className='w-[300px] h-[150px] p-2 '>
-                <img src={logo.image} alt="Partners logo" className='w-full h-full object-contain' />
+                <img src={logo.image} alt="Partners logo" className='w-full h-full object-contain opacity-50 hover:opacity-100 transition' />
             </div> ))}
       </div>
     </div>
