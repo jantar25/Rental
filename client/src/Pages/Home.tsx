@@ -5,6 +5,7 @@ import Logos from '../Components/Logos'
 import DistrictResidences from '../Components/ResidenseByDistrict/DistrictResidences'
 import AvailableResidences from '../Components/AvailableResidences/AvailableResidences'
 import Value from '../Components/Value'
+import LandlordLogin from '../Components/landlordLogin'
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
        <DistrictResidences />
        <AvailableResidences />
        <Value />
+       <LandlordLogin />
     </div>
   )
 }
