@@ -1,7 +1,8 @@
 import React,{useState} from 'react' 
-import { TiPointOfInterestOutline } from 'react-icons/ti';
+import { TiPointOfInterestOutline,TiCancel } from 'react-icons/ti';
 import { AiOutlineCaretDown,AiOutlineCaretUp } from 'react-icons/ai';
-
+import { IoIosStats } from 'react-icons/io';
+import { MdVerifiedUser } from 'react-icons/md';
 
 const valueImg = require("../Images/home1.jpg")
 const Value = () => {
@@ -28,27 +29,29 @@ const Value = () => {
                 We believe a good place to live can make your life better.</p>
                 <div className="mt-4 lg:w-3/4 grid gap-2 ">
                     <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600]">
+                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
+                         onClick={()=>setToggle1(!toggle1)}>
                             <div className="flex items-center ">
                                 <TiPointOfInterestOutline />
                                 <h2 className="ml-2">Best interest rates on the market</h2>
                             </div>
-                            <button className='' onClick={()=>setToggle1(!toggle1)}>
+                            <button className='' >
                                 {toggle1? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
                             </button>
                         </div>
-                        <div className='overflow-hidden'>
+                        <div className=''>
                             {toggle1? <p className='text-gray-400 text-sm mt-2'>Price we provide is the best for you, we guarantee no price changes on your property
                             due to various unexpected costs that may come</p> : null}
                         </div>
                     </div>
                     <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600]">
+                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
+                        onClick={()=>setToggle2(!toggle2)}>
                             <div className="flex items-center ">
-                                <TiPointOfInterestOutline />
+                                <TiCancel />
                                 <h2 className="ml-2">Prevent unstable prices</h2>
                             </div>
-                            <button className='' onClick={()=>setToggle2(!toggle2)}>
+                            <button className='' >
                                 {toggle2? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
                             </button>
                         </div>
@@ -58,12 +61,13 @@ const Value = () => {
                         </div>
                     </div>
                     <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600]">
+                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
+                        onClick={()=>setToggle3(!toggle3)}>
                             <div className="flex items-center ">
-                                <TiPointOfInterestOutline />
+                                <IoIosStats />
                                 <h2 className="ml-2">Best price on the market</h2>
                             </div>
-                            <button className='' onClick={()=>setToggle3(!toggle3)}>
+                            <button className='' >
                                 {toggle3? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
                             </button>
                         </div>
@@ -73,12 +77,13 @@ const Value = () => {
                         </div>
                     </div>
                     <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600]">
+                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
+                        onClick={()=>setToggle4(!toggle4)}>
                             <div className="flex items-center ">
-                                <TiPointOfInterestOutline />
+                                <MdVerifiedUser />
                                 <h2 className="ml-2">Security of your data</h2>
                             </div>
-                            <button className='' onClick={()=>setToggle4(!toggle4)}>
+                            <button className='' >
                                 {toggle4? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
                             </button>
                         </div>
