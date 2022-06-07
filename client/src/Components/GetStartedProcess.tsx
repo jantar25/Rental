@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsDot } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const GetStartedProcess = () => {
   return (
@@ -45,6 +46,13 @@ const GetStartedProcess = () => {
                     <p className="text-gray-400 w-2/3">Put your recommendation and let money come to you</p>
                 </div>
             </div>
+        </div>
+        <div className="flex flex-col items-center justify-center my-24">
+            <h1 className="font-[700] text-3xl mb-6">Ready to get free access to the Rental world?</h1>
+            <p className="text-gray-500 text-lg mb-4">Create an account to start using the platform</p>
+            <Link to='/register' >
+                <button className="px-24 py-4 bg-orange-600 text-white font-[700] text-2xl rounded-md ">Create</button>
+            </Link>
         </div>
     </div>
   )
