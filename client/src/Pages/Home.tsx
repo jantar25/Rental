@@ -5,7 +5,9 @@ import Logos from '../Components/Logos'
 import DistrictResidences from '../Components/ResidenseByDistrict/DistrictResidences'
 import AvailableResidences from '../Components/AvailableResidences/AvailableResidences'
 import Value from '../Components/Value'
+import ClientsSays from '../Components/ClientSays/ClientsSays'
 import Footer from '../Components/Footer'
+
 
 
 const Home = () => {
@@ -17,6 +19,7 @@ const Home = () => {
        <DistrictResidences />
        <AvailableResidences />
        <Value />
+       <ClientsSays />
        <Footer />
     </div>
   )

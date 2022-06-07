@@ -17,6 +17,13 @@ const District1 = require("./Images/district1.jpg")
 const District2 = require("./Images/district2.jpg")
 const District3 = require("./Images/district3.jpg")
 
+const Client1 = require("./Images/client1.jpg")
+const Client2 = require("./Images/client2.jpg")
+const Client3 = require("./Images/client3.jpg")
+const Client4 = require("./Images/client4.jpg")
+const Client5 = require("./Images/client5.jpg")
+const Client6 = require("./Images/client6.png")
+
 
 export const logos = [
     {
@@ -121,5 +128,44 @@ export const districtResidences = [
         district:'Kicukiro',
         properties:449,
         townImage:District3
+    },
+]
+
+export const ClientsComments = [
+    {
+        id:1,
+        names:'Sother Ndimubanzi',
+        image:Client1,
+        comment:"Fell in love with the platform the moment I saw it. its clean and simple design was what sealed the deal for me."
+    },
+    {
+        id:2,
+        names:'Thedy Uwase',
+        image:Client4,
+        comment:"This platform just made my life easy as I usually shift places"
+    },
+    {
+        id:3,
+        names:'Uwakabebe Mwiza',
+        image:Client5,
+        comment:"I got a beautifull chip residence here,so far so good"
+    },
+    {
+        id:4,
+        names:'Gigs Masaro',
+        image:Client2,
+        comment:"Contacting support was simple and easy. I was suprise by how quickly they actually get back to you."
+    },
+    {
+        id:5,
+        names:'Chris Ndiwayesu',
+        image:Client3,
+        comment:"The resources availability, that's what caugh my attention about this platform"
+    },
+    {
+        id:6,
+        names:'Penelope kabaye',
+        image:Client6,
+        comment:"Easy and affordable way to find a residence"
     },
 ]

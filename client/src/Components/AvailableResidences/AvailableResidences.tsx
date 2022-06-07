@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { Link } from 'react-router-dom';
 import { residencesAvailables } from '../../data'
 import AvailableResidence from './AvailableResidence/AvailableResidence'
 
@@ -41,7 +42,9 @@ const AvailableResidences = () => {
         >
           {residencesAvailables.map((residencesAvailable)=>(
             <SwiperSlide key={residencesAvailable.id} className='flex my-8 justify-center'>
-              <AvailableResidence residencesAvailable={residencesAvailable} />
+              <Link to={`/residence/${residencesAvailable.id}`}>
+                <AvailableResidence residencesAvailable={residencesAvailable} />
+              </Link>
             </SwiperSlide> ))}
       </Swiper>    
     </div>
