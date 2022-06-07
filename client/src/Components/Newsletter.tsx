@@ -5,7 +5,7 @@ const Newsletter = () => {
   return (
         <div className="flex flex-col items-center">
             <div className="flex flex-col sm:flex-row items-center mb-4">
-                <h1 className="text-3xl font-[600] mr-4">Get Started with</h1>
+                <h1 className="text-3xl font-[600] mr-4">Get timely update from</h1>
                 <div className='flex items-center'>
                     <FaHome style={{fontSize:'35px',}}/>
                     <h1 className='text-4xl font-[700] ml-2'>RENTAL</h1>

@@ -6,6 +6,7 @@ import DistrictResidences from '../Components/ResidenseByDistrict/DistrictReside
 import AvailableResidences from '../Components/AvailableResidences/AvailableResidences'
 import Value from '../Components/Value'
 import ClientsSays from '../Components/ClientSays/ClientsSays'
+import GetStartedProcess from '../Components/GetStartedProcess'
 import Footer from '../Components/Footer'
 
 
@@ -20,6 +21,7 @@ const Home = () => {
        <AvailableResidences />
        <Value />
        <ClientsSays />
+       <GetStartedProcess />
        <Footer />
     </div>
   )
