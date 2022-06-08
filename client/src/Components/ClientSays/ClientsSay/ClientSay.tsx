@@ -3,7 +3,7 @@ import { RiDoubleQuotesL,RiDoubleQuotesR } from 'react-icons/ri';
 
 const ClientSay = ({ClientsComment}:any) => {
   return (
-    <div className='relative w-[400px] h-[200px] p-4 rounded mx-2 hover:cursor-grabbing mb-6'>
+    <div className='relative w-[400px] h-[200px] p-4 rounded mx-2 hover:cursor-grabbing mb-6 shadow'>
         <div className="">
             <RiDoubleQuotesL style={{fontSize:'30px',color:'orange'}} />
             <p className="text-md text-gray-500 mt-2">{ClientsComment.comment}</p>

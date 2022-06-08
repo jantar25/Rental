@@ -10,12 +10,12 @@ const ClientsSays = () => {
   return (
     <div className='px-4 lg:px-20 py-16'>
         <div className='flex flex-col items-center'>
-            <h1 className="text-purple-900 text-6xl font-[600] mb-8">What our clients say<span className="text-pink-500 ">.</span></h1>
-            <h2 className="text-orange-600 text-xl font-[700]">Trusted by over thousands tenants around the world.</h2>
+            <h1 className="text-purple-900 text-4xl md:text-6xl font-[600] mb-8">What our clients say<span className="text-pink-500 ">.</span></h1>
+            <h2 className="text-orange-600 text-xl font-[700] text-center">Trusted by over thousands tenants around the world.</h2>
         </div>
         <Swiper
           spaceBetween={10}
-          slidesPerView={3}
+          slidesPerView={1}
           pagination={{
             clickable: true,
           }}
