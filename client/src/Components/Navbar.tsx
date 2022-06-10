@@ -26,7 +26,9 @@ const Navbar = () => {
                     </div>
                 </Link>
                 <div className='hidden md:flex w-1/3 justify-between'>
-                    <p className='mx-2 font-[600]'>Residences</p>
+                    <Link to='/residences'>
+                        <p className='mx-2 font-[600]'>Residences</p>
+                    </Link>
                     <p className='mx-2 font-[600]'>Value</p>
                     <Link to='/contacts'>
                         <p className='mx-2 font-[600]'>Contacts</p>
@@ -39,9 +41,11 @@ const Navbar = () => {
                                 <FaHome style={{fontSize:'20px',color:'#002853'}} />
                             </li>
                         </Link>
-                        <li>
-                            <FaBuilding style={{fontSize:'20px',color:'#002853'}} />
-                        </li>
+                        <Link to='/residences'>
+                            <li>
+                                <FaBuilding style={{fontSize:'20px',color:'#002853'}} />
+                            </li>
+                        </Link>
                         <li>
                             <FaLightbulb style={{fontSize:'20px',color:'#002853'}} />
                         </li>

@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaBed,FaBath } from 'react-icons/fa';
+
 
 const AvailableResidence = ({residencesAvailable}:any) => {
     
@@ -14,6 +16,16 @@ const AvailableResidence = ({residencesAvailable}:any) => {
             </h1>
             <h2 className="text-2xl font-[700] text-[#002853] mb-2 ">{residencesAvailable.title}</h2>
             <p className="text-sm text-gray-400">{residencesAvailable.address}</p>
+        </div>
+        <div className="flex justify-between text-[#002853] mt-2">
+          <div className="flex items-center justify-center">
+            <span className="font-[600] mr-1">2</span>
+            <FaBed />
+          </div>
+          <div className="flex items-center justify-center">
+            <span className="font-[600] mr-1">1</span>
+            <FaBath />
+          </div>
         </div>
     </div>
   )

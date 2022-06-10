@@ -5,6 +5,7 @@ import LandlordRegister from './Pages/LandlordRegister'
 import LandlordLogin from './Pages/landlordLogin';
 import Contacts from './Pages/contacts';
 import Residence from './Pages/Residence';
+import Residences from './Pages/Residences';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LandlordLogin />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/residence/:category" element={<Residence />} />
+        <Route path="/residences" element={<Residences />} />
       </Routes>
     </BrowserRouter>
   );

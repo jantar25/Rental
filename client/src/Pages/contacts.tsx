@@ -19,7 +19,7 @@ const contacts = () => {
                     shadow-lg mb-[5px]'/>
                 <p className="mt-2 text-gray-400 md:w-2/3 text-sm">Is there a problem finding your dream home? 
                 Need a guide in renting you first home? or need consultation on residential issue? Just contact us</p>
-                <div className="grid gap-4 grid-cols-2 my-4">
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-4">
                     <div className="flex flex-col justify-center items-center shadow-lg p-4">
                         <div className="flex justify-center items-center">
                             <FiPhoneCall style={{fontSize:'30px',color:'#002853'}} />
