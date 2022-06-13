@@ -61,7 +61,14 @@ export const residencesAvailables = [
         coordinates: "27.2046° N, 77.4977° E",
         price: '40 000',
         FrontImage:House1,
-        OtherImages:{} 
+        OtherImages:[House1,House2,House3,House4,House5,House6],
+        Bedroom:1,
+        BathRooms:0,
+        Kitchen:0,
+        Livingrooms:1,
+        Floors:0,
+        Avaiable:true,
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     },
     {
         id:2,
@@ -70,7 +77,14 @@ export const residencesAvailables = [
         coordinates: "27.2046° N, 77.4977° E",
         price: '70 000',
         FrontImage:House2,
-        OtherImages:{} 
+        OtherImages:[House1,House2,House3,House4,House5,House6],
+        Bedroom:1,
+        BathRooms:0,
+        Kitchen:0,
+        Livingrooms:1,
+        Floors:0,
+        Avaiable:true,
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     },
     {
         id:3,
@@ -79,7 +93,14 @@ export const residencesAvailables = [
         coordinates: "27.2046° N, 77.4977° E",
         price: '200 000',
         FrontImage:House3,
-        OtherImages:{} 
+        OtherImages:[House1,House2,House3,House4,House5,House6],
+        Bedroom:4,
+        BathRooms:2,
+        Kitchen:2,
+        Livingrooms:1,
+        Floors:1,
+        Avaiable:false,
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     },
     {
         id:4,
@@ -88,7 +109,14 @@ export const residencesAvailables = [
         coordinates: "27.2046° N, 77.4977° E",
         price: '250 000',
         FrontImage:House4,
-        OtherImages:{} 
+        OtherImages:[House1,House2,House3,House4,House5,House6],
+        Bedroom:3,
+        BathRooms:1,
+        Kitchen:2,
+        Livingrooms:1,
+        Floors:2,
+        Avaiable:true,
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air " 
     },
     {
         id:5,
@@ -97,7 +125,14 @@ export const residencesAvailables = [
         coordinates: "27.2046° N, 77.4977° E",
         price: '100 000',
         FrontImage:House5,
-        OtherImages:{} 
+        OtherImages:[House1,House2,House3,House4,House5,House6],
+        Bedroom:4,
+        BathRooms:2,
+        Kitchen:2,
+        Livingrooms:2,
+        Floors:3,
+        Avaiable:false,
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air " 
     },
     {
         id:6,
@@ -106,7 +141,14 @@ export const residencesAvailables = [
         coordinates: "27.2046° N, 77.4977° E",
         price: '150 000',
         FrontImage:House6,
-        OtherImages:{} 
+        OtherImages:[House1,House2,House3,House4,House5,House6], 
+        Bedroom:3,
+        BathRooms:2,
+        Kitchen:1,
+        Livingrooms:1,
+        Floors:2,
+        Avaiable:true,
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     }
 ]
 

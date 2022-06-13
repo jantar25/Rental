@@ -25,7 +25,7 @@ const Navbar = () => {
                         <h1 className='text-2xl font-[700] ml-2'>RENTAL</h1>
                     </div>
                 </Link>
-                <div className='hidden md:flex w-1/3 justify-between'>
+                <div className='hidden md:flex w-1/3 justify-center'>
                     <Link to='/residences'>
                         <p className='mx-2 font-[600]'>Residences</p>
                     </Link>
