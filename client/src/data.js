@@ -68,6 +68,7 @@ export const residencesAvailables = [
         Livingrooms:1,
         Floors:0,
         Avaiable:true,
+        District:'Nyarugenge',
         Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     },
     {
@@ -84,6 +85,7 @@ export const residencesAvailables = [
         Livingrooms:1,
         Floors:0,
         Avaiable:true,
+        District:'Nyarugenge',
         Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     },
     {
@@ -100,6 +102,7 @@ export const residencesAvailables = [
         Livingrooms:1,
         Floors:1,
         Avaiable:false,
+        District:'Gasabo',
         Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     },
     {
@@ -116,6 +119,7 @@ export const residencesAvailables = [
         Livingrooms:1,
         Floors:2,
         Avaiable:true,
+        District:'Gasabo',
         Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air " 
     },
     {
@@ -132,6 +136,7 @@ export const residencesAvailables = [
         Livingrooms:2,
         Floors:3,
         Avaiable:false,
+        District:'Kicukiro',
         Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air " 
     },
     {
@@ -148,6 +153,7 @@ export const residencesAvailables = [
         Livingrooms:1,
         Floors:2,
         Avaiable:true,
+        District:'Kicukiro',
         Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
     }
 ]

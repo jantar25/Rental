@@ -26,7 +26,7 @@ const Navbar = () => {
                     </div>
                 </Link>
                 <div className='hidden md:flex w-1/3 justify-center'>
-                    <Link to='/residences'>
+                    <Link to='/residences/All'>
                         <p className='mx-2 font-[600]'>Residences</p>
                     </Link>
                     <p className='mx-2 font-[600]'>Value</p>

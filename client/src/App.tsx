@@ -16,8 +16,8 @@ function App() {
         <Route path="/register" element={<LandlordRegister />} />
         <Route path="/login" element={<LandlordLogin />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/residence/:category" element={<Residence />} />
-        <Route path="/residences" element={<Residences />} />
+        <Route path="/residence/:property" element={<Residence />} />
+        <Route path="/residences/:category" element={<Residences />} />
       </Routes>
     </BrowserRouter>
   );
