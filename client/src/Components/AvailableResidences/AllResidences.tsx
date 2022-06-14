@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{ useState,useEffect } from 'react'
 import { residencesAvailables } from '../../data'
 import AvailableResidence from './AvailableResidence/AvailableResidence'
 
-const AllResidences = () => {
+const AllResidences = ({sort,cat,filters}:any) => {
+
   return (
-    <div>
+    <div className='flex flex-wrap justify-center'>
         {residencesAvailables.map((residencesAvailable)=>(
-            <div key={residencesAvailable.id} className='flex my-8 justify-center'>
+            <div key={residencesAvailable.id} className='my-8'>
               <AvailableResidence residencesAvailable={residencesAvailable} />
             </div> ))}
     </div>

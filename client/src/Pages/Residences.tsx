@@ -1,8 +1,6 @@
 import React,{ useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import AllResidences from '../Components/AvailableResidences/AllResidences'
-import AvailableResidence from '../Components/AvailableResidences/AvailableResidence/AvailableResidence'
-import { residencesAvailables } from '../data'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 
@@ -39,8 +37,8 @@ const Residences = () => {
                     </select> 
                 </div>
            </div>
-        <div className="flex flex-wrap px-4 lg:px-20 py-4 items-center justify-center ">
-          <AllResidences />  
+        <div className="px-4 lg:px-20 py-4 items-center justify-center ">
+          <AllResidences cat={cat} sort={sort} filters={filters} />  
         </div>
         <Footer />
     </div>

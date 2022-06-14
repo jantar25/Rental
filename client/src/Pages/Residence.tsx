@@ -8,6 +8,7 @@ import { residencesAvailables } from '../data'
 import AvailableResidence from '../Components/AvailableResidences/AvailableResidence/AvailableResidence'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+const avatar = require("../Images/avatar.png")
 
 const Residence = () => {
     const location = useLocation()
@@ -44,7 +45,7 @@ const Residence = () => {
               <button className="px-2 py-1 bg-gray-800 text-white rounded font-[600] text-sm my-2">View Map</button>
             </div>
           </div>
-          <div className="">
+          <div className="p-2 ">
             <Swiper
                 spaceBetween={10}
                 slidesPerView={3}
@@ -76,6 +77,23 @@ const Residence = () => {
                     </div>
                   </SwiperSlide> ))}
             </Swiper>
+          </div>
+          <div className="mt-8 p-2">
+            <div className="mb-4">
+              <h1 className="text-2xl font-[600] text-orange-400">Landlord Contact details:</h1>
+              <p className="text-gray-500">Please use the details below to book a visit of the property.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center">
+              <div className="w-[150px] h-[150px] m-8">
+                <img src={residence.OwnerDetails.photo? residence.OwnerDetails.photo : avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
+              </div>
+              <div className="">
+                <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.names}</span></p>
+                <p className="text-gray-500 my-2">Line1: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.line1}</span></p>
+                <p className="text-gray-500 my-2">Line2: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.line2}</span></p>
+                <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.email}</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="">

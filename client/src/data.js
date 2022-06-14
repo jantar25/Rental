@@ -1,3 +1,4 @@
+const owner = require("./Images/owner.jpg")
 
 const Logo1 = require("./Images/image1.png")
 const Logo2 = require("./Images/image2.png")
@@ -69,7 +70,14 @@ export const residencesAvailables = [
         Floors:0,
         Avaiable:true,
         District:'Nyarugenge',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
+        OwnerDetails:{
+            names:"KAREKEZI Jean Marie",
+            line1:"0786120934",
+            line2:"0725868316",
+            email:'jeanmari@gmail.com',
+            photo:owner,
+        }
     },
     {
         id:2,
@@ -86,7 +94,14 @@ export const residencesAvailables = [
         Floors:0,
         Avaiable:true,
         District:'Nyarugenge',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
+        OwnerDetails:{
+            names:"KILIMUMBALO Claude",
+            line1:"0786120934",
+            line2:"0725868316",
+            email:'claude@gmail.com',
+            photo:owner,
+        }
     },
     {
         id:3,
@@ -103,7 +118,14 @@ export const residencesAvailables = [
         Floors:1,
         Avaiable:false,
         District:'Gasabo',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
+        OwnerDetails:{
+            names:"BWIRA Chance",
+            line1:"0786120934",
+            line2:"0725868316",
+            email:'bwirachance@gmail.com',
+            photo:'',
+        }
     },
     {
         id:4,
@@ -120,7 +142,14 @@ export const residencesAvailables = [
         Floors:2,
         Avaiable:true,
         District:'Gasabo',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air " 
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
+        OwnerDetails:{
+            names:"KILIMUMBALO Claude",
+            line1:"0786120934",
+            line2:"0725868316",
+            email:'claude@gmail.com',
+            photo:owner,
+        } 
     },
     {
         id:5,
@@ -137,7 +166,14 @@ export const residencesAvailables = [
         Floors:3,
         Avaiable:false,
         District:'Kicukiro',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air " 
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
+        OwnerDetails:{
+            names:"KAREKEZI Jean Marie",
+            line1:"0786120934",
+            line2:"0725868316",
+            email:'jeanmari@gmail.com',
+            photo:owner,
+        } 
     },
     {
         id:6,
@@ -154,7 +190,14 @@ export const residencesAvailables = [
         Floors:2,
         Avaiable:true,
         District:'Kicukiro',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air "
+        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
+        OwnerDetails:{
+            names:"BWIRA Chance",
+            line1:"0786120934",
+            line2:"0725868316",
+            email:'bwirachance@gmail.com',
+            photo:'',
+        }
     }
 ]
 
