@@ -1,3 +1,7 @@
+import { Logo } from "./Types/Types"
+import { Residence } from "./Types/Types"
+import { District } from "./Types/Types"
+
 const owner = require("./Images/owner.jpg")
 
 const Logo1 = require("./Images/image1.png")
@@ -26,7 +30,7 @@ const Client5 = require("./Images/client5.jpg")
 const Client6 = require("./Images/client6.png")
 
 
-export const logos = [
+export const logos : Logo[] = [
     {
     id:1,
     image:Logo1
@@ -54,7 +58,7 @@ export const logos = [
 ];
 
 
-export const residencesAvailables = [
+export const residencesAvailables : Residence[] = [
     {
         id:1,
         title:'Gisozi Gheto',
@@ -201,7 +205,7 @@ export const residencesAvailables = [
     }
 ]
 
-export const districtResidences = [
+export const districtResidences : District[] = [
     {
         id:1,
         district:'Nyarugenge',
