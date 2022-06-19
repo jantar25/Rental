@@ -18,7 +18,8 @@ const LandlordRegister = () => {
                   <div className="flex flex-col mb-2">
                       <input type="text" placeholder='Names' className="px-4 py-2 my-2 rounded" />
                       <input type="text" placeholder='Email' className="px-4 py-2 my-2 rounded" />
-                      <input type="text" placeholder='Phone' className="px-4 py-2 my-2 rounded" />
+                      <input type="text" placeholder='Phone 1' className="px-4 py-2 my-2 rounded" />
+                      <input type="text" placeholder='Phone 2' className="px-4 py-2 my-2 rounded" />
                       <input type="password" placeholder='Password' className='px-4 py-2 my-2 rounded' />
                       <input type="password" placeholder='Confirm password' className='px-4 py-2 my-2 rounded' />
                   </div>
