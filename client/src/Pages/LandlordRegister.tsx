@@ -1,9 +1,59 @@
-import React from 'react'
+import React,{useState} from 'react'
+import { useNavigate } from "react-router"
 import { Link } from 'react-router-dom'
+import { publicRequest } from '../requestMethode'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 
 const LandlordRegister = () => {
+  const history = useNavigate()
+  const [landLord,setLandLord] = useState({
+    names:'',
+    email:'',
+    phone1:'',
+    phone2:'',
+    password:'',
+    confirmedPassword:'',
+    error:'',
+    loading:false,
+});
+const {names,email,phone1,phone2,password,confirmedPassword,error,loading} = landLord;
+
+const handleChange = (e:any) =>{
+  setLandLord({ ...landLord, [e.target.name] : e.target.value })
+};
+
+const handleRegisterLandLord= async (e:any)=>{
+  e.preventDefault();
+  setLandLord({ ...landLord,error:'',loading:true });
+
+  if(!names || !email || !password || !confirmedPassword || !phone1 || !phone2) {
+    setLandLord({ ...landLord,error: '*All fields are required*' })
+  } else if (password !== confirmedPassword) {
+    setLandLord({ ...landLord,error: '*Confirm password must be equal to password*' })
+  } else {
+          try {
+              const res = await publicRequest.post("/landLordAuth/register",
+              {names,email,password,phone1,phone2});
+              setLandLord({
+                names:'',
+                email:'',
+                phone1:'',
+                phone2:'',
+                password:'',
+                confirmedPassword:'',
+                error:'',
+                loading:false,
+              });
+              history("/login")
+              console.log(res)
+          } catch(err:any){
+            setLandLord({ ...landLord,error:err.response.data.message,loading:false });
+              console.log(err.response)
+          }
+} 
+}
+
   return (
     <div>
         <Navbar />
@@ -16,14 +66,17 @@ const LandlordRegister = () => {
               </div>
               <form className="mt-4">
                   <div className="flex flex-col mb-2">
-                      <input type="text" placeholder='Names' className="px-4 py-2 my-2 rounded" />
-                      <input type="text" placeholder='Email' className="px-4 py-2 my-2 rounded" />
-                      <input type="text" placeholder='Phone 1' className="px-4 py-2 my-2 rounded" />
-                      <input type="text" placeholder='Phone 2' className="px-4 py-2 my-2 rounded" />
-                      <input type="password" placeholder='Password' className='px-4 py-2 my-2 rounded' />
-                      <input type="password" placeholder='Confirm password' className='px-4 py-2 my-2 rounded' />
+                      <input type="text" placeholder='Names' className="px-4 py-2 my-2 rounded" name='names' value={names} onChange={handleChange}/>
+                      <input type="text" placeholder='Email' className="px-4 py-2 my-2 rounded" name='email' value={email} onChange={handleChange}/>
+                      <input type="text" placeholder='Phone 1' className="px-4 py-2 my-2 rounded" name='phone1' value={phone1} onChange={handleChange}/>
+                      <input type="text" placeholder='Phone 2' className="px-4 py-2 my-2 rounded" name='phone2' value={phone2} onChange={handleChange}/>
+                      <input type="password" placeholder='Password' className='px-4 py-2 my-2 rounded' name='password' value={password} onChange={handleChange}/>
+                      <input type="password" placeholder='Confirm password' className='px-4 py-2 my-2 rounded' name='confirmedPassword' value={confirmedPassword} onChange={handleChange}/>
                   </div>
-                  <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg">Register</button>
+                  {error? <p className='text-red-900 font-bold text-sm my-2'>{`*${landLord.error}*`}</p> : null}
+                  <p className='text-sm my-2'>By creating an account,I consent to the processing of my personal data 
+                in accordance with the <b>PRIVACY POLICY</b></p>
+                  <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg" onClick={handleRegisterLandLord}>{loading?'Registering ...' : 'Register'}</button>
                   <div className="flex items-center mt-4">
                     <p className="text-[13px] text-gray-600">Do you have an account?
                         <Link to='/login'>
