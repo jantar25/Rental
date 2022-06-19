@@ -1,11 +1,13 @@
 import { publicRequest,landLordRequest } from "../requestMethode";
+import { useNavigate } from "react-router"
 
-// import {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess,
-//     updateFarmerStart,updateFarmerSuccess,updateFarmerFailure} from './farmerRedux'
+import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
+    updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
 // import {getProductStart,getProductSuccess,getProductFailure,
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
 //     addProductStart,addProductSuccess,addProductFailure} from "./productRedux"
+
 
 
 // // GET ALL PRODUCTS
@@ -60,36 +62,25 @@ import { publicRequest,landLordRequest } from "../requestMethode";
 //     }
 // }
 
-// export const login = async (dispatch,user) =>{
-//     dispatch(loginStart());
 
-//     try {
-//         const res = await publicRequest.post("/auth/login",user);
-//         dispatch(loginSuccess(res.data));
-//     } catch (error) {
-//         dispatch(loginFailure(error.response.data));
-//     }
-// }
 
-// export const farmerLogin = async (dispatch,farmer) =>{
-//     dispatch(farmerLoginStart());
-//     try {
-//         const res = (await publicRequest.post("/farmerAuth/login",farmer));
-//         dispatch(farmerLoginSuccess(res.data));
-    
-//     } catch (error) {
-//         console.log(error.response.data.message)
-//         dispatch(FarmerLoginFailure(error.response.data.message));
-//     }
-// }
+export const landLordLogin = async (dispatch:any,landLord:any) =>{
+    dispatch(landLordLoginStart());
+    // const history = useNavigate()
+    try {
+        const res = (await publicRequest.post("/landLordAuth/login",landLord));
+        dispatch(landLordLoginSuccess(res.data));
+        // history('/');
+    } catch (error:any) {
+        console.log(error.response.data.message)
+        dispatch(landLordLoginFailure(error.response.data.message));
+    }
+}
 
-// export const logoutDone = async (dispatch) =>{
-//     dispatch(logoutSuccess());
-// }
 
-// export const farmerLogoutDone = async (dispatch) =>{
-//     dispatch(FarmerLogoutSuccess());
-// }
+export const landLordLogoutDone = async (dispatch:any) =>{
+    dispatch(landLordLogoutSuccess());
+}
 
 
 // // UPDATE A FARMER

@@ -8,39 +8,38 @@ const landLordSlice = createSlice({
         isFetching: false,
     },
     reducers:{
-        // farmerLoginStart:(state)=>{
-        //     state.isFetching=true
-        // },
-        // farmerLoginSuccess:(state,action)=>{
-        //     state.isFetching=false;
-        //     state.currentFarmer=action.payload
-        //     state.error=null;
-        // },
-        // FarmerLoginFailure:(state,error)=>{
-        //     state.isFetching=false;
-        //     state.error=error;
-        // },
-        // FarmerLogoutSuccess:(state)=>{
-        //     state.currentFarmer= null;
-        // },
+        landLordLoginStart:(state)=>{
+            state.isFetching=true
+        },
+        landLordLoginSuccess:(state,action)=>{
+            state.isFetching=false;
+            state.currentLandLord=action.payload
+            state.error=null;
+        },
+        landLordLoginFailure:(state,error:any)=>{
+            state.isFetching=false;
+            state.error=error;
+        },
+        landLordLogoutSuccess:(state)=>{
+            state.currentLandLord= null;
+        },
 
-        // // FARMER UPDATE
-        // updateFarmerStart:(state)=>{
-        //     state.isFetching=true;
-        //     state.error=false;
-        // },
-        // updateFarmerSuccess:(state,action)=>{
-        //     state.isFetching=false;
-        //     state.products[state.products.findIndex((item)=>item._id === action.payload.id)
-        //     ]=action.payload.product;
-        // },
-        // updateFarmerFailure:(state,action)=>{
-        //     state.isFetching=false;
-        //     state.error=action.error;
-        // },
+        // FARMER UPDATE
+        updateLandLordStart:(state)=>{
+            state.isFetching=true;
+        },
+        updateLandLordSuccess:(state,action)=>{
+            state.isFetching=false;
+            // state.products[state.products.findIndex((item:any)=>item._id === action.payload.id)
+            // ]=action.payload.product;
+        },
+        updateLandLordFailure:(state,action:any)=>{
+            state.isFetching=false;
+            state.error=action.error;
+        },
     }
 })
 
-// export const {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess,
-//     updateFarmerStart,updateFarmerSuccess,updateFarmerFailure} = landLordSlice.actions;
+export const {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
+    updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} = landLordSlice.actions;
 export default landLordSlice.reducer;

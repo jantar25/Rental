@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter,Routes,Route } from "react-router-dom";
 import Home from './Pages/Home';
 import LandlordRegister from './Pages/LandlordRegister'
-import LandlordLogin from './Pages/landlordLogin';
+import LandlordLogin from './Pages/LandlordLogin';
 import Contacts from './Pages/contacts';
 import Residence from './Pages/Residence';
 import Residences from './Pages/Residences';

@@ -1,9 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { landLordLogin } from "../Redux/apiCalls"
 import { Link } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 
-const landlordLogin = () => {
+const LandlordLogin = () => {
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+    const {isFetching,error} = useSelector((state:any)=> state.landLord)
+    const dispatch = useDispatch();
+    
+    const handleClick = (e:any)=>{
+        e.preventDefault();
+        landLordLogin(dispatch,{password,email});
+    }
+
   return (
     <div className=''>
         <Navbar />
@@ -14,12 +26,17 @@ const landlordLogin = () => {
                     <p className="text-2xl text-[#002853] font-[700] my-2">Seeking for people to rent your house</p>
                     <span className="text-md text-[#040C18] font-[400]">Please <strong className="">Sign in</strong> and share your properties</span>
                 </div>
-                <form className="mt-4">
+                <form className="mt-4" onSubmit={handleClick}>
                     <div className="flex flex-col mb-2">
-                        <input type="text" placeholder='Email' className="px-4 py-2 my-2 rounded" />
-                        <input type="password" placeholder='Password' className='px-4 py-2 my-2 rounded' />
+                        <input type="text" required  placeholder='Email' className="px-4 py-2 my-2 rounded" onChange={(e)=> setEmail(e.target.value)}/>
+                        <input type="password" required placeholder='Password' className='px-4 py-2 my-2 rounded' onChange={(e)=> setPassword(e.target.value)}/>
                     </div>
-                    <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg">Login</button>
+                    <div className='py-2'>
+                    {error? <span className='text-red-800 '>{`*${error.payload}*`}</span> : null}
+                    </div>
+                    <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg" type='submit'>
+                        {isFetching? 'Logging ...' : 'Login'}</button>
+                    
                     <div className="flex items-center mt-4">
                         <p className="text-[13px] text-gray-600">Don't you have an account?
                             <Link to='/register'>
@@ -35,4 +52,4 @@ const landlordLogin = () => {
   )
 }
 
-export default landlordLogin
+export default LandlordLogin
