@@ -1,6 +1,5 @@
 import React,{ useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
-import { useNavigate } from "react-router"
 import { Link } from 'react-router-dom'
 import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon } from 'react-icons/fa';
 import {landLordLogoutDone} from '../Redux/apiCalls'
@@ -10,12 +9,11 @@ const avatar = require("../Images/avatar.png")
 
 const Navbar = () => {
     const dispatch = useDispatch();
-    const history = useNavigate()
+    const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
     const Logout= ()=>{
         landLordLogoutDone(dispatch);
-        history('/');
     }
     const changeBackground=()=>{
         if(window.scrollY>=80){
@@ -71,15 +69,34 @@ const Navbar = () => {
                     <div className="px-4">
                         <FaMoon style={{fontSize:'20px',color:'#fff'}} />
                     </div>
-                    <Link to='/login'>
+
                         {landLord? <div className='w-[30px] h-[30px]'>
-                            <img src={landLord.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" onClick={Logout} />
+                            <img src={landLord.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" 
+                            onClick={()=>setToggleProfile(!toggleProfile)}/>
                         </div> 
                         :
-                        <button className='flex sm:ml-4 bg-green-600 py-2 px-4 rounded text-sm'>Sign In</button>
+                        <Link to='/login'>
+                            <button className='flex sm:ml-4 bg-green-600 py-2 px-4 rounded text-sm'>Sign In</button>
+                        </Link>
                         }
-                    </Link>
+                    
                 </div>
+                {toggleProfile && (
+                        <div className="flex flex-col bg-[#040C18] text-left p-8 absolute
+                        top-16 right-2 min-w-[210px] rounded shadow-lg shadow-blue-700">
+                            <div className='flex flex-col justify-center items-center'>
+                                <div className='w-[150px] h-[150px] mb-2'>
+                                    <img src={landLord.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" />
+                                </div>
+                                <div className="flex flex-col justify-center items-center flex-col mx-4">
+                                    <button className="text-white font-Manrope my-1 text-base">Your Profile</button>
+                                    <button className="text-white font-Manrope my-1 text-base">Your Account</button>
+                                    <button type='button' className="bg-[#FF4820] px-6 py-2 mt-2 text-white font-Manrope rounded" onClick={Logout}>
+                                        Sign Out</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
             </div>
         </div>
     </div>

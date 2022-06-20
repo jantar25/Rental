@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { landLordLogin } from "../Redux/apiCalls"
+import { LandLordLogin } from "../Redux/apiCalls"
 import { Link } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 
 const LandlordLogin = () => {
+
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const {isFetching,error} = useSelector((state:any)=> state.landLord)
@@ -13,7 +14,7 @@ const LandlordLogin = () => {
     
     const handleClick = (e:any)=>{
         e.preventDefault();
-        landLordLogin(dispatch,{password,email});
+        LandLordLogin(dispatch,{password,email});
     }
 
   return (

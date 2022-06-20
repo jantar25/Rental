@@ -1,5 +1,6 @@
 import { publicRequest,landLordRequest } from "../requestMethode";
-import { useNavigate } from "react-router"
+
+
 
 import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
     updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
@@ -64,13 +65,12 @@ import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLog
 
 
 
-export const landLordLogin = async (dispatch:any,landLord:any) =>{
+export const LandLordLogin = async (dispatch:any,landLord:any) =>{
     dispatch(landLordLoginStart());
-    // const history = useNavigate()
     try {
         const res = (await publicRequest.post("/landLordAuth/login",landLord));
         dispatch(landLordLoginSuccess(res.data));
-        // history('/');
+        
     } catch (error:any) {
         console.log(error.response.data.message)
         dispatch(landLordLoginFailure(error.response.data.message));
