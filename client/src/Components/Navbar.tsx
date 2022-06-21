@@ -1,7 +1,8 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect,useRef } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import { Link } from 'react-router-dom'
 import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 const avatar = require("../Images/avatar.png")
 
@@ -9,11 +10,15 @@ const avatar = require("../Images/avatar.png")
 
 const Navbar = () => {
     const dispatch = useDispatch();
+    const menuRef = useRef<any>([]);
     const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
+
+    const menu = () =>{setToggleProfile(false)} 
     const Logout= ()=>{
         landLordLogoutDone(dispatch);
+        menu()
     }
     const changeBackground=()=>{
         if(window.scrollY>=80){
@@ -24,8 +29,14 @@ const Navbar = () => {
       }
       window.addEventListener('scroll',changeBackground)
 
+      useEffect(()=>{  
+        let handeler = (event:any) => {if(!menuRef?.current?.contains (event.target)){setToggleProfile(false)}} 
+        document.addEventListener('mousedown',handeler,{ capture: true })
+        return ()=> document.removeEventListener('mousedown',handeler,{ capture: true })
+      },[])
+
   return (
-    <div className={`sticky top-0 z-50 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
+    <div className={`sticky top-0 z-30 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
         <div className='flex flex-col'>
             <div className='flex items-center justify-between'>
                 <Link to='/'>
@@ -50,7 +61,7 @@ const Navbar = () => {
                                 <FaHome style={{fontSize:'20px',color:'#002853'}} />
                             </li>
                         </Link>
-                        <Link to='/residences'>
+                        <Link to='/residences/All'>
                             <li>
                                 <FaBuilding style={{fontSize:'20px',color:'#002853'}} />
                             </li>
@@ -71,8 +82,9 @@ const Navbar = () => {
                     </div>
 
                         {landLord? <div className='w-[30px] h-[30px]'>
-                            <img src={landLord.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" 
-                            onClick={()=>setToggleProfile(!toggleProfile)}/>
+                            {!toggleProfile? <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full cursor-pointer" 
+                            onClick={()=>setToggleProfile(!toggleProfile)}/> 
+                        : <div className='flex items-center justify-center '><AiOutlineClose style={{fontSize:'30px',color:'red'}} /></div>}
                         </div> 
                         :
                         <Link to='/login'>
@@ -82,15 +94,19 @@ const Navbar = () => {
                     
                 </div>
                 {toggleProfile && (
-                        <div className="flex flex-col bg-[#040C18] text-left p-8 absolute
-                        top-16 right-2 min-w-[210px] rounded shadow-lg shadow-blue-700">
+                        <div className="flex flex-col bg-gradient-to-b from-[#002853] to-[#040C18] text-left p-8 absolute
+                        top-16 right-2 lg:right-20 min-w-[210px] rounded shadow-lg shadow-blue-700" ref={menuRef}>
                             <div className='flex flex-col justify-center items-center'>
                                 <div className='w-[150px] h-[150px] mb-2'>
-                                    <img src={landLord.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" />
+                                    <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" />
                                 </div>
                                 <div className="flex flex-col justify-center items-center flex-col mx-4">
-                                    <button className="text-white font-Manrope my-1 text-base">Your Profile</button>
-                                    <button className="text-white font-Manrope my-1 text-base">Your Account</button>
+                                    <Link to='/profile'>
+                                        <button className="text-white font-Manrope my-1 text-base" onClick={menu}>Your Profile</button>
+                                    </Link>
+                                    <Link to='/activity'>
+                                        <button className="text-white font-Manrope my-1 text-base" onClick={menu}>Activity</button>
+                                    </Link>
                                     <button type='button' className="bg-[#FF4820] px-6 py-2 mt-2 text-white font-Manrope rounded" onClick={Logout}>
                                         Sign Out</button>
                                 </div>
