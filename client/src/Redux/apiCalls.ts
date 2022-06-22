@@ -83,13 +83,13 @@ export const landLordLogoutDone = async (dispatch:any) =>{
 }
 
 
-// // UPDATE A FARMER
-// export const updateFarmer = async (id,updatedFarmer,dispatch) =>{
-//     dispatch(updateFarmerStart());
-//     try {
-//         await farmerRequest.put(`/farmerAuth/${id}`,updatedFarmer);
-//         dispatch(updateFarmerSuccess({id,updatedFarmer}));
-//     } catch (error) {
-//         dispatch(updateFarmerFailure(error));
-//     }
-// }
+// UPDATE A LANDLORD
+export const updateFarmer = async (id:any,updatedLandLord:any,dispatch:any) =>{
+    dispatch(updateLandLordStart());
+    try {
+        await landLordRequest.put(`/farmerAuth/${id}`,updatedLandLord);
+        dispatch(updateLandLordSuccess({id,updatedLandLord}));
+    } catch (error) {
+        dispatch(updateLandLordFailure(error));
+    }
+}

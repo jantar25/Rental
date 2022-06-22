@@ -24,13 +24,13 @@ const landLordSlice = createSlice({
             state.currentLandLord= null;
         },
 
-        // FARMER UPDATE
+        // LANDLORD UPDATE
         updateLandLordStart:(state)=>{
             state.isFetching=true;
         },
         updateLandLordSuccess:(state,action)=>{
             state.isFetching=false;
-            // state.products[state.products.findIndex((item:any)=>item._id === action.payload.id)
+            // state.properties[state.properties.findIndex((item:any)=>item._id === action.payload.id)
             // ]=action.payload.product;
         },
         updateLandLordFailure:(state,action:any)=>{

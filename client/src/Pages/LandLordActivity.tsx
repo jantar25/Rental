@@ -1,8 +1,17 @@
 import React from 'react'
+import Footer from '../Components/Footer'
+import Navbar from '../Components/Navbar'
+
 
 const LandLordActivity = () => {
   return (
-    <div>LandLordActivity</div>
+    <div>
+      <Navbar />
+      <div className="">
+        Activity
+      </div>
+      <Footer />
+    </div>
   )
 }
 

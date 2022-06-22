@@ -30,7 +30,7 @@ const Navbar = () => {
       window.addEventListener('scroll',changeBackground)
 
       useEffect(()=>{  
-        let handeler = (event:any) => {if(!menuRef?.current?.contains (event.target)){setToggleProfile(false)}} 
+        let handeler = (event:any) => {if(!menuRef?.current?.contains(event.target)){setToggleProfile(false)}} 
         document.addEventListener('mousedown',handeler,{ capture: true })
         return ()=> document.removeEventListener('mousedown',handeler,{ capture: true })
       },[])

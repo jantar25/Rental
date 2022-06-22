@@ -46,7 +46,7 @@ const Residence = () => {
         <div className="absolute bottom-4 md:bottom-1/2 left-8 md:left-2 p-2 cursor-pointer bg-white rounded-full" onClick={()=>handleArrow("left")}>
           <AiOutlineArrowLeft />
         </div>
-        <div className="absolute p-2 top-5 right-5 cursor-pointer bg-white rounded-full" onClick={()=>setIsOpen(false)} >
+        <div className="absolute p-2 top-5 right-5 cursor-pointer bg-red-600 rounded-full" onClick={()=>setIsOpen(false)} >
           <AiOutlineClose />
         </div>
         <div className="absolute bottom-4 md:bottom-1/2 right-8 md:right-2 p-2 cursor-pointer bg-white rounded-full" onClick={()=>handleArrow("right")}>
