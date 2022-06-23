@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from "cors"
 const landLordRoute = require('./Routes/LandLordAuth')
+const propertyRoute = require('./Routes/Properties')
 
 
 dotenv.config();
@@ -19,6 +20,7 @@ if (typeof dbUrl === 'string') {
 app.use(cors());
 app.use(express.json());
 app.use("/api/landLordAuth",landLordRoute)
+app.use("/api/property",propertyRoute)
 app.get("/",(req,res)=>{
     res.send("Hello, Welcom to Rental API")
 });
