@@ -1,8 +1,9 @@
 import React,{ useState,useEffect,useRef } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import { Link } from 'react-router-dom'
-import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon } from 'react-icons/fa';
+import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon,FaKey,FaSignOutAlt } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
+import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 const avatar = require("../Images/avatar.png")
 
@@ -94,21 +95,30 @@ const Navbar = () => {
                     
                 </div>
                 {toggleProfile && (
-                        <div className="flex flex-col bg-gradient-to-b from-[#002853] to-[#040C18] text-left p-8 absolute
+                        <div className="flex flex-col bg-gradient-to-b from-[#002853] to-[#040C18] text-left p-4 absolute
                         top-16 right-2 lg:right-20 min-w-[210px] rounded shadow-lg shadow-blue-700" ref={menuRef}>
-                            <div className='flex flex-col justify-center items-center'>
-                                <div className='w-[150px] h-[150px] mb-2'>
-                                    <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" />
+                            <div className='flex flex-col'>
+                                <div className="flex items-center justify-center mb-4">
+                                    <div className='w-[50px] h-[50px] mr-2'>
+                                        <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full" />
+                                    </div>
+                                    <h2 className='text-lg font-[600]'>{landLord?.names}</h2>
                                 </div>
-                                <div className="flex flex-col justify-center items-center flex-col mx-4">
+                                <hr />
+                                <div className="flex flex-col justify-center flex-col mt-4">
                                     <Link to='/profile'>
-                                        <button className="text-white font-Manrope my-1 text-base" onClick={menu}>Your Profile</button>
+                                        <button className="flex items-center text-white font-Manrope my-1 text-base" onClick={menu}>
+                                            <FaKey />
+                                            <span className='ml-2'>Account</span></button>
                                     </Link>
                                     <Link to='/activity'>
-                                        <button className="text-white font-Manrope my-1 text-base" onClick={menu}>Activity</button>
+                                        <button className="flex items-center text-white font-Manrope my-1 text-base mb-4" onClick={menu}>
+                                            <BsSignpostSplitFill />
+                                            <span className='ml-2'>Activity</span></button>
                                     </Link>
-                                    <button type='button' className="bg-[#FF4820] px-6 py-2 mt-2 text-white font-Manrope rounded" onClick={Logout}>
-                                        Sign Out</button>
+                                    <hr />
+                                    <button type='button' className="flex items-center text-lg text-[#FF4820] font-[800] mt-4" onClick={Logout}>
+                                       <FaSignOutAlt /><span className='ml-2'>Sign Out</span></button>
                                 </div>
                             </div>
                         </div>
