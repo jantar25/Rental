@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import app from '../Firebase/firebase'
+import firebase from '../Firebase/firebase'
+import { storage } from '../Firebase/firebase'
 import {useDispatch} from 'react-redux'
 // import {addProduct} from '../../../Redux/apiCalls'
 import { AiOutlineCaretDown,AiOutlineCaretUp,AiOutlineClose } from 'react-icons/ai';
@@ -13,7 +13,7 @@ const LandLordActivity = () => {
     const [toggleCreate,setToggleCreate] = useState(false)
     const [selectedFiles,setSelectedFiles] = useState<string[]>([]);
     const [inputs,setInputs] = useState({});
-    const [urls,setUrls] = useState([]);
+    const [urls,setUrls] = useState<any[]>([]);
 
     const handleChange = (e:any)=>{
     setInputs(prev=>{
@@ -22,40 +22,47 @@ const LandLordActivity = () => {
     }
 
     const selectedImages = (e:any) => {
-      const images = Array.from(e.target.files)
-      const imageArray= images.map((file:any)=>{return file})
-      setSelectedFiles((previousImages)=>previousImages.concat(imageArray))
+      for (let i=0; i<e.target.files.length;i++) {
+        const images = e.target.files[i];
+        images['id'] = Math.random()
+        setSelectedFiles((previousImages)=>[...previousImages,images])
+      }
     }
 
+ console.log(selectedFiles)
+
     const handleClick = (e:any)=>{
-    e.preventDefault();
-      selectedFiles.map((selectedFile:any)=>{
-      const fileName:any = new Date().getTime() + Math.random();
-      const storage = getStorage(app); 
-      const storageRef = ref(storage,fileName);  
-      const uploadTask = uploadBytesResumable(storageRef, selectedFile);
-      
+      const promises:any[] = [];
+      e.preventDefault();
+      selectedFiles.map((selectedFile:any)=>{  
+      const uploadTask = storage.ref(`images/${selectedFile.name}`).put(selectedFile); 
+      promises.push(uploadTask) 
       uploadTask.on('state_changed', 
-      (snapshot) => {
+      (snapshot:any) => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
+        console.log(progress);
             }, 
-            (error) => {
+            (error:any) => {
               console.log(error)
             }, 
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log(downloadURL);
+            async () => {
+              await storage.ref("images").child(selectedFile.name).getDownloadURL().then((urls:any)=>{
+                setUrls((prevState)=>[...prevState,urls])
+              })
+              // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              //   console.log(downloadURL);
                 
-              });
+              // });
               // addProduct(property,dispatch);
               // setToggleCreate(false)
-              console.log(selectedFiles)
+              
             }
             );
           })
+          Promise.all(promises).then(()=>alert('All images Uploaded')).catch((error:any)=>console.log(error))
           }
-          
+          console.log(selectedFiles)
+          console.log(urls)
 
   return (
     <div>
@@ -139,7 +146,7 @@ const LandLordActivity = () => {
           <div className="flex flex-wrap my-2">
             {selectedFiles && selectedFiles.map((image:any,index)=>{
               return (
-                  <div key={image} className="w-[40px] h-[40px] relative">
+                  <div key={image} className="w-[40px] h-[40px] relative m-2">
                     <img src={image} alt="fileImg" className="w-full h-full" />
                     <button className='text-[12px] absolute top-0 right-0 p-[2px] text-white bg-red-600 rounded-full' 
                     onClick={()=>setSelectedFiles(selectedFiles.filter((e:any)=>e !== image))}>
