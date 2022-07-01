@@ -1,11 +1,11 @@
 import { createSlice} from '@reduxjs/toolkit'
 
 const propertiesSlice = createSlice({
-    name:"product",
+    name:"properties",
     initialState:{
-        products: [],
+        properties: [],
         isFetching: false,
-        error: false,
+        error: null,
     },
     reducers:{
         // // GET ALL PRODUCTS
@@ -56,24 +56,24 @@ const propertiesSlice = createSlice({
         //     state.error=true;
         // },
 
-        //  //ADD A PRODUCT
-        //  addProductStart:(state)=>{
-        //     state.isFetching=true;
-        //     state.error=false;
-        // },
-        // addProductSuccess:(state,action)=>{
-        //     state.isFetching=false;
-        //     state.products.push(action.payload)
-        // },
-        // addProductFailure:(state)=>{
-        //     state.isFetching=false;
-        //     state.error=true;
-        // },
+         //ADD A PROPERTY
+         addPropertyStart:(state)=>{
+            state.isFetching=true;
+        },
+        addPropertySuccess:(state:any,action)=>{
+            state.isFetching=false;
+            state.properties.push(action.payload)
+            state.error=null;
+        },
+        addPropertyFailure:(state,error:any)=>{
+            state.isFetching=false;
+            state.error=error;
+        },
     }
 })
 
-// export const {getProductStart,getProductSuccess,getProductFailure,
+// getProductStart,getProductSuccess,getProductFailure,
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
-//     addProductStart,addProductSuccess,addProductFailure} = propertiesSlice.actions;
+export const {addPropertyStart,addPropertySuccess,addPropertyFailure} = propertiesSlice.actions;
 export default propertiesSlice.reducer;

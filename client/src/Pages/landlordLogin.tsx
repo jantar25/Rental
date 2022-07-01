@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { LandLordLogin } from "../Redux/apiCalls"
+import decode from 'jwt-decode';
+import { LandLordLogin,landLordLogoutDone } from "../Redux/apiCalls"
 import { Link } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
@@ -16,6 +17,21 @@ const LandlordLogin = () => {
         e.preventDefault();
         LandLordLogin(dispatch,{password,email});
     }
+
+    useEffect(()=>{
+        const currentToken = localStorage.getItem("persist:root");
+        const token =currentToken? 
+        JSON.parse(JSON.parse(currentToken).landLord).currentLandLord?.accessToken : "";  
+         
+       if(token){
+           const decodedToken :any =decode(token);
+           const today = new Date().getTime();
+           const inToken=decodedToken.exp*1000;
+           if (inToken < today) {
+            landLordLogoutDone(dispatch);
+           }
+                  }
+    },[dispatch])
 
   return (
     <div className=''>

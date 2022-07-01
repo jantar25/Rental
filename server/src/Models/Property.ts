@@ -29,9 +29,9 @@ interface PropertyInterface extends Document {
   
 const PropertySchima = new mongoose.Schema<PropertyInterface>(
     {
-        title:{type:String,required:true},
+        title:{type:String,required:true,unique:true},
         address:{type:String,required:true},
-        coordinates:{type:String,required:true},
+        coordinates:{type:String,},
         price:{type:Number,required:true},
         Bedroom:{type:Number},
         BathRooms:{type:Number},

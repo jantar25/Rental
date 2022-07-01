@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
-import firebase from '../Firebase/firebase'
+import { useSelector } from 'react-redux';
 import { storage } from '../Firebase/firebase'
 import {useDispatch} from 'react-redux'
-// import {addProduct} from '../../../Redux/apiCalls'
+import {addProperty} from '../Redux/apiCalls'
 import { AiOutlineCaretDown,AiOutlineCaretUp,AiOutlineClose } from 'react-icons/ai';
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
@@ -12,8 +12,17 @@ const LandLordActivity = () => {
     const dispatch = useDispatch();
     const [toggleCreate,setToggleCreate] = useState(false)
     const [selectedFiles,setSelectedFiles] = useState<string[]>([]);
+    const [images,setImages] = useState<string[]>([]);
     const [inputs,setInputs] = useState({});
+    const [err,setErr] = useState('');
     const [urls,setUrls] = useState<any[]>([]);
+    const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
+    const {isFetching,error} = useSelector((state:any)=> state.properties)
+
+    const deleteSelectedImg = (index: any) => {
+      setSelectedFiles(selectedFiles.filter((e:any)=>e !== selectedFiles[index]))
+      setImages(images.filter((e:any)=>e !== images[index]))
+    }
 
     const handleChange = (e:any)=>{
     setInputs(prev=>{
@@ -22,47 +31,50 @@ const LandLordActivity = () => {
     }
 
     const selectedImages = (e:any) => {
+      const selectedImage = Array.from(e.target.files).map((image:any)=> URL.createObjectURL(image))
+      setImages((prevImgs)=>prevImgs.concat(selectedImage))
       for (let i=0; i<e.target.files.length;i++) {
         const images = e.target.files[i];
-        images['id'] = Math.random()
+        images['id'] = Math.random();
         setSelectedFiles((previousImages)=>[...previousImages,images])
       }
     }
 
- console.log(selectedFiles)
 
     const handleClick = (e:any)=>{
-      const promises:any[] = [];
       e.preventDefault();
-      selectedFiles.map((selectedFile:any)=>{  
-      const uploadTask = storage.ref(`images/${selectedFile.name}`).put(selectedFile); 
-      promises.push(uploadTask) 
-      uploadTask.on('state_changed', 
-      (snapshot:any) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(progress);
-            }, 
-            (error:any) => {
-              console.log(error)
-            }, 
-            async () => {
-              await storage.ref("images").child(selectedFile.name).getDownloadURL().then((urls:any)=>{
-                setUrls((prevState)=>[...prevState,urls])
-              })
-              // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              //   console.log(downloadURL);
-                
-              // });
-              // addProduct(property,dispatch);
-              // setToggleCreate(false)
-              
-            }
-            );
-          })
-          Promise.all(promises).then(()=>alert('All images Uploaded')).catch((error:any)=>console.log(error))
+      if (selectedFiles.length > 10) {
+        setErr("You are not allowed to Upload more than 10 Pictures")
+      } else {
+        const promise:any[] = [];
+        selectedFiles.map((selectedFile:any)=>{  
+          const uploadTask = storage.ref(`images/${selectedFile.name}`).put(selectedFile); 
+          promise.push(uploadTask)
+          uploadTask.on('state_changed', 
+          (snapshot:any) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log(progress);
+          }, 
+          (error:any) => {
+            console.log(error)
+          }, 
+          async () => {
+            await storage.ref("images").child(selectedFile.name).getDownloadURL().then((urls:any)=>{
+              setUrls((prevState)=>[...prevState,urls])
+            })              
           }
-          console.log(selectedFiles)
-          console.log(urls)
+          );
+        })
+        Promise.all(promise).then(()=>{
+          alert('Images uploaded')
+          const property = ({...inputs,OtherImages:urls,OwnerDetails:landLord})
+          addProperty(property,dispatch)
+          setErr('')
+          console.log(property)
+        }).catch((error:any)=>console.log(error))    
+      }
+    }
+
 
   return (
     <div>
@@ -84,7 +96,7 @@ const LandLordActivity = () => {
                 </div>
                 <div className='flex flex-col my-2'>
                       <label>Description</label>
-                      <input className='px-4 py-2 my-2 rounded' name="description" type="text" onChange={handleChange}  />
+                      <input className='px-4 py-2 my-2 rounded' name="Description" type="text" onChange={handleChange}  />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Address</label>
@@ -98,36 +110,36 @@ const LandLordActivity = () => {
               <div className='flex-1 w-full md:mr-4'>
                   <div className='flex flex-col my-2'>
                       <label>Bedroom</label>
-                      <input className='px-4 py-2 my-2 rounded' name="bedroom" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Bedroom" type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Livingroom</label>
-                      <input className='px-4 py-2 my-2 rounded' name="livingroom" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Livingrooms" type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>BathRoom</label>
-                      <input className='px-4 py-2 my-2 rounded' name="bathroom" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="BathRooms" type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Kitchen</label>
-                      <input className='px-4 py-2 my-2 rounded' name="kichen" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Kitchen" type="number" onChange={handleChange} />
                   </div>
               </div>
               <div className='flex-1 w-full md:ml-4'>
                   <div className='flex flex-col my-2'>
                       <label>Floor</label>
-                      <input className='px-4 py-2 my-2 rounded' name="floor" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Floors" type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Status</label>
-                      <select className='px-4 py-2 my-2 rounded' name="status" onChange={handleChange} >
+                      <select className='px-4 py-2 my-2 rounded' name="Avaiable" onChange={handleChange} >
                           <option value="true">Available</option>
                           <option value="false">Occupied</option>
                       </select>
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Disctict</label>
-                      <select className='px-4 py-2 my-2 rounded' name="district"  onChange={handleChange} >
+                      <select className='px-4 py-2 my-2 rounded' name="District"  onChange={handleChange} >
                           <option value="Nyarugenge">Nyarugenge</option>
                           <option value="Gasabo">Gasabo</option>
                           <option value="Kicukiro">Kicukiro</option>
@@ -144,19 +156,21 @@ const LandLordActivity = () => {
               </div>
           </form>
           <div className="flex flex-wrap my-2">
-            {selectedFiles && selectedFiles.map((image:any,index)=>{
+            {images && images.map((image:any,index)=>{
               return (
-                  <div key={image} className="w-[40px] h-[40px] relative m-2">
+                  <div key={index} className="w-[40px] h-[40px] relative m-2">
                     <img src={image} alt="fileImg" className="w-full h-full" />
                     <button className='text-[12px] absolute top-0 right-0 p-[2px] text-white bg-red-600 rounded-full' 
-                    onClick={()=>setSelectedFiles(selectedFiles.filter((e:any)=>e !== image))}>
+                    onClick={()=>deleteSelectedImg(index)}>
                       <AiOutlineClose /></button>
                       <p className='font-[600] text-[12px]'>{index + 1}</p>
                   </div>
               )
             })}
           </div>
-          <button className='py-2 px-8 my-4 bg-[#04AA6D] text-white rounded' onClick={handleClick} >Create</button>
+          {err? (<p className='text-red-500 font-[600] my-2'>{err}</p>)
+          : error? (<p className='text-red-500 font-[600] my-2'>{error.payload}</p>) : null}
+          <button className='py-2 px-8 my-4 bg-[#04AA6D] text-white rounded' onClick={handleClick} >{isFetching? 'Creating ...' : 'Create'}</button>
       </div>}
       
       <div className="my-8">

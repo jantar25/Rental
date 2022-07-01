@@ -4,12 +4,11 @@ import { publicRequest,landLordRequest } from "../requestMethode";
 
 import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
     updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
-// import {getProductStart,getProductSuccess,getProductFailure,
+import {addPropertyStart,addPropertySuccess,addPropertyFailure} from "./propertiesRedux"
+
+// getProductStart,getProductSuccess,getProductFailure,
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
-//     addProductStart,addProductSuccess,addProductFailure} from "./productRedux"
-
-
 
 // // GET ALL PRODUCTS
 // export const getProducts = async (dispatch) =>{
@@ -50,18 +49,16 @@ import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLog
 //     }
 // }
 
-// // ADD A PRODUCT
-// export const addProduct = async (product,dispatch) =>{
-//     dispatch(addProductStart());
-
-//     try {
-//         const res = await farmerRequest.post('/products',product);
-//         dispatch(addProductSuccess(res.data));
-//     } catch (error) {
-//         dispatch(addProductFailure());
-//         console.log(error);
-//     }
-// }
+// ADD A PROPERTY
+export const addProperty = async (property:any,dispatch:any) =>{
+    dispatch(addPropertyStart());
+    try {
+        const res = await landLordRequest.post('/property',property);
+        dispatch(addPropertySuccess(res.data));
+    } catch (error:any) {
+        dispatch(addPropertyFailure(error.response.data.message));
+    }
+}
 
 
 

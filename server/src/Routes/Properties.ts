@@ -6,12 +6,17 @@ import {verifyToken,verifyTokenandAuthorisation,verifyTokenandAdmin} from "./Ver
 //CREATE PROPERTY
 router.post("/",verifyToken,async (req:any,res:any)=>{
     const newProperty = new Property(req.body);
+    const alreadyExistPropertyName = await Property.findOne({title:req.body.title})
 
+    if(alreadyExistPropertyName){
+        return res.status(409).json({message:'Property with this Title already exist'})
+    }
     try {
         const savedProperty = await newProperty.save(); 
         res.status(200).json(savedProperty)
     } catch(err){
-        res.status(500).json(err)
+        res.status(500).json({message:'Something went wrong!!! We are unable to registor'})
+        console.log(err)
     }
 })
 
