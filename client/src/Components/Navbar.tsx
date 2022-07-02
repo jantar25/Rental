@@ -1,10 +1,12 @@
 import React,{ useState,useEffect,useRef } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
+import decode from 'jwt-decode';
 import { Link } from 'react-router-dom'
 import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon,FaKey,FaSignOutAlt } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
+import useClickOutside from './Hooks/useClickOutside'
 const avatar = require("../Images/avatar.png")
 
 
@@ -15,12 +17,27 @@ const Navbar = () => {
     const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
-
     const menu = () =>{setToggleProfile(false)} 
+    const dropDownRef = useClickOutside(menu)
     const Logout= ()=>{
         landLordLogoutDone(dispatch);
         menu()
     }
+    useEffect(()=>{
+        const currentToken = localStorage.getItem("persist:root");
+        const token =currentToken? 
+        JSON.parse(JSON.parse(currentToken).landLord).currentLandLord?.accessToken : "";  
+         
+       if(token){
+           const decodedToken :any =decode(token);
+           const today = new Date().getTime();
+           const inToken=decodedToken.exp*1000;
+           if (inToken < today) {
+            landLordLogoutDone(dispatch);
+           }
+                  }
+    },[dispatch])
+
     const changeBackground=()=>{
         if(window.scrollY>=80){
           setNavbar(true)
@@ -30,11 +47,11 @@ const Navbar = () => {
       }
       window.addEventListener('scroll',changeBackground)
 
-      useEffect(()=>{  
-        let handeler = (event:any) => {if(!menuRef?.current?.contains(event.target)){setToggleProfile(false)}} 
-        document.addEventListener('mousedown',handeler,{ capture: true })
-        return ()=> document.removeEventListener('mousedown',handeler,{ capture: true })
-      },[])
+    //   useEffect(()=>{  
+    //     let handeler = (event:any) => {if(!menuRef?.current?.contains(event.target)){setToggleProfile(false)}} 
+    //     document.addEventListener('mousedown',handeler,{ capture: true })
+    //     return ()=> document.removeEventListener('mousedown',handeler,{ capture: true })
+    //   },[])
 
   return (
     <div className={`sticky top-0 z-30 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
@@ -83,9 +100,8 @@ const Navbar = () => {
                     </div>
 
                         {landLord? <div className='w-[30px] h-[30px]'>
-                            {!toggleProfile? <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full cursor-pointer" 
+                            <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full cursor-pointer" 
                             onClick={()=>setToggleProfile(!toggleProfile)}/> 
-                        : <div className='flex items-center justify-center '><AiOutlineClose style={{fontSize:'30px',color:'red'}} /></div>}
                         </div> 
                         :
                         <Link to='/login'>
@@ -96,7 +112,7 @@ const Navbar = () => {
                 </div>
                 {toggleProfile && (
                         <div className="flex flex-col bg-gradient-to-b from-[#002853] to-[#040C18] text-left p-4 absolute
-                        top-16 right-2 lg:right-20 min-w-[210px] rounded shadow-lg shadow-blue-700" ref={menuRef}>
+                        top-16 right-2 lg:right-20 min-w-[210px] rounded shadow-lg shadow-blue-700" ref={dropDownRef}>
                             <div className='flex flex-col'>
                                 <div className="flex items-center justify-center mb-4">
                                     <div className='w-[50px] h-[50px] mr-2'>
