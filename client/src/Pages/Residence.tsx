@@ -106,13 +106,11 @@ const Residence = () => {
                     spaceBetween: 10,
                   },
                 }}
-                modules={[Pagination]}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}   
+                modules={[Pagination]}  
               >
                 {OtherImages.map((OtherImage,i)=>(
-                  <SwiperSlide className='flex my-2 justify-center'>
-                    <div className="h-[100px] w-[150px] cursor-pointer" key={i} onClick={()=>handleSlide(i)} >
+                  <SwiperSlide className='flex my-2 justify-center' key={i}>
+                    <div className="h-[100px] w-[150px] cursor-pointer" onClick={()=>handleSlide(i)} >
                       <img src={OtherImage} alt='OtherImg' className='h-full w-full' />
                     </div>
                   </SwiperSlide> ))}

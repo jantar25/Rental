@@ -35,9 +35,7 @@ const AvailableResidences = () => {
               spaceBetween: 10,
             },
           }}
-          modules={[Pagination]}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}   
+          modules={[Pagination]}  
         >
           {residencesAvailables.map((residencesAvailable)=>(
             <SwiperSlide key={residencesAvailable.id} className='flex my-8 justify-center'>

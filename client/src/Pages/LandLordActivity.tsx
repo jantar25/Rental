@@ -10,6 +10,7 @@ import Navbar from '../Components/Navbar'
 
 const LandLordActivity = () => {
     const dispatch = useDispatch();
+    const [progress,setProgress] = useState()
     const [toggleCreate,setToggleCreate] = useState(false)
     const [selectedFiles,setSelectedFiles] = useState<string[]>([]);
     const [images,setImages] = useState<string[]>([]);
@@ -46,34 +47,24 @@ const LandLordActivity = () => {
       if (selectedFiles.length > 10) {
         setErr("You are not allowed to Upload more than 10 Pictures")
       } else {
-        const promise:any[] = [];
-        selectedFiles.map((selectedFile:any)=>{  
-          const uploadTask = storage.ref(`images/${selectedFile.name}`).put(selectedFile); 
-          promise.push(uploadTask)
-          uploadTask.on('state_changed', 
-          (snapshot:any) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log(progress);
-          }, 
-          (error:any) => {
-            console.log(error)
-          }, 
-          async () => {
-            await storage.ref("images").child(selectedFile.name).getDownloadURL().then((urls:any)=>{
-              setUrls((prevState)=>[...prevState,urls])
-            })              
-          }
-          );
-        })
-        Promise.all(promise).then(()=>{
-          alert('Images uploaded')
-          const property = ({...inputs,OtherImages:urls,OwnerDetails:landLord})
+        const promises = selectedFiles.map((file:any) => {
+          const ref = storage.ref().child(`images/${file.name}`);
+          return ref
+            .put(file)
+            .then(() => ref.getDownloadURL())
+        });
+        
+        Promise.all(promises)
+        .then((fileDownloadUrls) => {
+          const property = ({...inputs,OtherImages:fileDownloadUrls,OwnerDetails:landLord})
+          console.log(property)
           addProperty(property,dispatch)
           setErr('')
-          console.log(property)
-        }).catch((error:any)=>console.log(error))    
+        })
+        .catch(err => console.log(err)); 
       }
     }
+
 
 
   return (
