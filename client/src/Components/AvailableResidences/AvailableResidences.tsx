@@ -1,3 +1,7 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import axios from "axios"
+import { getProperties } from '../../Redux/apiCalls'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
@@ -6,6 +10,10 @@ import { residencesAvailables } from '../../data'
 import AvailableResidence from './AvailableResidence/AvailableResidence'
 
 const AvailableResidences = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    getProperties(dispatch)
+  }, [dispatch])
 
   return (
     <div className='px-4 lg:px-20 py-8'>

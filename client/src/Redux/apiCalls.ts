@@ -4,24 +4,25 @@ import { publicRequest,landLordRequest } from "../requestMethode";
 
 import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
     updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
-import {addPropertyStart,addPropertySuccess,addPropertyFailure} from "./propertiesRedux"
+import {addPropertyStart,addPropertySuccess,addPropertyFailure,getPropertiesStart,
+    getPropertiesSuccess,getPropertiesFailure} from "./propertiesRedux"
 
 // getProductStart,getProductSuccess,getProductFailure,
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
 
-// // GET ALL PRODUCTS
-// export const getProducts = async (dispatch) =>{
-//     dispatch(getProductStart());
+// GET ALL PROPERTIES
+export const getProperties = async (dispatch:any) =>{
+    dispatch(getPropertiesStart());
 
-//     try {
-//         const res = await publicRequest.get("/products");
-//         dispatch(getProductSuccess(res.data));
-//     } catch (error) {
-//         dispatch(getProductFailure());
-//         console.log(error);
-//     }
-// }
+    try {
+        const res = await publicRequest.get("/property");
+        dispatch(getPropertiesSuccess(res.data));
+    } catch (error:any) {
+        dispatch(getPropertiesFailure(error.response.data.message));
+        console.log(error);
+    }
+}
 
 
 // // DELETE A PRODUCT

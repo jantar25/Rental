@@ -54,26 +54,26 @@ router.post("/",verifyToken,async (req:any,res:any)=>{
 //     }
 // })
 
-// //GET ALL PRODUCTS
-// router.get("/",async (req:any,res:any)=>{
-//     const queryNew = req.query.new;
-//     const queryCategory = req.query.category;
-//     try{
-//         let products;
+//GET ALL PROPERTIES
+router.get("/",async (req:any,res:any)=>{
+    const queryNew = req.query.new;
+    const queryCategory = req.query.category;
+    try{
+        let products;
 
-//         if (queryNew){
-//             products= await Product.find().sort({createdAt:-1}).limit(1);
-//         } else if (queryCategory) {
-//             products = await Product.find({categories:{$in:[queryCategory]}});
-//         } else{
-//             products =  await Product.find();
-//         }
+        if (queryNew){
+            products= await Property.find().sort({createdAt:-1}).limit(1);
+        } else if (queryCategory) {
+            products = await Property.find({categories:{$in:[queryCategory]}});
+        } else{
+            products =  await Property.find();
+        }
          
-//         res.status(200).json(products)
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+        res.status(200).json(products)
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
 
 module.exports = router

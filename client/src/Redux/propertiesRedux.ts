@@ -8,20 +8,19 @@ const propertiesSlice = createSlice({
         error: null,
     },
     reducers:{
-        // // GET ALL PRODUCTS
-        // getProductStart:(state)=>{
-        //     state.isFetching=true;
-        //     state.error=false;
-        // },
-        // getProductSuccess:(state,action)=>{
-        //     state.isFetching=false;
-        //     state.products=action.payload;
-        //     state.error=false;
-        // },
-        // getProductFailure:(state)=>{
-        //     state.isFetching=false;
-        //     state.error=true;
-        // },
+        // GET ALL PROPERTIES
+        getPropertiesStart:(state)=>{
+            state.isFetching=true;
+        },
+        getPropertiesSuccess:(state,action)=>{
+            state.isFetching=false;
+            state.properties=action.payload;
+            state.error=null;
+        },
+        getPropertiesFailure:(state,error:any)=>{
+            state.isFetching=false;
+            state.error=error;
+        },
 
         //  // DELETE A PRODUCT
         // deleteProductStart:(state)=>{
@@ -75,5 +74,6 @@ const propertiesSlice = createSlice({
 // getProductStart,getProductSuccess,getProductFailure,
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
-export const {addPropertyStart,addPropertySuccess,addPropertyFailure} = propertiesSlice.actions;
+export const {addPropertyStart,addPropertySuccess,addPropertyFailure,
+    getPropertiesStart,getPropertiesSuccess,getPropertiesFailure} = propertiesSlice.actions;
 export default propertiesSlice.reducer;

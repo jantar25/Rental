@@ -6,19 +6,33 @@ import {addProperty} from '../Redux/apiCalls'
 import { AiOutlineCaretDown,AiOutlineCaretUp,AiOutlineClose } from 'react-icons/ai';
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
+import LandlordProperties from '../Components/LandlordProperties/LandlordProperties';
 
 
 const LandLordActivity = () => {
     const dispatch = useDispatch();
-    const [progress,setProgress] = useState()
     const [toggleCreate,setToggleCreate] = useState(false)
     const [selectedFiles,setSelectedFiles] = useState<string[]>([]);
     const [images,setImages] = useState<string[]>([]);
-    const [inputs,setInputs] = useState({});
-    const [err,setErr] = useState('');
-    const [urls,setUrls] = useState<any[]>([]);
+    const [inputs,setInputs] = useState({
+      title:'',
+      Description:'',
+      address:'',
+      price:'',
+      Bedroom:'',
+      Livingrooms:'',
+      BathRooms:'',
+      Kitchen:'',
+      Floors:'',
+      Avaiable:'',
+      District:'',
+      eror:'',
+      loading:false,
+    });
+    const {title,Description,address,price,Bedroom,Livingrooms,BathRooms,Kitchen,
+      Floors,Avaiable,District,eror,loading} = inputs;
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
-    const {isFetching,error} = useSelector((state:any)=> state.properties)
+    const {error} = useSelector((state:any)=> state.properties)
 
     const deleteSelectedImg = (index: any) => {
       setSelectedFiles(selectedFiles.filter((e:any)=>e !== selectedFiles[index]))
@@ -26,9 +40,7 @@ const LandLordActivity = () => {
     }
 
     const handleChange = (e:any)=>{
-    setInputs(prev=>{
-        return  {...prev,[e.target.name]:e.target.value} 
-    })
+    setInputs({...inputs,[e.target.name]:e.target.value})
     }
 
     const selectedImages = (e:any) => {
@@ -44,8 +56,12 @@ const LandLordActivity = () => {
 
     const handleClick = (e:any)=>{
       e.preventDefault();
+      setInputs({ ...inputs,eror:'',loading:true });
       if (selectedFiles.length > 10) {
-        setErr("You are not allowed to Upload more than 10 Pictures")
+        setInputs({ ...inputs,eror: 'You are not allowed to Upload more than 10 Pictures' })
+      } else if(!title || !Description || !address || !price || !Bedroom || !Livingrooms || !BathRooms || !Kitchen ||
+          !Floors || !Avaiable || !District) {
+          setInputs({ ...inputs,eror: 'All fields are required' })
       } else {
         const promises = selectedFiles.map((file:any) => {
           const ref = storage.ref().child(`images/${file.name}`);
@@ -57,9 +73,24 @@ const LandLordActivity = () => {
         Promise.all(promises)
         .then((fileDownloadUrls) => {
           const property = ({...inputs,OtherImages:fileDownloadUrls,OwnerDetails:landLord})
-          console.log(property)
           addProperty(property,dispatch)
-          setErr('')
+          setSelectedFiles([])
+          setImages([])
+          setInputs({
+            title:'',
+            Description:'',
+            address:'',
+            price:'',
+            Bedroom:'',
+            Livingrooms:'',
+            BathRooms:'',
+            Kitchen:'',
+            Floors:'',
+            Avaiable:'',
+            District:'',
+            eror:'',
+            loading:false,
+          })
         })
         .catch(err => console.log(err)); 
       }
@@ -83,54 +114,56 @@ const LandLordActivity = () => {
               <div className="flex-1 w-full md:mr-4">
                 <div className='flex flex-col my-2'>
                     <label>Title</label>
-                    <input className='px-4 py-2 my-2 rounded' name="title" type="text" onChange={handleChange} />
+                    <input className='px-4 py-2 my-2 rounded' name="title" value={title} type="text" onChange={handleChange} />
                 </div>
                 <div className='flex flex-col my-2'>
                       <label>Description</label>
-                      <input className='px-4 py-2 my-2 rounded' name="Description" type="text" onChange={handleChange}  />
+                      <input className='px-4 py-2 my-2 rounded' name="Description" value={Description} type="text" onChange={handleChange}  />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Address</label>
-                      <input className='px-4 py-2 my-2 rounded' name="address" type="text" onChange={handleChange}  />
+                      <input className='px-4 py-2 my-2 rounded' name="address" value={address} type="text" onChange={handleChange}  />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Price</label>
-                      <input className='px-4 py-2 my-2 rounded'name="price" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded'name="price" value={price} type="number" onChange={handleChange} />
                   </div>
               </div>
               <div className='flex-1 w-full md:mr-4'>
                   <div className='flex flex-col my-2'>
                       <label>Bedroom</label>
-                      <input className='px-4 py-2 my-2 rounded' name="Bedroom" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Bedroom" value={Bedroom} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Livingroom</label>
-                      <input className='px-4 py-2 my-2 rounded' name="Livingrooms" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Livingrooms" value={Livingrooms} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>BathRoom</label>
-                      <input className='px-4 py-2 my-2 rounded' name="BathRooms" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="BathRooms" value={BathRooms} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Kitchen</label>
-                      <input className='px-4 py-2 my-2 rounded' name="Kitchen" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Kitchen" value={Kitchen} type="number" onChange={handleChange} />
                   </div>
               </div>
               <div className='flex-1 w-full md:ml-4'>
                   <div className='flex flex-col my-2'>
                       <label>Floor</label>
-                      <input className='px-4 py-2 my-2 rounded' name="Floors" type="number" onChange={handleChange} />
+                      <input className='px-4 py-2 my-2 rounded' name="Floors" value={Floors} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Status</label>
-                      <select className='px-4 py-2 my-2 rounded' name="Avaiable" onChange={handleChange} >
+                      <select className='px-4 py-2 my-2 rounded' name="Avaiable" value={Avaiable} onChange={handleChange} >
+                          <option value="">Select</option>
                           <option value="true">Available</option>
                           <option value="false">Occupied</option>
                       </select>
                   </div>
                   <div className='flex flex-col my-2'>
                       <label>Disctict</label>
-                      <select className='px-4 py-2 my-2 rounded' name="District"  onChange={handleChange} >
+                      <select className='px-4 py-2 my-2 rounded' name="District" value={District} onChange={handleChange} >
+                          <option value="">Select</option>
                           <option value="Nyarugenge">Nyarugenge</option>
                           <option value="Gasabo">Gasabo</option>
                           <option value="Kicukiro">Kicukiro</option>
@@ -159,13 +192,16 @@ const LandLordActivity = () => {
               )
             })}
           </div>
-          {err? (<p className='text-red-500 font-[600] my-2'>{err}</p>)
-          : error? (<p className='text-red-500 font-[600] my-2'>{error.payload}</p>) : null}
-          <button className='py-2 px-8 my-4 bg-[#04AA6D] text-white rounded' onClick={handleClick} >{isFetching? 'Creating ...' : 'Create'}</button>
+          {eror? (<p className='text-red-500 font-[600] my-2'>{`*${inputs.eror}*`}</p>)
+          : error? (<p className='text-red-500 font-[600] my-2'>{`*${error.payload}*`}</p>) : null}
+          <button className='py-2 px-8 my-4 bg-[#04AA6D] text-white rounded' onClick={handleClick} >{loading? 'Creating ...' : 'Create'}</button>
       </div>}
       
       <div className="my-8">
         <h1 className="text-lg text-orange-600 font-[700]">Your Properties are listed here:</h1>
+        <div className="">
+          <LandlordProperties />
+        </div>
       </div>
       </div>
       <Footer />
