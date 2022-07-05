@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
+import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import { useLocation } from 'react-router-dom'
-import { residencesAvailables } from '../data'
 import AvailableResidence from '../Components/AvailableResidences/AvailableResidence/AvailableResidence'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
@@ -15,8 +15,10 @@ const Residence = () => {
     const [ isOpen,setIsOpen ] = useState(false)
     const [ slideNumber,setSlideNumber ] = useState(0)
     const location = useLocation()
-    const user = parseInt(location.pathname.split('/')[2]);
-    const residence = residencesAvailables.filter((residencesAvailable)=>residencesAvailable.id === user )[0];
+    const user = location.pathname.split('/')[2];
+    const properties = useSelector((state:any) => state.properties.properties);
+    const residence = properties.filter((propertie:any)=>propertie._id === user)[0];
+    const recomendedResidences = properties.filter((propertie:any)=>propertie.District == residence.District); 
     const OtherImages = residence.OtherImages;
     const handleSlide = (i:number) =>{
       setIsOpen(true)
@@ -62,7 +64,7 @@ const Residence = () => {
         <div className="bg-purple-50 rounded">
           <div className="flex flex-col md:flex-row p-2 ">
             <div className="flex-1 w-full h-[450px] p-2">
-              <img src={residence.FrontImage} alt="MainImg" className="w-full h-full object-cover rounded-lg" />
+              <img src={residence.OtherImages[0]} alt="MainImg" className="w-full h-full object-cover rounded-lg" />
             </div>
             <div className="flex-1 p-2 h-[450px] overflow-auto">
               <h2 className="text-2xl font-[600] text-orange-400">Property Details:</h2>
@@ -74,7 +76,7 @@ const Residence = () => {
                   <span className='text-lg font-[700] text-red-500'>Occupied</span>
                 )}
               </div>
-                <p className="text-gray-500 my-2">Address: <span className='font-[600]'>{residence.address}</span></p>
+                <p className="text-gray-500 my-2">Address: <span className='font-[600]'>{residence.address}/{residence.District}</span></p>
                 <p className="text-gray-500 my-2">Price/Month: <span className='font-[600] text-orange-400 text-lg'>{residence.price} Frw</span></p>
                 <p className="text-gray-500 my-2">Living Room: <span className='font-[600] text-gray-700 text-lg'>{residence.Livingrooms}</span></p>
                 <p className="text-gray-500 my-2">Bed Room: <span className='font-[600] text-gray-700 text-lg'>{residence.Bedroom}</span></p>
@@ -108,7 +110,7 @@ const Residence = () => {
                 }}
                 modules={[Pagination]}  
               >
-                {OtherImages.map((OtherImage,i)=>(
+                {OtherImages.map((OtherImage:any,i:any)=>(
                   <SwiperSlide className='flex my-2 justify-center' key={i}>
                     <div className="h-[100px] w-[150px] cursor-pointer" onClick={()=>handleSlide(i)} >
                       <img src={OtherImage} alt='OtherImg' className='h-full w-full' />
@@ -123,13 +125,13 @@ const Residence = () => {
             </div>
             <div className="flex flex-col sm:flex-row items-center">
               <div className="w-[150px] h-[150px] m-8">
-                <img src={residence.OwnerDetails.photo? residence.OwnerDetails.photo : avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
+                <img src={residence.OwnerDetails[0].img? residence.OwnerDetails[0].img: avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
               </div>
               <div className="">
-                <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.names}</span></p>
-                <p className="text-gray-500 my-2">Line1: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.line1}</span></p>
-                <p className="text-gray-500 my-2">Line2: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.line2}</span></p>
-                <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails.email}</span></p>
+                <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].names}</span></p>
+                <p className="text-gray-500 my-2">Line1: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line1}</span></p>
+                <p className="text-gray-500 my-2">Line2: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line2}</span></p>
+                <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].email}</span></p>
               </div>
             </div>
           </div>
@@ -137,9 +139,9 @@ const Residence = () => {
         <div className="">
           <h1 className="text-2xl mt-12 mb-4 font-[700] text-[#002853]">Recommended Residences:</h1>
           <div className="flex flex-wrap items-center justify-center">
-            {residencesAvailables.slice(0,4).map((residencesAvailable) =>(
-              <AvailableResidence residencesAvailable={residencesAvailable} />
-            ))}
+            {recomendedResidences?.length > 0? recomendedResidences.slice(0,4).map((recomendedResidence:any) =>(
+              <AvailableResidence residencesAvailable={recomendedResidence} />
+            )) : <p className='text-center m-4 text-orange-500 font-[600] text-lg'>There is no related Properties</p>}
           </div>
         </div>
       </div>

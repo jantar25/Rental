@@ -8,10 +8,10 @@ import { ImSpoonKnife } from "react-icons/im";
 const AvailableResidence = ({residencesAvailable}:any) => {
     
   return (
-    <Link to={`/residence/${residencesAvailable.id}`}>
+    <Link to={`/residence/${residencesAvailable._id}`}>
       <div className='w-[280px] bg-gray-50 py-4 px-2 rounded-md mx-2 shadow hover:shadow-xl hover:cursor-pointer mb-6'>
           <div className="w-full h-[200px] mb-4">
-              <img src={residencesAvailable.FrontImage} alt="house" className="rounded-md w-full h-full" />
+              <img src={residencesAvailable.OtherImages[0]} alt="house" className="rounded-md w-full h-full" />
           </div>
           <div className="mx-2">
               <h1 className="text-xl font-[700] text-purple-400">

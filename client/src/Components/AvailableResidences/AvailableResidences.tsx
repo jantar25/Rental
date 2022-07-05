@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from "axios"
 import { getProperties } from '../../Redux/apiCalls'
@@ -11,9 +11,28 @@ import AvailableResidence from './AvailableResidence/AvailableResidence'
 
 const AvailableResidences = () => {
   const dispatch = useDispatch()
+  const [properties,setProperties] =useState<any[]>([])
+
+  useEffect(()=>{
+    const getProperties= async ()=>{
+        try {
+            const res = await axios.get("http://localhost:5000/api/property")
+            setProperties(res.data);
+        } catch(err){
+            console.log(err)
+        }
+    };
+    getProperties();  
+},[])
+
   useEffect(() => {
     getProperties(dispatch)
   }, [dispatch])
+
+  const availableProperties = properties?.filter(
+        (propertie:any) => 
+        propertie?.Avaiable === true 
+      );
 
   return (
     <div className='px-4 lg:px-20 py-8'>
@@ -45,9 +64,9 @@ const AvailableResidences = () => {
           }}
           modules={[Pagination]}  
         >
-          {residencesAvailables.map((residencesAvailable)=>(
-            <SwiperSlide key={residencesAvailable.id} className='flex my-8 justify-center'>
-              <AvailableResidence residencesAvailable={residencesAvailable} />
+          {availableProperties.map((availablePropertie)=>(
+            <SwiperSlide key={availablePropertie._id} className='flex my-8 justify-center'>
+              <AvailableResidence residencesAvailable={availablePropertie} />
             </SwiperSlide> ))}
       </Swiper>    
     </div>
