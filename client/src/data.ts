@@ -1,8 +1,5 @@
 import { Logo } from "./Types/Types"
-import { Residence } from "./Types/Types"
 import { District } from "./Types/Types"
-
-const owner = require("./Images/owner.jpg")
 
 const Logo1 = require("./Images/image1.png")
 const Logo2 = require("./Images/image2.png")
@@ -10,13 +7,6 @@ const Logo3 = require("./Images/image3.png")
 const Logo4 = require("./Images/image4.png")
 const Logo5 = require("./Images/image5.png")
 const Logo6 = require("./Images/image6.png")
-
-const House1 = require("./Images/house1.jpg")
-const House2 = require("./Images/house2.jpg")
-const House3 = require("./Images/house3.jpg")
-const House4 = require("./Images/house4.png")
-const House5 = require("./Images/house5.jpg")
-const House6 = require("./Images/house6.jpg")
 
 const District1 = require("./Images/district1.jpg")
 const District2 = require("./Images/district2.jpg")
@@ -58,152 +48,6 @@ export const logos : Logo[] = [
 ];
 
 
-export const residencesAvailables : Residence[] = [
-    {
-        id:1,
-        title:'Gisozi Gheto',
-        address: 'Cafe Gisozi/Rukeri No 503',
-        coordinates: "27.2046° N, 77.4977° E",
-        price: '40 000',
-        FrontImage:House1,
-        OtherImages:[House1,House2,House3,House4,House5,House6],
-        Bedroom:1,
-        BathRooms:0,
-        Kitchen:0,
-        Livingrooms:1,
-        Floors:0,
-        Avaiable:true,
-        District:'Nyarugenge',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
-        OwnerDetails:{
-            names:"KAREKEZI Jean Marie",
-            line1:"0786120934",
-            line2:"0725868316",
-            email:'jeanmari@gmail.com',
-            photo:owner,
-        }
-    },
-    {
-        id:2,
-        title:'Class Gheto House',
-        address: 'ULK Gisozi/Ruhango No 503',
-        coordinates: "27.2046° N, 77.4977° E",
-        price: '70 000',
-        FrontImage:House2,
-        OtherImages:[House1,House2,House3,House4,House5,House6],
-        Bedroom:1,
-        BathRooms:0,
-        Kitchen:0,
-        Livingrooms:1,
-        Floors:0,
-        Avaiable:true,
-        District:'Nyarugenge',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
-        OwnerDetails:{
-            names:"KILIMUMBALO Claude",
-            line1:"0786120934",
-            line2:"0725868316",
-            email:'claude@gmail.com',
-            photo:owner,
-        }
-    },
-    {
-        id:3,
-        title:'Smart Gisozi House',
-        address: 'Cafe Gisozi/Rukeri No 503',
-        coordinates: "27.2046° N, 77.4977° E",
-        price: '200 000',
-        FrontImage:House3,
-        OtherImages:[House1,House2,House3,House4,House5,House6],
-        Bedroom:4,
-        BathRooms:2,
-        Kitchen:2,
-        Livingrooms:1,
-        Floors:1,
-        Avaiable:false,
-        District:'Gasabo',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
-        OwnerDetails:{
-            names:"BWIRA Chance",
-            line1:"0786120934",
-            line2:"0725868316",
-            email:'bwirachance@gmail.com',
-            photo:'',
-        }
-    },
-    {
-        id:4,
-        title:'Green Garden House',
-        address: 'ULK Gisozi/Ruhango No 503',
-        coordinates: "27.2046° N, 77.4977° E",
-        price: '250 000',
-        FrontImage:House4,
-        OtherImages:[House1,House2,House3,House4,House5,House6],
-        Bedroom:3,
-        BathRooms:1,
-        Kitchen:2,
-        Livingrooms:1,
-        Floors:2,
-        Avaiable:true,
-        District:'Gasabo',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
-        OwnerDetails:{
-            names:"KILIMUMBALO Claude",
-            line1:"0786120934",
-            line2:"0725868316",
-            email:'claude@gmail.com',
-            photo:owner,
-        } 
-    },
-    {
-        id:5,
-        title:'Smart Apartement',
-        address: 'Cafe Gisozi/Rukeri No 503',
-        coordinates: "27.2046° N, 77.4977° E",
-        price: '100 000',
-        FrontImage:House5,
-        OtherImages:[House1,House2,House3,House4,House5,House6],
-        Bedroom:4,
-        BathRooms:2,
-        Kitchen:2,
-        Livingrooms:2,
-        Floors:3,
-        Avaiable:false,
-        District:'Kicukiro',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
-        OwnerDetails:{
-            names:"KAREKEZI Jean Marie",
-            line1:"0786120934",
-            line2:"0725868316",
-            email:'jeanmari@gmail.com',
-            photo:owner,
-        } 
-    },
-    {
-        id:6,
-        title:'Home House',
-        address: 'Kibagabaga/Rukeri No 503',
-        coordinates: "27.2046° N, 77.4977° E",
-        price: '150 000',
-        FrontImage:House6,
-        OtherImages:[House1,House2,House3,House4,House5,House6], 
-        Bedroom:3,
-        BathRooms:2,
-        Kitchen:1,
-        Livingrooms:1,
-        Floors:2,
-        Avaiable:true,
-        District:'Kicukiro',
-        Description:"An attractive good house for rent located in GISOZI with a nice view and an awesome garden which brings you a fresh air ",
-        OwnerDetails:{
-            names:"BWIRA Chance",
-            line1:"0786120934",
-            line2:"0725868316",
-            email:'bwirachance@gmail.com',
-            photo:'',
-        }
-    }
-]
 
 export const districtResidences : District[] = [
     {
@@ -222,6 +66,12 @@ export const districtResidences : District[] = [
         id:3,
         district:'Kicukiro',
         properties:449,
+        townImage:District3
+    },
+    {
+        id:4,
+        district:'All',
+        properties:10490,
         townImage:District3
     },
 ]

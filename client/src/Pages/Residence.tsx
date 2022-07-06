@@ -18,7 +18,8 @@ const Residence = () => {
     const user = location.pathname.split('/')[2];
     const properties = useSelector((state:any) => state.properties.properties);
     const residence = properties.filter((propertie:any)=>propertie._id === user)[0];
-    const recomendedResidences = properties.filter((propertie:any)=>propertie.District == residence.District); 
+    const recomendedResidences = properties.filter((propertie:any)=>propertie.District === residence.District)
+    const filteredRecomendedResidences=recomendedResidences.filter((propertie:any)=>propertie._id !== user); 
     const OtherImages = residence.OtherImages;
     const handleSlide = (i:number) =>{
       setIsOpen(true)
@@ -139,7 +140,7 @@ const Residence = () => {
         <div className="">
           <h1 className="text-2xl mt-12 mb-4 font-[700] text-[#002853]">Recommended Residences:</h1>
           <div className="flex flex-wrap items-center justify-center">
-            {recomendedResidences?.length > 0? recomendedResidences.slice(0,4).map((recomendedResidence:any) =>(
+            {filteredRecomendedResidences?.length > 0? filteredRecomendedResidences.slice(0,4).map((recomendedResidence:any) =>(
               <AvailableResidence residencesAvailable={recomendedResidence} />
             )) : <p className='text-center m-4 text-orange-500 font-[600] text-lg'>There is no related Properties</p>}
           </div>

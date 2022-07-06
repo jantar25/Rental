@@ -13,7 +13,7 @@ export type Logo = {
 
 
 export type Residence = {
-    id: number | string,
+    _id: number | string,
     title: string,
     address: string |any,
     coordinates: string |any,

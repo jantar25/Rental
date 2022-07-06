@@ -1,17 +1,17 @@
 import { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from "axios"
+import { Residence } from "../../Types/Types"
 import { getProperties } from '../../Redux/apiCalls'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import { residencesAvailables } from '../../data'
 import AvailableResidence from './AvailableResidence/AvailableResidence'
 
 const AvailableResidences = () => {
   const dispatch = useDispatch()
-  const [properties,setProperties] =useState<any[]>([])
+  const [properties,setProperties] =useState<Residence[]>([])
 
   useEffect(()=>{
     const getProperties= async ()=>{

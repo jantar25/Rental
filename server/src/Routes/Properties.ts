@@ -57,14 +57,14 @@ router.post("/",verifyToken,async (req:any,res:any)=>{
 //GET ALL PROPERTIES
 router.get("/",async (req:any,res:any)=>{
     const queryNew = req.query.new;
-    const queryCategory = req.query.category;
+    const queryDistrict = req.query.district;
     try{
         let products;
 
         if (queryNew){
             products= await Property.find().sort({createdAt:-1}).limit(1);
-        } else if (queryCategory) {
-            products = await Property.find({categories:{$in:[queryCategory]}});
+        } else if (queryDistrict) {
+            products = await Property.find({District:{$in:[queryDistrict]}});
         } else{
             products =  await Property.find();
         }
