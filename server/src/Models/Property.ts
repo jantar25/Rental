@@ -31,7 +31,7 @@ const PropertySchima = new mongoose.Schema<PropertyInterface>(
     {
         title:{type:String,required:true,unique:true},
         address:{type:String,required:true},
-        coordinates:{type:String,},
+        coordinates:{type:Array},
         price:{type:Number,required:true},
         Bedroom:{type:Number},
         BathRooms:{type:Number},

@@ -53,25 +53,21 @@ export const districtResidences : District[] = [
     {
         id:1,
         district:'Nyarugenge',
-        properties:2456,
         townImage:District1
     },
     {
         id:2,
         district:'Gasabo',
-        properties:890,
         townImage:District2
     },
     {
         id:3,
         district:'Kicukiro',
-        properties:449,
         townImage:District3
     },
     {
         id:4,
         district:'All',
-        properties:10490,
         townImage:District3
     },
 ]

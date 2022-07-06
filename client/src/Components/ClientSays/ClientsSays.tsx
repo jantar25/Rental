@@ -33,9 +33,7 @@ const ClientsSays = () => {
               spaceBetween: 10,
             },
           }}
-          modules={[Pagination]}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}   
+          modules={[Pagination]}   
         >
           {ClientsComments.map((ClientsComment)=>(
             <SwiperSlide key={ClientsComment.id} className='flex my-8 justify-center'>

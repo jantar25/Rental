@@ -34,6 +34,5 @@ export type Residence = {
 export type District = {
     id: number | string,
     district: string,
-    properties: number,
     townImage: string | any,
 }

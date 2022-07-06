@@ -1,9 +1,10 @@
 import React,{ useState,useEffect } from 'react'
 import axios from "axios"
+import { Residence } from "../../Types/Types"
 import AvailableResidence from './AvailableResidence/AvailableResidence'
 
 const AllResidences = ({sort,cat,filters}:any) => {
-  const [properties, setProperties] = useState<any[]>([])
+  const [properties, setProperties] = useState<Residence[]>([])
   
   useEffect(()=>{
     const getProperties= async ()=>{
@@ -19,7 +20,7 @@ const AllResidences = ({sort,cat,filters}:any) => {
     getProperties();  
 },[cat])
 
-console.log(properties)
+
   return (
     <div className='flex flex-wrap justify-center'>
         {properties.map((propertie)=>(

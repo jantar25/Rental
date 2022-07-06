@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ReactMapGL from 'react-map-gl'
 import 'swiper/css';
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
@@ -14,6 +15,13 @@ const avatar = require("../Images/avatar.png")
 const Residence = () => {
     const [ isOpen,setIsOpen ] = useState(false)
     const [ slideNumber,setSlideNumber ] = useState(0)
+    const [viewPort, setViewPort] = useState({
+      latitude: 45.4211,
+      longitude: -75.6903,
+      width: '100vw',
+      height: '100vh',
+      zoom:10
+    })
     const location = useLocation()
     const user = location.pathname.split('/')[2];
     const properties = useSelector((state:any) => state.properties.properties);
@@ -70,7 +78,9 @@ const Residence = () => {
             <div className="flex-1 p-2 h-[450px] overflow-auto">
               <h2 className="text-2xl font-[600] text-orange-400">Property Details:</h2>
               <div className="">
-                <button className="px-2 py-1 bg-gray-800 text-white rounded font-[600] text-sm my-2">View Map</button>
+                <button className="px-2 py-1 bg-gray-800 text-white rounded font-[600] text-sm my-2">
+                  <ReactMapGL>View Map</ReactMapGL>
+                </button>
                 <div className="text-gray-500 my-2">Status: {residence.Avaiable ? (
                   <span className='text-lg font-[700] text-green-500'>Available</span>
                 ) : (

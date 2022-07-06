@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
 import { storage } from '../Firebase/firebase'
 import {useDispatch} from 'react-redux'
@@ -9,11 +9,16 @@ import Navbar from '../Components/Navbar'
 import LandlordProperties from '../Components/LandlordProperties/LandlordProperties';
 
 
+
 const LandLordActivity = () => {
     const dispatch = useDispatch();
     const [toggleCreate,setToggleCreate] = useState(false)
     const [selectedFiles,setSelectedFiles] = useState<string[]>([]);
     const [images,setImages] = useState<string[]>([]);
+    const [coordinates,setCoordinates] = useState({
+      latitude:'',
+      longitude:''
+    })
     const [inputs,setInputs] = useState({
       title:'',
       Description:'',
@@ -72,7 +77,7 @@ const LandLordActivity = () => {
         
         Promise.all(promises)
         .then((fileDownloadUrls) => {
-          const property = ({...inputs,OtherImages:fileDownloadUrls,OwnerDetails:landLord})
+          const property = ({...inputs,OtherImages:fileDownloadUrls,OwnerDetails:landLord,coordinates:coordinates})
           addProperty(property,dispatch)
           setSelectedFiles([])
           setImages([])
@@ -95,8 +100,11 @@ const LandLordActivity = () => {
         .catch(err => console.log(err)); 
       }
     }
-
-
+    useEffect(()=>{
+      navigator.geolocation.getCurrentPosition((position:any)=>setCoordinates({
+        latitude:position.coords.latitude,
+        longitude:position.coords.longitude}))
+    },[])
 
   return (
     <div>
@@ -175,7 +183,6 @@ const LandLordActivity = () => {
                         <input className='rounded' type="file" id="file" multiple onChange={selectedImages} />
                         <span className='font-[600] text-[12px]'>Up to 10 images</span>
                     </div>
-                    <button className='px-4 py-2 bg-black text-white rounded-lg font-[600]'>Map</button>
                   </div>
               </div>
           </form>

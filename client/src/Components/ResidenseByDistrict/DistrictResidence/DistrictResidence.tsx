@@ -1,7 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const DistrictResidence = ({districtResidence}:any) => {
+  const properties = useSelector((state:any) => state.properties.properties);
+  const districts = properties.map((propertie:any)=>propertie.District)
+  const propertyNumber = districtResidence.district==="All" ? districts :
+  districts.filter((district:any)=>district===districtResidence.district)
+
   return (
     <Link to={`/residences/${districtResidence.district}`}>
       <div className='relative flex w-[270px] h-[200px] m-2 hover:translate-y-2 duration-300'>
@@ -9,7 +15,7 @@ const DistrictResidence = ({districtResidence}:any) => {
           <div className="absolute bottom-4 left-2">
             <h2 className="text-white font-[700] text-3xl">{districtResidence.district}</h2>
             <p className="font-[600] text-orange-500 text-2xl">
-              {districtResidence.properties}
+              {propertyNumber.length}
             <span className="text-gray-200 text-lg ml-2">Properties</span>
             </p>
           </div>
