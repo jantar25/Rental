@@ -1,7 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState,useRef,useEffect} from 'react'
 import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ReactMapGL from 'react-map-gl'
 import 'swiper/css';
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
@@ -9,19 +8,15 @@ import { useLocation } from 'react-router-dom'
 import AvailableResidence from '../Components/AvailableResidences/AvailableResidence/AvailableResidence'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import MapRender from '../Components/Mapbox/Mapbox';
 import { AiOutlineArrowRight,AiOutlineArrowLeft,AiOutlineClose } from 'react-icons/ai';
 const avatar = require("../Images/avatar.png")
+
 
 const Residence = () => {
     const [ isOpen,setIsOpen ] = useState(false)
     const [ slideNumber,setSlideNumber ] = useState(0)
-    const [viewPort, setViewPort] = useState({
-      latitude: 45.4211,
-      longitude: -75.6903,
-      width: '100vw',
-      height: '100vh',
-      zoom:10
-    })
+    const [toggleMap, setToggleMap] = useState(false)
     const location = useLocation()
     const user = location.pathname.split('/')[2];
     const properties = useSelector((state:any) => state.properties.properties);
@@ -48,9 +43,36 @@ const Residence = () => {
       setSlideNumber(swappedSlideNumber)
     }
 
+
+      // useEffect(() => {
+      //   if (!map.current) return; // wait for map to initialize
+      //   map.current.on('move', () => {
+      //   setLng(map.current.getCenter().lng.toFixed(4));
+      //   setLat(map.current.getCenter().lat.toFixed(4));
+      //   setZoom(map.current.getZoom().toFixed(2));
+      //   });
+      //   });
+
+      // map.addControl(new mapboxgl.NavigationControl(),'top-right')
+    //   map.on('move',() => {
+    //   })
+    // },[])
+    
+
   return (
       <div className='relative'>
       <Navbar />
+      {toggleMap && 
+      <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0 z-50'>
+      <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
+        <div className="absolute top-16 bottom-20 left-0 right-0 w-11/12 md:w-3/4 max-h-full 
+              container ml-auto mr-auto rounded overflow-auto border border-neutral-600">
+          <MapRender />
+        </div>
+        <div className="absolute p-2 top-5 right-5 cursor-pointer bg-red-600 rounded-full" onClick={()=>setToggleMap(false)} >
+          <AiOutlineClose />
+        </div>
+      </div>}
       {isOpen && 
       <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0 z-50'>
       <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
@@ -78,8 +100,8 @@ const Residence = () => {
             <div className="flex-1 p-2 h-[450px] overflow-auto">
               <h2 className="text-2xl font-[600] text-orange-400">Property Details:</h2>
               <div className="">
-                <button className="px-2 py-1 bg-gray-800 text-white rounded font-[600] text-sm my-2">
-                  <ReactMapGL>View Map</ReactMapGL>
+                <button className="px-2 py-1 bg-gray-800 text-white rounded font-[600] text-sm my-2" onClick={()=>setToggleMap(true)}>
+                  View Map
                 </button>
                 <div className="text-gray-500 my-2">Status: {residence.Avaiable ? (
                   <span className='text-lg font-[700] text-green-500'>Available</span>
@@ -151,7 +173,7 @@ const Residence = () => {
           <h1 className="text-2xl mt-12 mb-4 font-[700] text-[#002853]">Recommended Residences:</h1>
           <div className="flex flex-wrap items-center justify-center">
             {filteredRecomendedResidences?.length > 0? filteredRecomendedResidences.slice(0,4).map((recomendedResidence:any) =>(
-              <AvailableResidence residencesAvailable={recomendedResidence} />
+              <AvailableResidence residencesAvailable={recomendedResidence} key={recomendedResidence._id} />
             )) : <p className='text-center m-4 text-orange-500 font-[600] text-lg'>There is no related Properties</p>}
           </div>
         </div>
