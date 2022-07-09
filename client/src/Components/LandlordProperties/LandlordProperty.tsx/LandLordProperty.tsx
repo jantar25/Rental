@@ -1,5 +1,5 @@
 import React,{ useState } from 'react'
-// import {deleteProduct} from '../../../Redux/apiCalls'
+import {deletePropety} from '../../../Redux/apiCalls'
 import {useDispatch} from 'react-redux';
 import { AiFillDelete } from 'react-icons/ai';
 import LandlordEditProperty from '../../LandlordPropertyManagement/LandlordEditProperty';
@@ -16,7 +16,7 @@ const LandLordProperty = ({property}:any) => {
     const dispatch=useDispatch();
 
     const handleDelete = (id:any) => {
-        //  deleteProduct(id,dispatch)
+         deletePropety(id,dispatch)
       };
   return (
 <div className=' flex-1 flex flex-col bg-gray-200 m-2 max-w-[280px] rounded'>              

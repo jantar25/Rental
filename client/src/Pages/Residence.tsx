@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from 'react'
+import React,{useState} from 'react'
 import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -42,21 +42,6 @@ const Residence = () => {
       }
       setSlideNumber(swappedSlideNumber)
     }
-
-
-      // useEffect(() => {
-      //   if (!map.current) return; // wait for map to initialize
-      //   map.current.on('move', () => {
-      //   setLng(map.current.getCenter().lng.toFixed(4));
-      //   setLat(map.current.getCenter().lat.toFixed(4));
-      //   setZoom(map.current.getZoom().toFixed(2));
-      //   });
-      //   });
-
-      // map.addControl(new mapboxgl.NavigationControl(),'top-right')
-    //   map.on('move',() => {
-    //   })
-    // },[])
     
 
   return (
@@ -65,9 +50,9 @@ const Residence = () => {
       {toggleMap && 
       <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0 z-50'>
       <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
-        <div className="absolute top-16 bottom-20 left-0 right-0 w-11/12 md:w-3/4 max-h-full 
-              container ml-auto mr-auto rounded overflow-auto border border-neutral-600">
-          <MapRender />
+        <div className="absolute top-16 left-0 right-0 w-11/12 md:w-3/4 h-3/4 
+              container ml-auto mr-auto rounded overflow-auto ">
+          <MapRender residence={residence} />
         </div>
         <div className="absolute p-2 top-5 right-5 cursor-pointer bg-red-600 rounded-full" onClick={()=>setToggleMap(false)} >
           <AiOutlineClose />

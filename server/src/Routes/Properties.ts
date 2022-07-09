@@ -33,16 +33,16 @@ router.post("/",verifyToken,async (req:any,res:any)=>{
 //     }
 // })
 
-// //DELETE PRODUCT
-// router.delete("/:id",verifyTokenandAuthorisation,async (req:any,res:any)=>{
-//     try{
-//         await Product.findByIdAndDelete(req.params.id)
+//DELETE PROPERTY
+router.delete("/:id",verifyToken,async (req:any,res:any)=>{
+    try{
+        await Property.findByIdAndDelete(req.params.id)
 
-//         res.status(200).json("Product had been deleted")
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+        res.status(200).json({message:"Property had been deleted"})
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
 // //GET PRODUCT BY ID
 // router.get("/find/:id",async (req:any,res:any)=>{

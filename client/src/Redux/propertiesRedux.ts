@@ -22,23 +22,23 @@ const propertiesSlice = createSlice({
             state.error=error;
         },
 
-        //  // DELETE A PRODUCT
-        // deleteProductStart:(state)=>{
-        //     state.isFetching=true;
-        //     state.error=false;
-        // },
-        // deleteProductSuccess:(state,action)=>{
-        //     state.isFetching=false;
-        //     state.products.splice(
-        //         state.products.findIndex((item)=>item._id === action.payload),
-        //         1
-        //     )
-        //     state.error=false;
-        // },
-        // deleteProductFailure:(state)=>{
-        //     state.isFetching=false;
-        //     state.error=true;
-        // },
+         // DELETE A PRODUCT
+        deletePropertyStart:(state)=>{
+            state.isFetching=true;
+            state.error=null;
+        },
+        deletePropertySuccess:(state,action)=>{
+            state.isFetching=false;
+            state.properties.splice(
+                state.properties.findIndex((item:any)=>item._id === action.payload),
+                1
+            )
+            state.error=null;
+        },
+        deletePropertyFailure:(state,error:any)=>{
+            state.isFetching=false;
+            state.error=error;
+        },
 
         // // UPDATE A PRODUCT
         // updateProductStart:(state)=>{
@@ -75,5 +75,6 @@ const propertiesSlice = createSlice({
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
 export const {addPropertyStart,addPropertySuccess,addPropertyFailure,
-    getPropertiesStart,getPropertiesSuccess,getPropertiesFailure} = propertiesSlice.actions;
+    getPropertiesStart,getPropertiesSuccess,getPropertiesFailure,
+    deletePropertyStart,deletePropertySuccess,deletePropertyFailure} = propertiesSlice.actions;
 export default propertiesSlice.reducer;

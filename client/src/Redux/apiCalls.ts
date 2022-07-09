@@ -5,7 +5,7 @@ import { publicRequest,landLordRequest } from "../requestMethode";
 import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
     updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
 import {addPropertyStart,addPropertySuccess,addPropertyFailure,getPropertiesStart,
-    getPropertiesSuccess,getPropertiesFailure} from "./propertiesRedux"
+    getPropertiesSuccess,getPropertiesFailure,deletePropertyStart,deletePropertySuccess,deletePropertyFailure} from "./propertiesRedux"
 
 // getProductStart,getProductSuccess,getProductFailure,
 //     deleteProductStart,deleteProductSuccess,deleteProductFailure,
@@ -25,18 +25,18 @@ export const getProperties = async (dispatch:any) =>{
 }
 
 
-// // DELETE A PRODUCT
-// export const deleteProduct = async (id,dispatch) =>{
-//     dispatch(deleteProductStart());
+// DELETE A PROPERTY
+export const deletePropety = async (id:any,dispatch:any) =>{
+    dispatch(deletePropertyStart());
 
-//     try {
-//         await farmerRequest.delete(`/products/${id}`);
-//         dispatch(deleteProductSuccess(id));
-//     } catch (error) {
-//         dispatch(deleteProductFailure());
-//         console.log(error);
-//     }
-// }
+    try {
+        await landLordRequest.delete(`/property/${id}`);
+        dispatch(deletePropertySuccess(id));
+    } catch (error:any) {
+        dispatch(deletePropertyFailure(error.response.data.message));
+        console.log(error);
+    }
+}
 
 // // UPDATE A PRODUCT
 // export const updateProduct = async (id,updatedProduct,dispatch) =>{

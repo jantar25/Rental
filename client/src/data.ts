@@ -11,6 +11,7 @@ const Logo6 = require("./Images/image6.png")
 const District1 = require("./Images/district1.jpg")
 const District2 = require("./Images/district2.jpg")
 const District3 = require("./Images/district3.jpg")
+const AllDistrict = require("./Images/all.jpg")
 
 const Client1 = require("./Images/client1.jpg")
 const Client2 = require("./Images/client2.jpg")
@@ -68,7 +69,7 @@ export const districtResidences : District[] = [
     {
         id:4,
         district:'All',
-        townImage:District3
+        townImage:AllDistrict
     },
 ]
 
