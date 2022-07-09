@@ -10,6 +10,7 @@ const LandlordProperties = () => {
         (propertie:any) => 
         propertie?.OwnerDetails[0]?._id === landlordId 
       );
+
       
   return (
     <div className='flex flex-col justify-center items-center p-4'>

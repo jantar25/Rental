@@ -22,6 +22,10 @@ const MapRender = ({residence}:any) => {
 
     new mapboxgl.Marker().setLngLat(coordinatesMarker).addTo(map)
 
+        // // Clean up on unmount
+        // return () => map.remove();
+      }, [lat,lng, zoom]);
+
 //     // Add navigation control (the +/- zoom buttons)
 //     map.addControl(new mapboxgl.NavigationControl(), 'top-left')
 
@@ -46,10 +50,6 @@ const MapRender = ({residence}:any) => {
     //   setLat(map.getCenter().lat.toFixed(4));
     //   setZoom(map.getZoom().toFixed(2));
     // });
-
-    // Clean up on unmount
-    return () => map.remove();
-    }, [lat,lng, zoom]);
     
 
     return (

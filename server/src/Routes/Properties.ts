@@ -20,18 +20,19 @@ router.post("/",verifyToken,async (req:any,res:any)=>{
     }
 })
 
-// // UPDATE PRODUCT
-// router.put("/:id",verifyTokenandAuthorisation,async (req:any,res:any)=>{
-//     try{
-//         const updatedProduct = await Product.findByIdAndUpdate(req.params.id,{
-//             $set:req.body
-//         },{new:true});
+// UPDATE PROPERTY
+router.put("/:id",verifyToken,async (req:any,res:any)=>{
+    try{
+        const updatedProduct = await Property.findByIdAndUpdate(req.params.id,{
+            $set:req.body
+        },{new:true});
 
-//         res.status(200).json(updatedProduct)
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+        res.status(200).json(updatedProduct)
+    } catch(err){
+        res.status(500).json({message:"Something went wrong"})
+        console.log(err)
+    }
+})
 
 //DELETE PROPERTY
 router.delete("/:id",verifyToken,async (req:any,res:any)=>{

@@ -2,15 +2,15 @@ import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
 import { storage } from '../Firebase/firebase'
 import {useDispatch} from 'react-redux'
-import {addProperty} from '../Redux/apiCalls'
+import {addProperty,getProperties} from '../Redux/apiCalls'
 import { AiOutlineCaretDown,AiOutlineCaretUp,AiOutlineClose } from 'react-icons/ai';
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
 import LandlordProperties from '../Components/LandlordProperties/LandlordProperties';
 
 
-
 const LandLordActivity = () => {
+
     const dispatch = useDispatch();
     const [toggleCreate,setToggleCreate] = useState(false)
     const [selectedFiles,setSelectedFiles] = useState<string[]>([]);
@@ -106,6 +106,11 @@ const LandLordActivity = () => {
         longitude:position.coords.longitude}))
     },[])
 
+    useEffect(() => {
+      getProperties(dispatch)
+    }, [dispatch])
+    
+
   return (
     <div>
       <Navbar />
@@ -117,7 +122,7 @@ const LandLordActivity = () => {
         </button>
         {toggleCreate && 
           <div className='border border-[#04AA6D] rounded p-2 bg-gray-200'>
-          <h1 className='text-xl text-orange-600'>Create New Product</h1>
+          <h1 className='text-xl text-orange-600'>Create New Property</h1>
           <form className='my-4 flex flex-col md:flex-row items-center justify-between'>
               <div className="flex-1 w-full md:mr-4">
                 <div className='flex flex-col my-2'>

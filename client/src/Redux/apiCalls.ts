@@ -5,10 +5,9 @@ import { publicRequest,landLordRequest } from "../requestMethode";
 import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
     updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
 import {addPropertyStart,addPropertySuccess,addPropertyFailure,getPropertiesStart,
-    getPropertiesSuccess,getPropertiesFailure,deletePropertyStart,deletePropertySuccess,deletePropertyFailure} from "./propertiesRedux"
+    getPropertiesSuccess,getPropertiesFailure,deletePropertyStart,deletePropertySuccess,
+    deletePropertyFailure,updatePropertyStart,updatePropertySuccess,updatePropertyFailure} from "./propertiesRedux"
 
-// getProductStart,getProductSuccess,getProductFailure,
-//     deleteProductStart,deleteProductSuccess,deleteProductFailure,
 //     updateProductStart,updateProductSuccess,updateProductFailure,
 
 // GET ALL PROPERTIES
@@ -38,17 +37,17 @@ export const deletePropety = async (id:any,dispatch:any) =>{
     }
 }
 
-// // UPDATE A PRODUCT
-// export const updateProduct = async (id,updatedProduct,dispatch) =>{
-//     dispatch(updateProductStart());
-//     try {
-//         await farmerRequest.put(`/products/${id}`,updatedProduct);
-//         dispatch(updateProductSuccess({id,updatedProduct}));
-//     } catch (error) {
-//         dispatch(updateProductFailure());
-//         console.log(error);
-//     }
-// }
+// UPDATE A PROPERTY
+export const updateProperty = async (id:any,updatedProperty:any,dispatch:any) =>{
+    dispatch(updatePropertyStart());
+    try {
+        await landLordRequest.put(`/property/${id}`,updatedProperty);
+        dispatch(updatePropertySuccess({id,updatedProperty}));
+    } catch (error:any) {
+        dispatch(updatePropertyFailure(error.response.data.message));
+        console.log(error);
+    }
+}
 
 // ADD A PROPERTY
 export const addProperty = async (property:any,dispatch:any) =>{
