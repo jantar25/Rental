@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 const homeImg = require("../Images/home.jpg")
 
 const Header = () => {
+    const [search,setSearch] = useState()
+    const navigate = useNavigate()
+    const handleSearch = () => {
+        navigate('/residences/All', {state:search})
+    }
+
   return (
     <div className='flex flex-col md:flex-row bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 pt-8'>
         <div className='flex-1 mb-8'>
@@ -12,8 +19,9 @@ const Header = () => {
             </p>
             <form className='flex items-center bg-white px-2 py-1 rounded-md mb-4 border border-2 border-gray-300'>
                 <FaMapMarkerAlt style={{fontSize:'20px',color:'#002853'}} />
-                <input type='search' placeholder= 'Search by location...' className='bg-white py-2 w-[90%] px-2 text-black' />
-                <button className='inline-block px-4 py-2 bg-[#002853] text-lg font-[700] rounded-md'>Search</button>
+                <input type='search' placeholder= 'Search by location...' className='bg-white py-2 w-[90%] px-2 text-black' 
+                onChange={(e:any)=>setSearch(e.target.value)} />
+                <button className='inline-block px-4 py-2 bg-[#002853] text-lg font-[700] rounded-md' onClick={handleSearch}>Search</button>
             </form>
             <div className="flex items-center justify-between">
                 <div className='m-2 p-2 '>

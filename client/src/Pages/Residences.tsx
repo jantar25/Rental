@@ -9,6 +9,7 @@ const Residences = () => {
   const cat = location.pathname.split("/")[2]; 
   const [filters,setFilters] = useState({});
   const [sort,setSort] = useState("Newest");
+  const [search,setSearch] = useState<any>(location.state)
 
   const handleFilters = (e:any)=>{
       const value = e.target.value;
@@ -18,6 +19,10 @@ const Residences = () => {
     <div>
         <Navbar />
         <h1 className="text-orange-500 text-center m-4 text-[50px]">{cat}</h1>
+          <div className='flex justify-center p-4'>
+            <input className='bg-gray-100 py-2 px-4 w-full md:w-1/2 rounded-sm' placeholder={search} 
+            type='text' onChange={(e:any)=>setSearch(e.target.value)} />
+          </div>
            <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex m-4 items-center justify-start flex-wrap">
                     <h3 className="text-gray-600 font-[700] mr-4">Filter Residences:</h3>
