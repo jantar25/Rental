@@ -19,7 +19,7 @@ const AvailableResidence = ({residencesAvailable}:any) => {
                   {residencesAvailable.price}
               </h1>
               <h2 className="text-2xl font-[700] text-[#002853] mb-2 ">{residencesAvailable.title}</h2>
-              <p className="text-sm text-gray-400">{residencesAvailable.address}</p>
+              <p className="text-sm text-gray-400">{residencesAvailable.address}/{residencesAvailable.District}</p>
           </div>
           <div className="flex justify-between text-[#002853] mt-2">
             <div className="flex items-center justify-center">

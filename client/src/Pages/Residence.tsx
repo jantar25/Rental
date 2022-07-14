@@ -136,24 +136,47 @@ const Residence = () => {
                   </SwiperSlide> ))}
             </Swiper>
           </div>
-          <div className="mt-8 p-2">
+        </div>
+        <div className="mt-8 p-2 md:p-8 bg-purple-50 rounded">
             <div className="mb-4">
               <h1 className="text-2xl font-[600] text-orange-400">Landlord Contact details:</h1>
-              <p className="text-gray-500">Please use the details below to book a visit of the property.</p>
+              <p className="text-gray-500">Please use the details below to book or visit of the property.</p>
             </div>
-            <div className="flex flex-col sm:flex-row items-center">
-              <div className="w-[150px] h-[150px] m-8">
-                <img src={residence.OwnerDetails[0].img? residence.OwnerDetails[0].img: avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
+            <div className='flex items-center justify-start flex-col lg:flex-row'>
+              <div className="flex-1 flex flex-col sm:flex-row items-center p-2">
+                <div className="w-[150px] h-[150px] m-8">
+                  <img src={residence.OwnerDetails[0].img? residence.OwnerDetails[0].img: avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
+                </div>
+                <div className="">
+                  <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].names}</span></p>
+                  <p className="text-gray-500 my-2">Call: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line1}</span></p>
+                  <p className="text-gray-500 my-2">Mobile Money: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line2}</span></p>
+                  <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].email}</span></p>
+                </div>
               </div>
-              <div className="">
-                <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].names}</span></p>
-                <p className="text-gray-500 my-2">Line1: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line1}</span></p>
-                <p className="text-gray-500 my-2">Line2: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line2}</span></p>
-                <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].email}</span></p>
+              {residence.Avaiable ?(
+              <div className='flex-1 p-2 bg-purple-300 rounded sm:w-3/4 lg:w-full'>
+                <div>
+                  <h2 className='font-[700] text-[#002853] text-[20px] my-2'>Want to Book the Rent of this property?</h2>
+                  <p className='text-[13px] text-gray-800'>Please pay the equivalent of <strong>2(two)Months</strong> via MTN Mobile money using the number marked as 
+                  <strong> Mobile Money</strong> and send us the below request:</p>
+                </div>
+                <form className='mt-2 p-1 rounded-lg bg-purple-200'>
+                  <div className='flex flex-col'>
+                    <input placeholder='Names' className='my-1 p-1 rounded' />
+                    <input placeholder='Email' className='my-1 p-1 rounded' />
+                    <input placeholder='Transaction Number' className='my-1 p-1 rounded' />
+                  </div>
+                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]'>Book Now</button>
+                </form>
               </div>
+              ) : (
+                <div className='flex-1 p-2 bg-purple-200 rounded sm:w-3/4 lg:w-full'>
+                  <p className='text-xl text-red-700 font-[700] text-center'>This Property is not Available for now</p>
+                </div>
+              )}
             </div>
           </div>
-        </div>
         <div className="">
           <h1 className="text-2xl mt-12 mb-4 font-[700] text-[#002853]">Recommended Residences:</h1>
           <div className="flex flex-wrap items-center justify-center">
