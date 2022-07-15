@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 import cors from "cors"
 const landLordRoute = require('./Routes/LandLordAuth')
 const propertyRoute = require('./Routes/Properties')
+const newsletterRoute = require('./Routes/Newsletter')
 
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/landLordAuth",landLordRoute)
 app.use("/api/property",propertyRoute)
+app.use("/api/newsletter",newsletterRoute)
 app.get("/",(req,res)=>{
     res.send("Hello, Welcom to Rental API")
 });
