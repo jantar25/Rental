@@ -1,14 +1,10 @@
 import { publicRequest,landLordRequest } from "../requestMethode";
-
-
-
 import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLogoutSuccess,
     updateLandLordStart,updateLandLordSuccess,updateLandLordFailure} from './landLordRedux'
 import {addPropertyStart,addPropertySuccess,addPropertyFailure,getPropertiesStart,
     getPropertiesSuccess,getPropertiesFailure,deletePropertyStart,deletePropertySuccess,
     deletePropertyFailure,updatePropertyStart,updatePropertySuccess,updatePropertyFailure} from "./propertiesRedux"
 
-//     updateProductStart,updateProductSuccess,updateProductFailure,
 
 // GET ALL PROPERTIES
 export const getProperties = async (dispatch:any) =>{
@@ -81,12 +77,14 @@ export const landLordLogoutDone = async (dispatch:any) =>{
 
 
 // UPDATE A LANDLORD
-export const updateFarmer = async (id:any,updatedLandLord:any,dispatch:any) =>{
+export const updateLandlord = async (id:any,updatedLandLord:any,dispatch:any) =>{
     dispatch(updateLandLordStart());
     try {
-        await landLordRequest.put(`/farmerAuth/${id}`,updatedLandLord);
+        await landLordRequest.put(`/landLordAuth/${id}`,updatedLandLord);
         dispatch(updateLandLordSuccess({id,updatedLandLord}));
     } catch (error) {
         dispatch(updateLandLordFailure(error));
     }
 }
+
+

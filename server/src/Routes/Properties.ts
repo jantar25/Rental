@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Property = require("../models/Property");
-import {verifyToken,verifyTokenandAuthorisation,verifyTokenandAdmin} from "./VerifyTokens"
+import {verifyToken} from "./VerifyTokens"
 
 
 //CREATE PROPERTY

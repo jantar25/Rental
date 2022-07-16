@@ -14,11 +14,11 @@ const Residences = () => {
     <div>
         <Navbar />
         <h1 className="text-orange-500 text-center m-4 text-[50px]">{cat}</h1>
-          <div className='flex items-center justify-center p-4 '>
+          <div className='flex flex-wrap items-center justify-center p-4 '>
             <input className='bg-gray-200 py-2 px-4 w-full md:w-1/2 rounded-sm' defaultValue={search} 
             type='text' onChange={(e:any)=>setSearch(e.target.value)} />
             <div className="flex m-4">
-                <select className="mr-4 p-2 my-2 font-[600] rounded bg-gray-400" onChange={(e)=>setSort(e.target.value)}>
+                <select className="p-2 my-2 font-[600] rounded bg-gray-400" onChange={(e)=>setSort(e.target.value)}>
                   <option value ="newest">Newest</option>
                   <option value ="asc">Price(Asc)</option>
                   <option value ="desc">Price(Desc)</option>

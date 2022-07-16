@@ -73,7 +73,7 @@ const LandLordActivity = () => {
           return ref
             .put(file)
             .then(() => ref.getDownloadURL())
-        });
+        }); 
         
         Promise.all(promises)
         .then((fileDownloadUrls) => {
@@ -123,8 +123,8 @@ const LandLordActivity = () => {
         {toggleCreate && 
           <div className='border border-[#04AA6D] rounded p-2 bg-gray-200'>
           <h1 className='text-xl text-orange-600'>Create New Property</h1>
-          <form className='my-4 flex flex-col md:flex-row items-center justify-between'>
-              <div className="flex-1 w-full md:mr-4">
+          <form className='my-4 flex flex-col md:flex-row items-center justify-start'>
+              <div className="flex-1 w-full md:m-2">
                 <div className='flex flex-col my-2'>
                     <label>Title</label>
                     <input className='px-4 py-2 my-2 rounded' name="title" value={title} type="text" onChange={handleChange} />
@@ -142,7 +142,7 @@ const LandLordActivity = () => {
                       <input className='px-4 py-2 my-2 rounded'name="price" value={price} type="number" onChange={handleChange} />
                   </div>
               </div>
-              <div className='flex-1 w-full md:mr-4'>
+              <div className='flex-1 w-full md:m-2'>
                   <div className='flex flex-col my-2'>
                       <label>Bedroom</label>
                       <input className='px-4 py-2 my-2 rounded' name="Bedroom" value={Bedroom} type="number" onChange={handleChange} />
@@ -160,33 +160,36 @@ const LandLordActivity = () => {
                       <input className='px-4 py-2 my-2 rounded' name="Kitchen" value={Kitchen} type="number" onChange={handleChange} />
                   </div>
               </div>
-              <div className='flex-1 w-full md:ml-4'>
+              <div className='flex-1 w-full md:m-2'>
                   <div className='flex flex-col my-2'>
                       <label>Floor</label>
                       <input className='px-4 py-2 my-2 rounded' name="Floors" value={Floors} type="number" onChange={handleChange} />
                   </div>
-                  <div className='flex flex-col my-2'>
-                      <label>Status</label>
-                      <select className='px-4 py-2 my-2 rounded' name="Avaiable" value={Avaiable} onChange={handleChange} >
-                          <option value="">Select</option>
-                          <option value="true">Available</option>
-                          <option value="false">Occupied</option>
-                      </select>
+                  <div className='flex flex-wrap justify-start'>
+                    <div className='flex flex-col m-2'>
+                        <label>Status</label>
+                        <select className='px-4 py-2 my-2 rounded' name="Avaiable" value={Avaiable} onChange={handleChange} >
+                            <option value="">Select</option>
+                            <option value="true">Available</option>
+                            <option value="false">Occupied</option>
+                        </select>
+                    </div>
+                    <div className='flex flex-col m-2'>
+                        <label>Disctict</label>
+                        <select className='px-4 py-2 my-2 rounded' name="District" value={District} onChange={handleChange} >
+                            <option value="">Select</option>
+                            <option value="Nyarugenge">Nyarugenge</option>
+                            <option value="Gasabo">Gasabo</option>
+                            <option value="Kicukiro">Kicukiro</option>
+                        </select>
+                    </div>
                   </div>
-                  <div className='flex flex-col my-2'>
-                      <label>Disctict</label>
-                      <select className='px-4 py-2 my-2 rounded' name="District" value={District} onChange={handleChange} >
-                          <option value="">Select</option>
-                          <option value="Nyarugenge">Nyarugenge</option>
-                          <option value="Gasabo">Gasabo</option>
-                          <option value="Kicukiro">Kicukiro</option>
-                      </select>
-                  </div>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center m-2">
                     <div className='flex flex-col my-2'>
                         <label>Add Images</label>
                         <input className='rounded' type="file" id="file" multiple onChange={selectedImages} />
                         <span className='font-[600] text-[12px]'>Up to 10 images</span>
+                        <p className='text-[15px] mt-4'><strong>NB:</strong> The first entering image will be used for advertising the property</p>
                     </div>
                   </div>
               </div>

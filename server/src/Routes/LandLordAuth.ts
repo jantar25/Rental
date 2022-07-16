@@ -3,7 +3,7 @@ const router = express.Router();
 import LandLord from '../Models/LandLord';
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
-// const {verifyTokenandFarmerOrAdmin} = require ("./verifyToken")
+import {verifyToken} from "./VerifyTokens"
 
 //REGISTOR
 router.post("/register", async (req,res)=>{
@@ -29,18 +29,19 @@ router.post("/register", async (req,res)=>{
 
 });
 
-//UPDATE ID
-// router.put("/:id",verifyTokenandFarmerOrAdmin,async (req,res)=>{
-//     try{
-//         const updatedFarmer = await Farmer.findByIdAndUpdate(req.params.id,{
-//             $set:req.body
-//         },{new:true});
+// UPDATE ID
 
-//         res.status(200).json(updatedFarmer)
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+router.put("/:id",verifyToken,async (req,res)=>{
+    try{
+        const updatedFarmer = await LandLord.findByIdAndUpdate(req.params.id,{
+            $set:req.body
+        },{new:true});
+
+        res.status(200).json(updatedFarmer)
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
 
 //LOGIN

@@ -30,8 +30,7 @@ const landLordSlice = createSlice({
         },
         updateLandLordSuccess:(state,action)=>{
             state.isFetching=false;
-            // state.properties[state.properties.findIndex((item:any)=>item._id === action.payload.id)
-            // ]=action.payload.product;
+            state.currentLandLord = action.payload.updatedLandLord;
         },
         updateLandLordFailure:(state,action:any)=>{
             state.isFetching=false;
