@@ -7,12 +7,13 @@ mapboxgl.accessToken  = process.env.REACT_APP_MAPBOX_TOKEN as string
 const MapRender = ({residence}:any) => {
     const coords:any = residence.coordinates[0]
     const ref = useRef<any>(null);
-    const [lng, setLng] = useState(30.0619);
-    const [lat, setLat] = useState(-1.9441);
-    const [zoom, setZoom] = useState(10);
-    const coordinatesMarker:any = ([coords.latitude,coords.longitude])
+    const [lng, setLng] = useState<any>(30.0619);
+    const [lat, setLat] = useState<any>(-1.9441);
+    const [zoom, setZoom] = useState<any>(10);
+    
 
     useEffect(() => {
+      const coordinatesMarker:any = ([coords.latitude,coords.longitude])
         const map = new mapboxgl.Map({
           container: ref.current,
           style: "mapbox://styles/mapbox/streets-v11",
@@ -20,14 +21,21 @@ const MapRender = ({residence}:any) => {
           zoom: zoom
         });
 
-    new mapboxgl.Marker().setLngLat(coordinatesMarker).addTo(map)
+        new mapboxgl.Marker().setLngLat(coordinatesMarker).addTo(map)
 
-        // // Clean up on unmount
-        // return () => map.remove();
-      }, [lat,lng, zoom]);
+    //         // Add navigation control (the +/- zoom buttons)
+    //     map.addControl(new mapboxgl.NavigationControl(), 'top-left')
 
-//     // Add navigation control (the +/- zoom buttons)
-//     map.addControl(new mapboxgl.NavigationControl(), 'top-left')
+    //   map.on('move', () => {
+    //   setLng(map.getCenter().lng.toFixed(4));
+    //   setLat(map.getCenter().lat.toFixed(4));
+    //   setZoom(map.getZoom().toFixed(2));
+    // });
+
+        // Clean up on unmount
+        return () => map.remove();
+      }, [lat,lng, zoom,coords]);
+
 
 //     const userLocation = new mapboxgl.GeolocateControl({
 //       positionOptions: {
@@ -45,11 +53,7 @@ const MapRender = ({residence}:any) => {
 //     setLng(lng);
 // });
 //     map.addControl(userLocation,"top-right");
-    // map.on('move', () => {
-    //   setLng(map.getCenter().lng.toFixed(4));
-    //   setLat(map.getCenter().lat.toFixed(4));
-    //   setZoom(map.getZoom().toFixed(2));
-    // });
+
     
 
     return (

@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
+import axios from "axios"
 import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -17,6 +18,7 @@ const Residence = () => {
     const [ isOpen,setIsOpen ] = useState(false)
     const [ slideNumber,setSlideNumber ] = useState(0)
     const [toggleMap, setToggleMap] = useState(false)
+    const [residenceOwner,setResidenceOwner] = useState<any>([])
     const location = useLocation()
     const user = location.pathname.split('/')[2];
     const properties = useSelector((state:any) => state.properties.properties);
@@ -43,6 +45,18 @@ const Residence = () => {
       setSlideNumber(swappedSlideNumber)
     }
     
+    useEffect(() => {
+      const getResidanceOwner= async ()=>{
+        try {
+            const res = await axios.get(`http://localhost:5000/api/landLordAuth/find/${residence.OwnerDetails[0]._id}`)
+            setResidenceOwner(res.data);
+        } catch(err){
+            console.log(err)
+        }
+    };
+    getResidanceOwner();
+    },[])
+
 
   return (
       <div className='relative'>
@@ -50,7 +64,7 @@ const Residence = () => {
       {toggleMap && 
       <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0 z-50'>
       <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
-        <div className="absolute top-16 left-0 right-0 w-11/12 md:w-3/4 h-3/4 
+        <div className="absolute top-10 left-0 right-0 w-11/12 md:w-3/4 h-3/4 
               container ml-auto mr-auto rounded overflow-auto ">
           <MapRender residence={residence} />
         </div>
@@ -145,13 +159,13 @@ const Residence = () => {
             <div className='flex items-center justify-start flex-col lg:flex-row'>
               <div className="flex-1 flex flex-col sm:flex-row items-center p-2">
                 <div className="w-[150px] h-[150px] m-8">
-                  <img src={residence.OwnerDetails[0].img? residence.OwnerDetails[0].img: avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
+                  <img src={residenceOwner.img? residenceOwner.img: avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
                 </div>
                 <div className="">
-                  <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].names}</span></p>
-                  <p className="text-gray-500 my-2">Call: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line1}</span></p>
-                  <p className="text-gray-500 my-2">Mobile Money: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].line2}</span></p>
-                  <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residence.OwnerDetails[0].email}</span></p>
+                  <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.names}</span></p>
+                  <p className="text-gray-500 my-2">Call: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.line1}</span></p>
+                  <p className="text-gray-500 my-2">Mobile Money: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.line2}</span></p>
+                  <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.email}</span></p>
                 </div>
               </div>
               {residence.Avaiable ?(
