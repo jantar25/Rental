@@ -33,12 +33,13 @@ app.post('/api/messages', (req, res) => {
     res.header('Content-Type', 'application/json');
     client.messages
       .create({
-        body: req.body.body,
+        body: `Mr/Ms ${req.body.names} had book you house ${req.body.propertyName} located at ${req.body.propertyAddress} under the transaction number ${req.body.transactionId}.
+        Please check and confirm to him/her the payment on this number ${req.body.number}`,
         from: myNumber,
-        to:req.body.to        
+        to:req.body.landlordNumber        
       })
       .then(() => {
-        res.status(200).json({message:'Request sent Susccessfully'})
+        res.status(200).json({message:'susccessful'})
       })
       .catch((err:any) => {
         console.log(err);

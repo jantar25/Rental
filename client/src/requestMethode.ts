@@ -8,7 +8,7 @@ const currentToken = localStorage.getItem("persist:root")
 
 const landLordToken = currentToken && JSON.parse(JSON.parse(currentToken).landLord).currentLandLord?.accessToken;
     
-    
+
 export const publicRequest = axios.create({baseURL:BASE_URL});
         
 export const landLordRequest = axios.create({

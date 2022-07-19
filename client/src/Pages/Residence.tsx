@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import axios from "axios"
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
@@ -10,31 +10,84 @@ import AvailableResidence from '../Components/AvailableResidences/AvailableResid
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import MapRender from '../Components/Mapbox/Mapbox';
+import {updateProperty} from '../Redux/apiCalls'
 import { AiOutlineArrowRight,AiOutlineArrowLeft,AiOutlineClose } from 'react-icons/ai';
 const avatar = require("../Images/avatar.png")
 
 
 const Residence = () => {
+    const location = useLocation()
+    const dispatch = useDispatch();
+    const currentPropetyId = location.pathname.split('/')[2];
+    const properties = useSelector((state:any) => state.properties.properties);
+    const residence = properties.filter((propertie:any)=>propertie._id === currentPropetyId)[0];
+    const recomendedResidences = properties.filter((propertie:any)=>propertie.District === residence.District)
+    const filteredRecomendedResidences=recomendedResidences.filter((propertie:any)=>propertie._id !== currentPropetyId); 
+    const OtherImages = residence.OtherImages;
+    const [error,setError] = useState()
     const [ isOpen,setIsOpen ] = useState(false)
     const [ slideNumber,setSlideNumber ] = useState(0)
     const [toggleMap, setToggleMap] = useState(false)
     const [residenceOwner,setResidenceOwner] = useState<any>([])
-    const location = useLocation()
-    const user = location.pathname.split('/')[2];
-    const properties = useSelector((state:any) => state.properties.properties);
-    const residence = properties.filter((propertie:any)=>propertie._id === user)[0];
-    const recomendedResidences = properties.filter((propertie:any)=>propertie.District === residence.District)
-    const filteredRecomendedResidences=recomendedResidences.filter((propertie:any)=>propertie._id !== user); 
-    const OtherImages = residence.OtherImages;
+    const [bookingInputs,setBookingInputs] = useState<any>({
+      names:'',
+      number:'',
+      transactionId:'',
+      propertyName:'',
+      propertyAddress:'',
+      landlordNumber:'',
+      eror:'',
+      loading:false,
+    })
+
+    const {names,number,transactionId,eror,loading} = bookingInputs
+
+    const handleChange = (e:any)=>{
+      setBookingInputs({...bookingInputs,[e.target.name]:e.target.value})
+      }
+
+    const handleBooking = (e:any) => {
+      e.preventDefault();
+      setBookingInputs({ ...bookingInputs,eror:'',loading:true });
+      if(!names || !number || !transactionId ) {
+        setBookingInputs({ ...bookingInputs,eror: 'All fields are required' })
+      } else {
+        const Booking = ({...bookingInputs,propertyName:residence.title,propertyAddress:residence.address,landlordNumber:residenceOwner.line1})
+        const updatedProperty = ({...residence,Avaiable: false})
+        const id = currentPropetyId
+        try {
+          const bookingResidance = async () => {
+            const res = await axios.post(`http://localhost:5000/api/messages`,Booking)
+            setError(res.data.message);
+            updateProperty(id,updatedProperty,dispatch)
+            setBookingInputs({
+              names:'',
+              number:'',
+              transactionId:'',
+              propertyName:'',
+              propertyAddress:'',
+              eror:'',
+              loading:false,
+            })
+          }
+          bookingResidance()
+      } catch(error:any){
+        setError(error.massage)
+      }
+      }
+    }
+    console.log(error)
     const handleSlide = (i:number) =>{
       setIsOpen(true)
       setSlideNumber(i)
     }
+
     if(isOpen){
       document.body.classList.add('overflow-hidden')
       } else  {
           document.body.classList.remove('overflow-hidden')
       }
+
     const handleArrow = (direction:string) =>{
       let swappedSlideNumber
       if (direction==="left"){
@@ -175,13 +228,16 @@ const Residence = () => {
                   <p className='text-[13px] text-gray-800'>Please pay the equivalent of <strong>2(two)Months</strong> via MTN Mobile money using the number marked as 
                   <strong> Mobile Money</strong> and send us the below request:</p>
                 </div>
-                <form className='mt-2 p-1 rounded-lg bg-purple-200'>
+                <form className='mt-2 p-1 rounded-lg bg-purple-200' onSubmit={handleBooking}>
                   <div className='flex flex-col'>
-                    <input placeholder='Names' className='my-1 p-1 rounded' />
-                    <input placeholder='Email' className='my-1 p-1 rounded' />
-                    <input placeholder='Transaction Number' className='my-1 p-1 rounded' />
+                    <input className='my-1 p-1 rounded' placeholder='Names' name="names" value={names} type="text" onChange={handleChange} />
+                    <input className='my-1 p-1 rounded' placeholder='Phone Number' name="number" value={number} onChange={handleChange}  />
+                    <input className='my-1 p-1 rounded' placeholder='Transaction Number' name="transactionId" value={transactionId} onChange={handleChange}  />
                   </div>
-                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]'>Book Now</button>
+                  {eror? (<p className='text-red-500 font-[600] my-2'>{`*${bookingInputs.eror}*`}</p>) : null}
+                  {error==="susccessful"? (<p className='bg-green-500 text-white font-[600] my-2 p-2 rounded text-center'>Booked successfully</p>)
+                  : (<p className='bg-red-500 text-white font-[600] my-2 p-2 rounded'>{`*Something went wrong*`}</p>)}
+                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]' type='submit' >{loading? 'Booking ...' : 'Book Now'}</button>
                 </form>
               </div>
               ) : (
