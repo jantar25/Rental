@@ -10,10 +10,13 @@ import Residences from './Pages/Residences';
 import Profile from './Pages/Profile';
 import LandLordActivity from './Pages/LandLordActivity';
 import ScrollToTop from './Components/scrollToTop';
+import LoginAdmin from './Admin/Pages/LoginAdmin';
+import AdminDashboard from './Admin/Pages/AdminDashboard';
 
 
 function App() {
   const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
+  const isAdmin = landLord?.isAdmin
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -26,6 +29,8 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/residence/:property" element={<Residence />} />
         <Route path="/residences/:category" element={<Residences />} />
+        <Route path="/admin" element={!isAdmin? <LoginAdmin /> : <Navigate to='/admin/dashboard' />} />
+        <Route path="/admin/dashboard" element={isAdmin? <AdminDashboard /> : <Navigate to="/admin" />} />
       </Routes>
     </BrowserRouter>
   );

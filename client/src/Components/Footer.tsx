@@ -2,6 +2,7 @@ import React from 'react'
 import Newsletter from './Newsletter'
 import { FaHome } from 'react-icons/fa';
 import { BsInstagram,BsFacebook,BsWhatsapp } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -32,7 +33,9 @@ const Footer = () => {
             <div className="flex-1 grid gap-2 grid-cols-2 my-2">
                 <div className="flex flex-col">
                     <h3 className="font-[700] text-lg mb-4">Support</h3>
-                    <a href="" className="mb-2 text-gray-500 hover:text-gray-200">FAQs</a>
+                    <Link to='/admin'>
+                        <span className="mb-2 text-gray-500 hover:text-gray-200">Admin</span>
+                    </Link>
                     <a href="" className="mb-2 text-gray-500 hover:text-gray-200">Support center</a>
                     <a href="" className="mb-2 text-gray-500 hover:text-gray-200">Contact us</a>
                 </div>
