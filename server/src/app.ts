@@ -15,6 +15,7 @@ const client = require('twilio')(accountSid,authToken)
 const landLordRoute = require('./Routes/LandLordAuth')
 const propertyRoute = require('./Routes/Properties')
 const newsletterRoute = require('./Routes/Newsletter')
+const adminRoute = require('./Routes/AdminAuth')
 
 
 if (typeof dbUrl === 'string') {
@@ -27,6 +28,7 @@ if (typeof dbUrl === 'string') {
 app.use(cors());
 app.use(express.json());
 app.use("/api/landLordAuth",landLordRoute)
+app.use("/api/admin",adminRoute)
 app.use("/api/property",propertyRoute)
 app.use("/api/newsletter",newsletterRoute)
 app.post('/api/messages', (req, res) => {

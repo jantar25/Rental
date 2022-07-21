@@ -4,6 +4,7 @@ import {landLordLoginStart,landLordLoginSuccess,landLordLoginFailure,landLordLog
 import {addPropertyStart,addPropertySuccess,addPropertyFailure,getPropertiesStart,
     getPropertiesSuccess,getPropertiesFailure,deletePropertyStart,deletePropertySuccess,
     deletePropertyFailure,updatePropertyStart,updatePropertySuccess,updatePropertyFailure} from "./propertiesRedux"
+import {adminLoginStart,adminLoginSuccess,adminLoginFailure,adminLogoutSuccess} from './adminRedux'
 
 
 // GET ALL PROPERTIES
@@ -56,7 +57,7 @@ export const addProperty = async (property:any,dispatch:any) =>{
     }
 }
 
-
+// LOGIN LANDLORD
 
 export const LandLordLogin = async (dispatch:any,landLord:any) =>{
     dispatch(landLordLoginStart());
@@ -73,6 +74,26 @@ export const LandLordLogin = async (dispatch:any,landLord:any) =>{
 
 export const landLordLogoutDone = async (dispatch:any) =>{
     dispatch(landLordLogoutSuccess());
+}
+
+
+// LOGIN ADMIN
+
+export const adminLogin = async (dispatch:any,admin:any) =>{
+    dispatch(adminLoginStart());
+    try {
+        const res = (await publicRequest.post("/admin/login",admin));
+        dispatch(adminLoginSuccess(res.data));
+        
+    } catch (error:any) {
+        console.log(error.response.data.message)
+        dispatch(adminLoginFailure(error.response.data.message));
+    }
+}
+
+
+export const adminLogoutDone = async (dispatch:any) =>{
+    dispatch(adminLogoutSuccess());
 }
 
 

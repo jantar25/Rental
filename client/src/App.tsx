@@ -16,7 +16,7 @@ import AdminDashboard from './Admin/Pages/AdminDashboard';
 
 function App() {
   const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
-  const isAdmin = landLord?.isAdmin
+  const isAdmin = useSelector((state:any)=>state.admin.currentAdmin)
   return (
     <BrowserRouter>
       <ScrollToTop />

@@ -1,6 +1,7 @@
 import { configureStore,combineReducers } from "@reduxjs/toolkit";
 import landLordRedux from "./landLordRedux";
 import productRedux from "./propertiesRedux";
+import adminRedux from "./adminRedux";
 import {
     persistStore,
     persistReducer,
@@ -19,7 +20,7 @@ import {
     storage,
   };
   
-  const rootReducer = combineReducers({landLord:landLordRedux,properties:productRedux});
+  const rootReducer = combineReducers({landLord:landLordRedux,properties:productRedux,admin:adminRedux});
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
