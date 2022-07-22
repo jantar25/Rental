@@ -1,9 +1,8 @@
-import React,{ useState,useEffect,useRef } from 'react'
+import React,{ useState,useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import decode from 'jwt-decode';
 import { Link } from 'react-router-dom'
 import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon,FaKey,FaSignOutAlt } from 'react-icons/fa';
-import { AiOutlineClose } from 'react-icons/ai';
 import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 import useClickOutside from './Hooks/useClickOutside'
@@ -13,7 +12,6 @@ const avatar = require("../Images/avatar.png")
 
 const Navbar = () => {
     const dispatch = useDispatch();
-    const menuRef = useRef<any>([]);
     const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
@@ -47,11 +45,6 @@ const Navbar = () => {
       }
       window.addEventListener('scroll',changeBackground)
 
-    //   useEffect(()=>{  
-    //     let handeler = (event:any) => {if(!menuRef?.current?.contains(event.target)){setToggleProfile(false)}} 
-    //     document.addEventListener('mousedown',handeler,{ capture: true })
-    //     return ()=> document.removeEventListener('mousedown',handeler,{ capture: true })
-    //   },[])
 
   return (
     <div className={`sticky top-0 z-30 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
