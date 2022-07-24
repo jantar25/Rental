@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import axios from "axios"
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/pagination";
@@ -10,23 +10,21 @@ import AvailableResidence from '../Components/AvailableResidences/AvailableResid
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import MapRender from '../Components/Mapbox/Mapbox';
-import {updateProperty} from '../Redux/apiCalls'
 import { AiOutlineArrowRight,AiOutlineArrowLeft,AiOutlineClose } from 'react-icons/ai';
 const avatar = require("../Images/avatar.png")
 
 
 const Residence = () => {
     const location = useLocation()
-    const dispatch = useDispatch();
     const currentPropetyId = location.pathname.split('/')[2];
     const properties = useSelector((state:any) => state.properties.properties);
     const residence = properties.filter((propertie:any)=>propertie._id === currentPropetyId)[0];
     const recomendedResidences = properties.filter((propertie:any)=>propertie.District === residence.District)
     const filteredRecomendedResidences=recomendedResidences.filter((propertie:any)=>propertie._id !== currentPropetyId); 
     const OtherImages = residence.OtherImages;
-    const [error,setError] = useState()
-    const [ isOpen,setIsOpen ] = useState(false)
-    const [ slideNumber,setSlideNumber ] = useState(0)
+    const [feedback,setFeedback] = useState(null)
+    const [isOpen,setIsOpen] = useState(false)
+    const [slideNumber,setSlideNumber] = useState(0)
     const [toggleMap, setToggleMap] = useState(false)
     const [residenceOwner,setResidenceOwner] = useState<any>([])
     const [bookingInputs,setBookingInputs] = useState<any>({
@@ -36,6 +34,7 @@ const Residence = () => {
       propertyName:'',
       propertyAddress:'',
       landlordNumber:'',
+      landlordName:'',
       eror:'',
       loading:false,
     })
@@ -46,33 +45,28 @@ const Residence = () => {
       setBookingInputs({...bookingInputs,[e.target.name]:e.target.value})
       }
 
-    const handleBooking = (e:any) => {
+    const handleBooking = async (e:any) => {
       e.preventDefault();
       setBookingInputs({ ...bookingInputs,eror:'',loading:true });
       if(!names || !number || !transactionId ) {
         setBookingInputs({ ...bookingInputs,eror: 'All fields are required' })
       } else {
-        const Booking = ({...bookingInputs,propertyName:residence.title,propertyAddress:residence.address,landlordNumber:residenceOwner.line1})
-        const updatedProperty = ({...residence,Avaiable: false})
-        const id = currentPropetyId
-        try {
-          const bookingResidance = async () => {
-            const res = await axios.post(`http://localhost:5000/api/messages`,Booking)
-            setError(res.data.message);
-            updateProperty(id,updatedProperty,dispatch)
-            setBookingInputs({
-              names:'',
-              number:'',
-              transactionId:'',
-              propertyName:'',
-              propertyAddress:'',
-              eror:'',
-              loading:false,
-            })
-          }
-          bookingResidance()
+        const Booking = ({...bookingInputs,propertyName:residence.title,propertyAddress:residence.address,
+          landlordNumber:residenceOwner.line1,landlordName:residenceOwner.names})
+          try {
+              const res = await axios.post(`http://localhost:5000/api/messages`,Booking)
+              setFeedback(res.data.message)
+              setBookingInputs({
+                names:'',
+                number:'',
+                transactionId:'',
+                propertyName:'',
+                propertyAddress:'',
+                eror:'',
+                loading:false,
+              })
       } catch(error:any){
-        setError(error.massage)
+        setFeedback(error.response.data.message)
       }
       }
     }
@@ -235,8 +229,7 @@ const Residence = () => {
                     <input className='my-1 p-1 rounded' placeholder='Transaction Number' name="transactionId" value={transactionId} onChange={handleChange}  />
                   </div>
                   {eror? (<p className='text-red-500 font-[600] my-2'>{`*${bookingInputs.eror}*`}</p>) : null}
-                  {error==="susccessful"? (<p className='bg-green-500 text-white font-[600] my-2 p-2 rounded text-center'>Booked successfully</p>)
-                  : (<p className='bg-red-500 text-white font-[600] my-2 p-2 rounded'>{`*Something went wrong*`}</p>)}
+                  {feedback && (<p className={`${feedback === 'successful'? 'bg-green-500' : 'bg-red-500'} text-white font-[600] my-2 p-2 rounded text-center`}>{feedback}</p>)}
                   <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]' type='submit' >{loading? 'Booking ...' : 'Book Now'}</button>
                 </form>
               </div>

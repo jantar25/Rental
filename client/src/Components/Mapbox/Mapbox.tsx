@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from 'react'
+import React,{useRef,useEffect} from 'react'
 import mapboxgl from 'mapbox-gl'
 
 
@@ -7,9 +7,9 @@ mapboxgl.accessToken  = process.env.REACT_APP_MAPBOX_TOKEN as string
 const MapRender = ({residence}:any) => {
     const coords:any = residence.coordinates[0]
     const ref = useRef<any>(null);
-    const [lng, setLng] = useState<any>(30.0619);
-    const [lat, setLat] = useState<any>(-1.9441);
-    const [zoom, setZoom] = useState<any>(10);
+    const lng = 30.0619;
+    const lat = -1.9441;
+    const zoom = 10;
     
 
     useEffect(() => {

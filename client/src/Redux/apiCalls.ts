@@ -109,3 +109,4 @@ export const updateLandlord = async (id:any,updatedLandLord:any,dispatch:any) =>
 }
 
 
+
