@@ -52,7 +52,7 @@ const Navbar = () => {
             <div className='flex items-center justify-between'>
                 <Link to='/'>
                     <div className='flex items-center'>
-                        <FaHome style={{fontSize:'25px',}}/>
+                        <FaHome style={{fontSize:'25px'}}/>
                         <h1 className='text-2xl font-[700] ml-2'>RENTAL</h1>
                     </div>
                 </Link>

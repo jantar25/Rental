@@ -21,7 +21,7 @@ const LoginAdmin = () => {
             <FaHome style={{fontSize:'35px',}}/>
             <h1 className='text-3xl font-[700] ml-2'>ADMIN DASHBOARD</h1>
             </div>
-            <div className="flex w-full h-full items-center justify-center">
+            <div className="flex w-full h-full items-center justify-center border">
                 <form className="flex w-full items-center flex-col w-5/6 sm:w-1/2 md:w-1/3" onSubmit={handleClick}>
                     <input type="text" required className="my-2 px-4 py-2 rounded w-full bg-gray-200 text-black"
                      placeholder='Email' onChange={(e)=> setEmail(e.target.value)} />

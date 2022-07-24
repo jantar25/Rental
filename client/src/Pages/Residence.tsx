@@ -76,7 +76,7 @@ const Residence = () => {
       }
       }
     }
-    console.log(error)
+ 
     const handleSlide = (i:number) =>{
       setIsOpen(true)
       setSlideNumber(i)
@@ -117,12 +117,12 @@ const Residence = () => {
       {toggleMap && 
       <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0 z-50'>
       <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
-        <div className="absolute top-10 left-0 right-0 w-11/12 md:w-3/4 h-3/4 
+        <div className="absolute top-12 left-0 right-0 w-11/12 md:w-3/4 h-3/4 
               container ml-auto mr-auto rounded overflow-auto ">
           <MapRender residence={residence} />
         </div>
-        <div className="absolute p-2 top-5 right-5 cursor-pointer bg-red-600 rounded-full" onClick={()=>setToggleMap(false)} >
-          <AiOutlineClose />
+        <div className="absolute top-5 right-10 cursor-pointer text-red-600" onClick={()=>setToggleMap(false)} >
+          <AiOutlineClose style={{fontSize:'25px',fontWeight:'900'}} />
         </div>
       </div>}
       {isOpen && 
