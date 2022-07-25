@@ -28,7 +28,7 @@ const Sidebar = () => {
                       }
         },[dispatch])
   return (
-    <div className='basis-1/5 bg-[#002853] h-screen text-white'>
+    <div className='hidden md:flex basis-1/5 bg-gradient-to-b from-[#002853] to-[#040C18] h-screen text-white'>
         <div className="relative p-2 h-full">
             <div className='flex items-center my-4 text-orange-400'>
                 <FaHome style={{fontSize:'25px',color:'orange'}}/>
