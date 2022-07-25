@@ -51,9 +51,9 @@ const Navbar = () => {
         <div className='flex flex-col'>
             <div className='flex items-center justify-between'>
                 <Link to='/'>
-                    <div className='flex items-center'>
+                    <div className='flex items-center text-orange-400'>
                         <FaHome style={{fontSize:'25px'}}/>
-                        <h1 className='text-2xl font-[700] ml-2'>RENTAL</h1>
+                        <h1 className='text-2xl font-[700] ml-2 text-white'>REN<span className='text-orange-400'>TAL</span></h1>
                     </div>
                 </Link>
                 <div className='hidden md:flex w-1/3 justify-center'>

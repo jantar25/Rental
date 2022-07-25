@@ -11,7 +11,9 @@ import Profile from './Pages/Profile';
 import LandLordActivity from './Pages/LandLordActivity';
 import ScrollToTop from './Components/scrollToTop';
 import LoginAdmin from './Admin/Pages/LoginAdmin';
-import AdminDashboard from './Admin/Pages/AdminDashboard';
+import Sidebar from './Admin/Components/Sidebar';
+import Dashboard from './Admin/Interfaces/Dashboard';
+import LandLords from './Admin/Interfaces/LandLords';
 
 
 function App() {
@@ -30,7 +32,15 @@ function App() {
         <Route path="/residence/:property" element={<Residence />} />
         <Route path="/residences/:category" element={<Residences />} />
         <Route path="/admin" element={!isAdmin? <LoginAdmin /> : <Navigate to='/admin/dashboard' />} />
-        <Route path="/admin/dashboard" element={isAdmin? <AdminDashboard /> : <Navigate to="/admin" />} />
+        <Route path="/admin/dashboard/*" element={isAdmin? (
+                    <div className='flex w-screen'>
+                      <Sidebar />
+                      <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/landlords" element={<LandLords />} />
+                      </Routes>
+                    </div>
+                    ) : <Navigate to="/admin" />} />
       </Routes>
     </BrowserRouter>
   );

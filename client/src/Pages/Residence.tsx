@@ -116,7 +116,7 @@ const Residence = () => {
           <MapRender residence={residence} />
         </div>
         <div className="absolute top-5 right-10 cursor-pointer text-red-600" onClick={()=>setToggleMap(false)} >
-          <AiOutlineClose style={{fontSize:'25px',fontWeight:'900'}} />
+          <AiOutlineClose style={{fontSize:'25px',fontWeight:'bolder'}} />
         </div>
       </div>}
       {isOpen && 

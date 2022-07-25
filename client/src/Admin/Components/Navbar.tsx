@@ -1,40 +1,26 @@
 import React,{useEffect} from 'react'
-import decode from 'jwt-decode';
-import { useDispatch } from 'react-redux';
-import {adminLogoutDone} from '../../Redux/apiCalls'
-import { FaHome } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
-const Navbar= () => {
-    const dispatch = useDispatch()
-    const Logout= ()=>{
-        adminLogoutDone(dispatch);
-    }
 
-    useEffect(()=>{
-        const currentToken = localStorage.getItem("persist:root");
-        const token =currentToken? 
-        JSON.parse(JSON.parse(currentToken).landLord).currentLandLord?.accessToken : "";  
-         
-       if(token){
-           const decodedToken :any =decode(token);
-           const today = new Date().getTime();
-           const inToken=decodedToken.exp*1000;
-           if (inToken < today) {
-            adminLogoutDone(dispatch);
-           }
-                  }
-    },[dispatch])
+const Navbar= ({title}:any) => {
+    const Admin = useSelector((state:any)=>state.admin.currentAdmin)
 
   return (
-    <div className='flex items-center justify-between p-8 bg-gradient-to-r from-[#002853] to-[#040C18] text-white' >
+    <div className='flex items-center justify-between p-4 bg-[#002853] text-white' >
         <div className="">
+            <h3 className="mx-4 text-3xl font-[800]">{title}</h3>
+        </div>
         <div className='flex items-center'>
-            <FaHome style={{fontSize:'35px',}}/>
-            <h1 className='text-3xl font-[700] ml-2'>ADMIN DASHBOARD</h1>
-        </div>
-        </div>
-        <div className="">
-            <button className="py-2 px-4 bg-red-700 rounded text-lg font-[700]" onClick={Logout}>Log out</button>
+            <div className="flex mr-2">
+                <p className="mr-1">Hey,</p>
+                <div className="">
+                    <p className='font-[700]'>{Admin.names}</p>
+                    <span className="text-[10px] font-[400]">Administrator</span>
+                </div>
+            </div>
+            <div className="w-[40px] h-[40px]">
+                <img src={Admin.img} alt="" className="w-full h-full rounded-full" />
+            </div>
         </div>
     </div>
   )
