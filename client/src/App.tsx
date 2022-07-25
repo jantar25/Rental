@@ -12,8 +12,11 @@ import LandLordActivity from './Pages/LandLordActivity';
 import ScrollToTop from './Components/scrollToTop';
 import LoginAdmin from './Admin/Pages/LoginAdmin';
 import Sidebar from './Admin/Components/Sidebar';
+import Navbar from './Admin/Components/Navbar';
 import Dashboard from './Admin/Interfaces/Dashboard';
 import LandLords from './Admin/Interfaces/LandLords';
+import Booking from './Admin/Interfaces/Booking';
+import AdminResidences from './Admin/Interfaces/AdminResidences';
 
 
 function App() {
@@ -35,10 +38,15 @@ function App() {
         <Route path="/admin/dashboard/*" element={isAdmin? (
                     <div className='flex w-screen'>
                       <Sidebar />
-                      <Routes>
-                        <Route path="/" element={<Dashboard />} />
-                        <Route path="/landlords" element={<LandLords />} />
-                      </Routes>
+                      <div className='flex-auto'>
+                        <Navbar />
+                        <Routes>
+                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/landlords" element={<LandLords />} />
+                            <Route path="/bookings" element={<Booking />} />
+                            <Route path="/residences" element={<AdminResidences />} />
+                        </Routes>
+                      </div>
                     </div>
                     ) : <Navigate to="/admin" />} />
       </Routes>

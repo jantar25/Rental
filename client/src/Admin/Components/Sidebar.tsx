@@ -2,7 +2,7 @@ import React,{useEffect} from 'react'
 import decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import {adminLogoutDone} from '../../Redux/apiCalls'
-import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon,FaKey,FaSignOutAlt,FaUsers } from 'react-icons/fa';
+import { FaHome,FaSignOutAlt,FaUsers } from 'react-icons/fa';
 import { MdDashboard,MdOtherHouses,MdLibraryBooks,MdOutlineUnsubscribe,MdReport } from 'react-icons/md'
 import { FiSettings } from 'react-icons/fi'
 import { Link } from 'react-router-dom';
@@ -47,30 +47,42 @@ const Sidebar = () => {
                         <h3 className="ml-2 text-xl">LandLords</h3>
                     </div>
                 </Link>
-                <div className="flex items-center my-2">
-                    <MdOtherHouses style={{fontSize:'25px'}}/>
-                    <h3 className="ml-2 text-xl">Residences</h3>
-                </div>
-                <div className="flex items-center my-2">
-                    <FaUsers style={{fontSize:'25px'}}/>
-                    <h3 className="ml-2 text-xl">Analytics</h3>
-                </div>
-                <div className="flex items-center my-2">
-                    <MdLibraryBooks style={{fontSize:'25px'}}/>
-                    <h3 className="ml-2 text-xl">Bookings</h3>
-                </div>
-                <div className="flex items-center my-2">
-                    <MdOutlineUnsubscribe style={{fontSize:'25px'}}/>
-                    <h3 className="ml-2 text-xl">Subscribers</h3>
-                </div>
-                <div className="flex items-center my-2">
-                    <FiSettings style={{fontSize:'25px'}}/>
-                    <h3 className="ml-2 text-xl">Settings</h3>
-                </div>
-                <div className="flex items-center my-2">
-                    <MdReport style={{fontSize:'25px'}}/>
-                    <h3 className="ml-2 text-xl">Reports</h3>
-                </div>
+                <Link to='residences'>
+                    <div className="flex items-center my-2">
+                        <MdOtherHouses style={{fontSize:'25px'}}/>
+                        <h3 className="ml-2 text-xl">Residences</h3>
+                    </div>
+                </Link>
+                <Link to=''>
+                    <div className="flex items-center my-2">
+                        <FaUsers style={{fontSize:'25px'}}/>
+                        <h3 className="ml-2 text-xl">Analytics</h3>
+                    </div>
+                </Link>
+                <Link to='bookings'>
+                    <div className="flex items-center my-2">
+                        <MdLibraryBooks style={{fontSize:'25px'}}/>
+                        <h3 className="ml-2 text-xl">Bookings</h3>
+                    </div>
+                </Link>
+                <Link to=''>
+                    <div className="flex items-center my-2">
+                        <MdOutlineUnsubscribe style={{fontSize:'25px'}}/>
+                        <h3 className="ml-2 text-xl">Subscribers</h3>
+                    </div>
+                </Link>
+                <Link to=''>
+                    <div className="flex items-center my-2">
+                        <FiSettings style={{fontSize:'25px'}}/>
+                        <h3 className="ml-2 text-xl">Settings</h3>
+                    </div>
+                </Link>
+                <Link to=''>
+                    <div className="flex items-center my-2">
+                        <MdReport style={{fontSize:'25px'}}/>
+                        <h3 className="ml-2 text-xl">Reports</h3>
+                    </div>
+                </Link>
             </div>
             <button type='button' className="absolute bottom-8 flex items-center text-lg text-[#FF4820] font-[800] mt-4" onClick={Logout}>
             <FaSignOutAlt /><span className='ml-2'>Sign Out</span></button>

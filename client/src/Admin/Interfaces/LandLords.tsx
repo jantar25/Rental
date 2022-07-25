@@ -1,14 +1,10 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
 
 const LandLords = () => {
   return (
-    <div className='flex-auto'>
-    <Navbar title="Landlords" />
-    <div className="">
+    <div >
     Landlords
     </div>
-</div>
   )
 }
 
