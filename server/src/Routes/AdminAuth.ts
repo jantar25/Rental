@@ -3,7 +3,7 @@ const router = express.Router();
 import LandLord from '../Models/LandLord';
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
-import {verifyToken} from "./VerifyTokens"
+
 
 
 

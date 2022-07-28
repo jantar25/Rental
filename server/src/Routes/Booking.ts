@@ -1,6 +1,7 @@
 import express from 'express'
 const router = express.Router();
 import Booking from '../Models/Booking';
+import {verifyToken} from "./VerifyTokens"
 
 
 const accountSid = process.env.TWILIO_SID

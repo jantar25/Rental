@@ -25,7 +25,7 @@ const LoginAdmin = () => {
                 <form className="flex w-full items-center flex-col border p-4 rounded-md w-5/6 sm:w-1/2 lg:w-1/3" onSubmit={handleClick}>
                     <input type="text" required className="my-2 px-4 py-2 rounded w-full bg-gray-200 text-black"
                      placeholder='Email' onChange={(e)=> setEmail(e.target.value)} />
-                    <input type="text" required className="my-2 px-4 py-2 rounded w-full bg-gray-200 text-black"
+                    <input type="password" required className="my-2 px-4 py-2 rounded w-full bg-gray-200 text-black"
                      placeholder='Password' onChange={(e)=> setPassword(e.target.value)} />
                      {error? <span className='text-red-500 mt-4 font-[700]'>{`*${error.payload}*`}</span> : null}
                     <button className="mt-6 px-4 py-2 text-lg font-[800] text-[#040C18] bg-green-700 rounded-lg w-full"

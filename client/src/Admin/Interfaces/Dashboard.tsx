@@ -1,9 +1,10 @@
 import React from 'react'
+import FeaturedInfo from '../Components/FeaturedInfo'
 
 const Dashboard = () => {
   return (
     <div className=''>
-          Dashboard
+       <FeaturedInfo />   
     </div>
   )
 }

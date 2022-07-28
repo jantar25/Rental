@@ -3,7 +3,7 @@ const router = express.Router();
 import LandLord from '../Models/LandLord';
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
-import {verifyToken} from "./VerifyTokens"
+import {verifyToken,verifyTokenandAdmin} from "./VerifyTokens"
 
 //REGISTOR
 router.post("/register", async (req,res)=>{
@@ -76,18 +76,18 @@ router.post("/login", async (req,res)=>{
 });
 
 
-// //DELETE ID
-// router.delete("/:id",verifyTokenandAuthorisation,async (req,res)=>{
-//     try{
-//         await User.findByIdAndDelete(req.params.id)
+//DELETE ID
+router.delete("/:id",verifyTokenandAdmin,async (req,res)=>{
+    try{
+        await LandLord.findByIdAndDelete(req.params.id)
 
-//         res.status(200).json("User had been deleted")
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+        res.status(200).json("User had been deleted")
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
-//GET USER BY ID
+//GET LANDLORD BY ID
 router.get("/find/:id",async (req,res)=>{
     try{
         const landLord:any = await LandLord.findById(req.params.id)
@@ -100,32 +100,33 @@ router.get("/find/:id",async (req,res)=>{
     }
 })
 
-// //GET ALL USER
-// router.get("/",verifyTokenandAdmin,async (req,res)=>{
-//     const query = req.query.new
-//     try{
-//         const users = query ? await User.find().sort({_id:-1}).limit(5) : await User.find(req.params.id)
-//         res.status(200).json(users)
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+//GET ALL LANDLORD
+router.get("/",verifyTokenandAdmin,async (req,res)=>{
+    const query = req.query.new
+     
+    try{
+        const users = query ? await LandLord.find().sort({_id:-1}).limit(5) : await LandLord.find()
+        res.status(200).json(users)
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
-// //GET USER STATS
-// router.get("/stats",verifyTokenandAdmin,async (req,res)=>{
-//     const date = new Date();
-//     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-//     try {
-//         const data = await User.aggregate([
-//             { $match: { createdAt:{ $gte:lastYear}}},
-//             { $project: {month:{$month:"$createdAt"}}},
-//             { $group:{_id:"$month",total:{$sum:1}}},
-//         ]);
-//         res.status(200).json(data)
+//GET LANDLORD STATS
+router.get("/stats",verifyTokenandAdmin,async (req,res)=>{
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+    try {
+        const data = await LandLord.aggregate([
+            { $match: { createdAt:{ $gte:lastYear}}},
+            { $project: {month:{$month:"$createdAt"}}},
+            { $group:{_id:"$month",total:{$sum:1}}},
+        ]);
+        res.status(200).json(data)
         
-//     } catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router
