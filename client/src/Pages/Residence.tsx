@@ -10,6 +10,7 @@ import AvailableResidence from '../Components/AvailableResidences/AvailableResid
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import MapRender from '../Components/Mapbox/Mapbox';
+import { publicRequest } from '../requestMethode';
 import { AiOutlineArrowRight,AiOutlineArrowLeft,AiOutlineClose } from 'react-icons/ai';
 const avatar = require("../Images/avatar.png")
 
@@ -35,6 +36,7 @@ const Residence = () => {
       propertyAddress:'',
       landlordNumber:'',
       landlordName:'',
+      Amount:'',
       eror:'',
       loading:false,
     })
@@ -52,9 +54,9 @@ const Residence = () => {
         setBookingInputs({ ...bookingInputs,eror: 'All fields are required' })
       } else {
         const Booking = ({...bookingInputs,propertyName:residence.title,propertyAddress:residence.address,
-          landlordNumber:residenceOwner.line1,landlordName:residenceOwner.names})
+          landlordNumber:residenceOwner.line1,landlordName:residenceOwner.names,Amount:2 * residence.price })
           try {
-              const res = await axios.post(`http://localhost:5000/api/messages`,Booking)
+              const res = await publicRequest.post(`/messages`,Booking)
               setFeedback(res.data.message)
               setBookingInputs({
                 names:'',
@@ -62,11 +64,13 @@ const Residence = () => {
                 transactionId:'',
                 propertyName:'',
                 propertyAddress:'',
+                Amount:'',
                 eror:'',
                 loading:false,
               })
       } catch(error:any){
         setFeedback(error.response.data.message)
+        setBookingInputs({ ...bookingInputs,eror:'',loading:false })
       }
       }
     }
@@ -95,7 +99,7 @@ const Residence = () => {
     useEffect(() => {
       const getResidanceOwner= async ()=>{
         try {
-            const res = await axios.get(`http://localhost:5000/api/landLordAuth/find/${residence.OwnerDetails[0]._id}`)
+            const res = await publicRequest.get(`/landLordAuth/find/${residence.OwnerDetails[0]._id}`)
             setResidenceOwner(res.data);
         } catch(err){
             console.log(err)
@@ -229,8 +233,12 @@ const Residence = () => {
                     <input className='my-1 p-1 rounded' placeholder='Transaction Number' name="transactionId" value={transactionId} onChange={handleChange}  />
                   </div>
                   {eror? (<p className='text-red-500 font-[600] my-2'>{`*${bookingInputs.eror}*`}</p>) : null}
-                  {feedback && (<p className={`${feedback === 'successful'? 'bg-green-500' : 'bg-red-500'} text-white font-[600] my-2 p-2 rounded text-center`}>{feedback}</p>)}
-                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]' type='submit' >{loading? 'Booking ...' : 'Book Now'}</button>
+                  {feedback && 
+                  <div className={`${feedback === 'successful'? 'bg-green-500' : 'bg-red-500'} flex items-center justify-between px-8`}>
+                    <p className={` text-white font-[600] my-2 p-2 rounded text-center`}>{feedback}</p>
+                    <AiOutlineClose style={{color:'white',fontSize:'20px',cursor:'pointer'}} onClick={()=>setFeedback(null)} />
+                  </div>}
+                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]' type='submit' >{loading? 'Booking...' : 'Book Now'}</button>
                 </form>
               </div>
               ) : (

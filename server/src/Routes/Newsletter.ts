@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Newsletter = require("../models/Newsletter");
+import {verifyTokenandAdmin} from "./VerifyTokens"
 
 
 //SAVE EMAIL FOR NEWSLETTER
@@ -20,7 +21,7 @@ router.post("/",async (req:any,res:any)=>{
 
 
 //GET ALL MEWSLETTER EMAILS
-router.get("/",async (req:any,res:any)=>{
+router.get("/",verifyTokenandAdmin,async (req:any,res:any)=>{
     try{
         const newsLetterEmails =  await Newsletter.find();
         res.status(200).json(newsLetterEmails)

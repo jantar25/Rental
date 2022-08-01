@@ -1,7 +1,8 @@
 import express from 'express'
 const router = express.Router();
 import Booking from '../Models/Booking';
-import {verifyToken} from "./VerifyTokens"
+import {verifyTokenandAdmin} from "./VerifyTokens"
+
 
 
 const accountSid = process.env.TWILIO_SID
@@ -41,10 +42,33 @@ router.post('/',async (req, res) => {
 
 
 //GET ALL BOOKING HOUSE
-router.get("/",async (req:any,res:any)=>{
+router.get("/",verifyTokenandAdmin,async (req:any,res:any)=>{
   try{
       const newBooking =  await Booking.find();
       res.status(200).json(newBooking)
+  } catch(err){
+      res.status(500).json(err)
+  }
+})
+
+
+//GET BOOK STATS&MONTHLY INCOME
+router.get("/income",verifyTokenandAdmin,async (req,res)=>{
+  const date = new Date();
+  const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+  const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() -1));
+  try {
+      const income = await Booking.aggregate([
+          { $match: { createdAt:{ $gte:previousMonth}}},
+          { $project: {
+              month:{$month:"$createdAt"},
+              sales: "$Amount",
+                  }
+          },
+          { $group:{_id:"$month",total:{$sum:"$sales"}}},
+      ]);
+      res.status(200).json(income)
+      
   } catch(err){
       res.status(500).json(err)
   }

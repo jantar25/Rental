@@ -8,6 +8,7 @@ interface BookingInterface extends Document {
     propertyName:string,
     propertyAddress:string | any,
     landlordNumber:number | string,
+    Amount:number | string,
     landlordName:string,
   }
   
@@ -19,6 +20,7 @@ const BookingSchima = new mongoose.Schema<BookingInterface>(
         propertyName:{type:String,required:true},
         propertyAddress:{type:String,required:true},
         landlordNumber:{type:Number,required:true},
+        Amount:{type:Number,required:true},
         landlordName:{type:String,required:true},
 },
 {timestamps:true})
