@@ -1,43 +1,26 @@
-import React,{ useEffect, useMemo, useState } from 'react'
-import { adminRequest } from '../../requestMethode';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
-const Chart = () => {
-    const [useStats,setUserStats] = useState([]);
-    const MONTHS = useMemo(
-        ()=>[
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-      ],[]);
-    
-    //   useEffect(()=>{
-    //     const getStats = async () =>{
-    //       try {
-    //         const res = await adminRequest.get("/users/stats")
-    //         res.data.map((item:any)=>{
-    //           setUserStats((prev) => [...prev,{name:MONTHS[item._id-1], "Active User":item.total}]);
-    //         })
-    //       } catch (error) {
-    //         console.log(error)
-    //       }
-    //     }
-    //     getStats();
-    //   },[MONTHS])
+export default function Chart({ title, data, dataKey } :any) {
 
   return (
-    <div>
-
+    <div className="m-4 p-4 rounded-lg w-full flex flex-col items-center justify-center">
+      <h1 className="text-2xl my-4 text-[#002853] font-[900]">{title}</h1>
+      <ResponsiveContainer width="90%" aspect={4 / 1}>
+        <BarChart data={data}>
+          <XAxis dataKey="name" />
+          <Bar barSize={30} dataKey={dataKey} fill="orange" />
+          <Tooltip />
+          <CartesianGrid stroke="#002853" strokeDasharray="2 2" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
-  )
+  );
 }
-
-export default Chart

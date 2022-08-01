@@ -36,9 +36,9 @@ function App() {
         <Route path="/residences/:category" element={<Residences />} />
         <Route path="/admin" element={!isAdmin? <LoginAdmin /> : <Navigate to='/admin/dashboard' />} />
         <Route path="/admin/dashboard/*" element={isAdmin? (
-                    <div className='flex w-screen'>
+                    <div className='flex w-screen '>
                       <Sidebar />
-                      <div className='flex-auto'>
+                      <div className='flex-auto h-screen md:overflow-hidden'>
                         <Navbar />
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
