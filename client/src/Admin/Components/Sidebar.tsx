@@ -65,7 +65,7 @@ const Sidebar = () => {
                         <h3 className="ml-2 text-xl">Bookings</h3>
                     </div>
                 </Link>
-                <Link to=''>
+                <Link to='subscribers'>
                     <div className="flex items-center my-2">
                         <MdOutlineUnsubscribe style={{fontSize:'25px'}}/>
                         <h3 className="ml-2 text-xl">Subscribers</h3>
