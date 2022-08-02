@@ -17,6 +17,7 @@ import Dashboard from './Admin/Interfaces/Dashboard';
 import LandLords from './Admin/Interfaces/LandLords';
 import Booking from './Admin/Interfaces/Booking';
 import AdminResidences from './Admin/Interfaces/AdminResidences';
+import Analytics from './Admin/Interfaces/Analytics'; 
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
                             <Route path="/landlords" element={<LandLords />} />
                             <Route path="/bookings" element={<Booking />} />
                             <Route path="/residences" element={<AdminResidences />} />
+                            <Route path="/analytics" element={<Analytics />} />
                         </Routes>
                       </div>
                     </div>

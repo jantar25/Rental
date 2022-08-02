@@ -53,7 +53,7 @@ const Sidebar = () => {
                         <h3 className="ml-2 text-xl">Residences</h3>
                     </div>
                 </Link>
-                <Link to=''>
+                <Link to='analytics'>
                     <div className="flex items-center my-2">
                         <FaUsers style={{fontSize:'25px'}}/>
                         <h3 className="ml-2 text-xl">Analytics</h3>

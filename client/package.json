@@ -24,6 +24,7 @@
     "recharts": "^2.1.13",
     "redux-persist": "^6.0.0",
     "swiper": "^8.2.2",
+    "timeago.js": "^4.0.2",
     "typescript": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
