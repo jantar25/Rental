@@ -9,6 +9,7 @@ import Residence from './Pages/Residence';
 import Residences from './Pages/Residences';
 import Profile from './Pages/Profile';
 import LandLordActivity from './Pages/LandLordActivity';
+import AboutUs from './Pages/AboutUs';
 import ScrollToTop from './Components/scrollToTop';
 import LoginAdmin from './Admin/Pages/LoginAdmin';
 import Sidebar from './Admin/Components/Sidebar';
@@ -21,6 +22,7 @@ import Analytics from './Admin/Interfaces/Analytics';
 import Subscribers from './Admin/Interfaces/Subscribers';
 
 
+
 function App() {
   const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
   const isAdmin = useSelector((state:any)=>state.admin.currentAdmin)
@@ -30,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<LandlordRegister />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element= {!landLord? <LandlordLogin /> : <Navigate to="/" />} />
         <Route path="/profile" element= {landLord? <Profile /> : <Navigate to="/" />} />
         <Route path="/activity" element= {landLord? <LandLordActivity /> : <Navigate to="/" />} />

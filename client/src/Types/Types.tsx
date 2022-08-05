@@ -36,3 +36,19 @@ export type District = {
     district: string,
     townImage: string | any,
 }
+
+export type Member = {
+        id:number | string,
+        names:string,
+        image:string | any,
+        title:string,
+        comment:string,
+}
+
+export type Comment = {
+    id:number | string,
+    names:string,
+    image:string | any,
+    comment:string
+}
+

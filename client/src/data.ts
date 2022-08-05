@@ -1,5 +1,7 @@
 import { Logo } from "./Types/Types"
 import { District } from "./Types/Types"
+import { Comment } from "./Types/Types"
+import { Member } from "./Types/Types"
 
 const Logo1 = require("./Images/image1.png")
 const Logo2 = require("./Images/image2.png")
@@ -73,7 +75,7 @@ export const districtResidences : District[] = [
     },
 ]
 
-export const ClientsComments = [
+export const ClientsComments : Comment[] = [
     {
         id:1,
         names:'Sother Ndimubanzi',
@@ -109,5 +111,30 @@ export const ClientsComments = [
         names:'Penelope kabaye',
         image:Client6,
         comment:"Easy and affordable way to find a residence"
+    },
+]
+
+
+export const OurMembers : Member[] = [
+    {
+        id:1,
+        names:'Glody Bulambo',
+        image:Client1,
+        title:"CEO and Founder",
+        comment:"It never too late to build something amazing"
+    },
+    {
+        id:2,
+        names:'Karen Anne',
+        image:Client4,
+        title:"Chief Director",
+        comment:"We work as we live"
+    },
+    {
+        id:3,
+        names:'Angel Marie',
+        image:Client5,
+        title:"Chief Commissioners",
+        comment:"Nothing worth a wonderfull day on work"
     },
 ]

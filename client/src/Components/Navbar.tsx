@@ -60,7 +60,9 @@ const Navbar = () => {
                     <Link to='/residences/All'>
                         <p className='mx-2 font-[600]'>Residences</p>
                     </Link>
-                    <p className='mx-2 font-[600]'>Value</p>
+                    <Link to='/about'>
+                        <p className='mx-2 font-[600]'>About</p>
+                    </Link>
                     <Link to='/contacts'>
                         <p className='mx-2 font-[600]'>Contacts</p>
                     </Link>
@@ -77,9 +79,11 @@ const Navbar = () => {
                                 <FaBuilding style={{fontSize:'20px',color:'#002853'}} />
                             </li>
                         </Link>
-                        <li>
-                            <FaLightbulb style={{fontSize:'20px',color:'#002853'}} />
-                        </li>
+                        <Link to='/about'>
+                            <li>
+                                <FaLightbulb style={{fontSize:'20px',color:'#002853'}} />
+                            </li>
+                        </Link>
                         <Link to='/contacts'>
                             <li>
                                 <FaPhone style={{fontSize:'20px',color:'#002853'}} />
