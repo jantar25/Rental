@@ -61,7 +61,7 @@ const Navbar= () => {
             </div>
             {toggleSidebar?
             <div className="flex md:hidden flex-col bg-gradient-to-b from-[#002853] to-[#040C18] text-right p-4 absolute
-                top-20 left-2 min-w-[210px] rounded shadow-lg shadow-blue-700" ref={dropDownRef}>
+                top-20 left-2 min-w-[210px] rounded shadow-lg shadow-blue-700 z-50" ref={dropDownRef}>
                 <Link to='' >
                     <div className="flex items-center my-2" onClick={menu}>
                         <MdDashboard style={{fontSize:'25px'}}/>

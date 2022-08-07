@@ -27,6 +27,7 @@ const Sidebar = () => {
                }
                       }
         },[dispatch])
+        
   return (
     <div className='hidden md:flex basis-1/5 bg-gradient-to-b from-[#002853] to-[#040C18] h-screen text-white'>
         <div className="relative p-2 h-full">

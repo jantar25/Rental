@@ -2,7 +2,6 @@ import {
   BarChart,
   Bar,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
@@ -11,7 +10,7 @@ import {
 export default function Chart({ title, data, dataKey } :any) {
 
   return (
-    <div className="m-4 p-4 rounded-lg w-full flex flex-col items-center justify-center">
+    <div className="m-4 p-4 rounded-lg w-full flex flex-col items-center justify-center z-2">
       <h1 className="text-2xl my-4 text-[#002853] font-[900]">{title}</h1>
       <ResponsiveContainer width="90%" aspect={4 / 1}>
         <BarChart data={data}>

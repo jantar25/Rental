@@ -48,7 +48,7 @@ const LandLords = () => {
             <th className='text-center py-2'>Join Date</th>
             <th className='text-center py-2'>Check</th>
           </tr>
-          { newLandLords.map((landlord:any)=>(
+          { newLandLords && newLandLords.map((landlord:any)=>(
               <tr key={landlord._id} className=''>
                 <td className='border-solid py-1 flex items-center justify-center'>
                   <div className="w-[25px] h-[25px] ">
