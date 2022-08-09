@@ -12,9 +12,9 @@ interface LandLordInterface extends Document {
   
 const LandLordSchima = new mongoose.Schema<LandLordInterface>(
     {
-        names:{type:String,required:true},
-        email:{type:String,required:true,unique:true},
-        password:{type:String,required:true},
+        names:{type:String,},
+        email:{type:String,unique:true},
+        password:{type:String},
         isAdmin:{
             type:Boolean,
             default:false

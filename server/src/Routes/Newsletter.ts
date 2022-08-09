@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Newsletter = require("../models/Newsletter");
+const Newsletter = require("../Models/Newsletter");
 import {verifyTokenandAdmin} from "./VerifyTokens"
 
 

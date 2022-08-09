@@ -2,7 +2,7 @@ import React,{ useState,useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import decode from 'jwt-decode';
 import { Link } from 'react-router-dom'
-import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaMoon,FaKey,FaSignOutAlt } from 'react-icons/fa';
+import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaCaretDown,FaCaretUp,FaKey,FaSignOutAlt } from 'react-icons/fa';
 import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 import useClickOutside from './Hooks/useClickOutside'
@@ -11,6 +11,7 @@ const avatar = require("../Images/avatar.png")
 
 
 const Navbar = () => {
+    const [localLanguage,setLocalLanguage] = useState(false)
     const dispatch = useDispatch();
     const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
@@ -93,7 +94,15 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center justify-around'>
                     <div className="px-4">
-                        <FaMoon style={{fontSize:'20px',color:'#fff'}} />
+                        {localLanguage? (
+                        <div className="flex items-center text-white" onClick={()=>setLocalLanguage(!localLanguage)}>
+                            <p className="font-[800] text-md">KIN</p>
+                            <FaCaretDown />
+                        </div> ): (
+                        <div className="flex items-center text-white" onClick={()=>setLocalLanguage(!localLanguage)}>
+                            <p className="font-[800] text-md">EN</p>
+                            <FaCaretUp />
+                        </div>)}
                     </div>
 
                         {landLord? <div className='w-[30px] h-[30px]'>

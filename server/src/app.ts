@@ -14,6 +14,8 @@ const adminRoute = require('./Routes/AdminAuth')
 const booking = require('./Routes/Booking')
 
 
+
+
 if (typeof dbUrl === 'string') {
     mongoose.connect(dbUrl)
     .then(()=>console.log("DB Connected"))

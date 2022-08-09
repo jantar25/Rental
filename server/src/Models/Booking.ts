@@ -14,14 +14,14 @@ interface BookingInterface extends Document {
   
 const BookingSchima = new mongoose.Schema<BookingInterface>(
     {
-        names:{type:String,required:true},
-        number:{type:String,required:true},
-        transactionId:{type:String,required:true,unique:true},
-        propertyName:{type:String,required:true},
-        propertyAddress:{type:String,required:true},
-        landlordNumber:{type:Number,required:true},
-        Amount:{type:Number,required:true},
-        landlordName:{type:String,required:true},
+        names:{type:String},
+        number:{type:String},
+        transactionId:{type:String,unique:true},
+        propertyName:{type:String},
+        propertyAddress:{type:String},
+        landlordNumber:{type:Number},
+        Amount:{type:Number},
+        landlordName:{type:String},
 },
 {timestamps:true})
 

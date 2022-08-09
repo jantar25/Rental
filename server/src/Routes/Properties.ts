@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Property = require("../models/Property");
+const Property = require("../Models/Property");
 import {verifyToken} from "./VerifyTokens"
 
 
