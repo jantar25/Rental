@@ -100,7 +100,7 @@ const Profile = () => {
           <p className='text-gray-400 text-center mb-8 text-sm w-2/3'>
             This is not your username or pin. This name will be visible to your Rental customers
           </p>
-          <p className="flex items-center my-2 text-gray-400">
+          <div className="flex items-center my-2 text-gray-400">
             <span className='mr-4'>Portable:</span> 
             <span className='font-[700] mr-8 text-gray-700'>{landLord.line1}</span>
             <MdModeEditOutline style={{fontSize:'20px',color:'#002853',cursor:"pointer"}}
@@ -115,8 +115,8 @@ const Profile = () => {
                 </div>
               </div>
               }
-          </p>
-          <p className="flex items-center my-2 text-gray-400">
+          </div>
+          <div className="flex items-center my-2 text-gray-400">
             <span className='mr-4'>Home:</span> 
             <span className='font-[700] mr-8 text-gray-700'>{landLord.line2}</span>
             <MdModeEditOutline style={{fontSize:'20px',color:'#002853',cursor:"pointer"}}
@@ -131,7 +131,7 @@ const Profile = () => {
                 </div>
               </div>
               }
-          </p>
+          </div>
         </div>
       </div>
       <Footer />

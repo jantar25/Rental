@@ -2,7 +2,7 @@ import React,{ useState,useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import decode from 'jwt-decode';
 import { Link } from 'react-router-dom'
-import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaCaretDown,FaCaretUp,FaKey,FaSignOutAlt } from 'react-icons/fa';
+import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaKey,FaSignOutAlt } from 'react-icons/fa';
 import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 import useClickOutside from './Hooks/useClickOutside'
@@ -10,9 +10,10 @@ const avatar = require("../Images/avatar.png")
 
 
 
+
 const Navbar = () => {
-    const [localLanguage,setLocalLanguage] = useState(false)
     const dispatch = useDispatch();
+    const [language,setLanguage] = useState('en')
     const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
@@ -46,7 +47,11 @@ const Navbar = () => {
       }
       window.addEventListener('scroll',changeBackground)
 
+    const handleChange = (e:any) =>{
+        setLanguage(e.target.value)
+    }
 
+    console.log(language)
   return (
     <div className={`sticky top-0 z-30 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
         <div className='flex flex-col'>
@@ -93,18 +98,13 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='flex items-center justify-around'>
-                    <div className="px-4">
-                        {localLanguage? (
-                        <div className="flex items-center text-white" onClick={()=>setLocalLanguage(!localLanguage)}>
-                            <p className="font-[800] text-md">KIN</p>
-                            <FaCaretDown />
-                        </div> ): (
-                        <div className="flex items-center text-white" onClick={()=>setLocalLanguage(!localLanguage)}>
-                            <p className="font-[800] text-md">EN</p>
-                            <FaCaretUp />
-                        </div>)}
+                    <div className="px-2">
+                    <select className='p-1 rounded bg-transparent' name="language" onChange={handleChange}>
+                        <option value="en" className="flex items-center text-white font-[800] text-md bg-black">EN</option>
+                        <option value="kin" className="flex items-center text-white font-[800] text-md bg-black">KIN</option>
+                      </select>
                     </div>
-
+                    <div>
                         {landLord? <div className='w-[30px] h-[30px]'>
                             <img src={landLord?.img || avatar} alt="LandlordImg" className="w-full h-full rounded-full cursor-pointer" 
                             onClick={()=>setToggleProfile(!toggleProfile)}/> 
@@ -114,7 +114,7 @@ const Navbar = () => {
                             <button className='flex sm:ml-4 bg-green-600 py-2 px-4 rounded text-sm'>Sign In</button>
                         </Link>
                         }
-                    
+                    </div>
                 </div>
                 {toggleProfile && (
                         <div className="flex flex-col bg-gradient-to-b from-[#002853] to-[#040C18] text-left p-4 absolute
