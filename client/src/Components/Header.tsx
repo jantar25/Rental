@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import i18next from 'i18next';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 const homeImg = require("../Images/home.jpg")
-
+ 
 const Header = () => {
     const [search,setSearch] = useState()
     const navigate = useNavigate()
@@ -13,7 +14,7 @@ const Header = () => {
   return (
     <div className='flex flex-col md:flex-row bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 pt-8'>
         <div className='flex-1 mb-8'>
-            <h1 className='text-3xl md:text-5xl font-[600] leading-tight mb-4'>Discover <br />Most Suitable <br />Property</h1>
+            <h1 className='text-3xl md:text-5xl font-[600] leading-tight mb-4'>{i18next.t('discover')as string} <br />{i18next.t('suitable')as string} <br />{i18next.t('Property')as string}</h1>
             <p className='text-gray-500 text-sm md:text-md mb-8'>Find a variety of properties that suit you very easily,
             forget all dificulties in finding a residnce for you.
             </p>

@@ -6,6 +6,7 @@ import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaKey,FaSignOutAlt } from 'react-
 import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 import useClickOutside from './Hooks/useClickOutside'
+import i18next from 'i18next';
 const avatar = require("../Images/avatar.png")
 
 
@@ -13,7 +14,6 @@ const avatar = require("../Images/avatar.png")
 
 const Navbar = () => {
     const dispatch = useDispatch();
-    const [language,setLanguage] = useState('en')
     const [toggleProfile,setToggleProfile] = useState(false);
     const [navbar,setNavbar]=useState(false); 
     const landLord= useSelector((state:any)=>state.landLord.currentLandLord);
@@ -48,10 +48,11 @@ const Navbar = () => {
       window.addEventListener('scroll',changeBackground)
 
     const handleChange = (e:any) =>{
-        setLanguage(e.target.value)
+        localStorage.setItem("Language",e.target.value);
+        window.location.reload()
     }
 
-    console.log(language)
+    const language = localStorage.getItem('Language') || 'en'
   return (
     <div className={`sticky top-0 z-30 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
         <div className='flex flex-col'>
@@ -64,13 +65,13 @@ const Navbar = () => {
                 </Link>
                 <div className='hidden md:flex w-1/3 justify-center'>
                     <Link to='/residences/All'>
-                        <p className='mx-2 font-[600]'>Residences</p>
+                        <p className='mx-2 font-[600]'>{i18next.t('residence')as string}</p>
                     </Link>
                     <Link to='/about'>
-                        <p className='mx-2 font-[600]'>About</p>
+                        <p className='mx-2 font-[600]'>{i18next.t('about')as string}</p>
                     </Link>
                     <Link to='/contacts'>
-                        <p className='mx-2 font-[600]'>Contacts</p>
+                        <p className='mx-2 font-[600]'>{i18next.t('contacts')as string}</p>
                     </Link>
                 </div>
                 <div className=' md:hidden bg-white fixed bottom-2 text-black left-0 right-0 w-[95%] sm:w-[60%] mx-auto shadow shadow-black rounded-md px-8 py-2'>
@@ -99,7 +100,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center justify-around'>
                     <div className="px-2">
-                    <select className='p-1 rounded bg-transparent' name="language" onChange={handleChange}>
+                    <select className='p-1 rounded bg-transparent' onChange={handleChange} value={language} >
                         <option value="en" className="flex items-center text-white font-[800] text-md bg-black">EN</option>
                         <option value="kin" className="flex items-center text-white font-[800] text-md bg-black">KIN</option>
                       </select>
@@ -111,7 +112,7 @@ const Navbar = () => {
                         </div> 
                         :
                         <Link to='/login'>
-                            <button className='flex sm:ml-4 bg-green-600 py-2 px-4 rounded text-sm'>Sign In</button>
+                            <button className='flex sm:ml-4 bg-green-600 py-2 px-4 rounded text-sm'>{i18next.t('signIn')as string}</button>
                         </Link>
                         }
                     </div>
