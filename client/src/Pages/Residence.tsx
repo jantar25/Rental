@@ -118,7 +118,7 @@ const Residence = () => {
               container ml-auto mr-auto rounded overflow-auto ">
           <MapRender residence={residence} />
         </div>
-        <div className="absolute top-5 right-10 cursor-pointer text-red-600" onClick={()=>setToggleMap(false)} >
+        <div className="absolute top-2 right-4 md:right-10 cursor-pointer text-black bg-red-600 p-1 rounded-full" onClick={()=>setToggleMap(false)} >
           <AiOutlineClose style={{fontSize:'25px',fontWeight:'bolder'}} />
         </div>
       </div>}
