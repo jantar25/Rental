@@ -1,7 +1,5 @@
-import { Logo } from "./Types/Types"
-import { District } from "./Types/Types"
-import { Comment } from "./Types/Types"
-import { Member } from "./Types/Types"
+import { Accordions,Logo,District,Comment,Member } from "./Types/Types"
+import { MdVerifiedUser } from 'react-icons/md';
 
 const Logo1 = require("./Images/image1.png")
 const Logo2 = require("./Images/image2.png")
@@ -136,5 +134,29 @@ export const OurMembers : Member[] = [
         image:Client5,
         title:"Chief Commissioners",
         comment:"Nothing worth a wonderfull day on work"
+    },
+]
+
+
+export const Accodions : Accordions[] = [
+    {
+        id:1,
+        intro:'Best interest rate on the market',
+        paragraph:'We charge 5% on transaction which is the best interest rate on market that you can find compared to any other compagny or commissioner interest charge',
+    },
+    {
+        id:2,
+        intro:'Prevent unstable prices',
+        paragraph:'we guarantee no price changes on your property due to various unexpected costs that may come',
+    },
+    {
+        id:3,
+        intro:'Best price on the market',
+        paragraph:'Price we provide is the best for you, We consider everybody possibilities and give accordindly an adequate residence',
+    },
+    {
+        id:4,
+        intro:'Security of your data',
+        paragraph:'Every personal Information you entered is confidential and protected',
     },
 ]

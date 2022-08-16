@@ -10,6 +10,7 @@ const landLordToken = currentToken && JSON.parse(JSON.parse(currentToken).landLo
 
 const AdminToken = currentToken && JSON.parse(JSON.parse(currentToken).admin).currentAdmin?.accessToken;
 
+
 export const publicRequest = axios.create({baseURL:BASE_URL});
         
 export const landLordRequest = axios.create({

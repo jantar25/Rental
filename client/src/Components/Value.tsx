@@ -1,15 +1,22 @@
 import React,{useState} from 'react' 
 import { TiPointOfInterestOutline,TiCancel } from 'react-icons/ti';
-import { AiOutlineCaretDown,AiOutlineCaretUp } from 'react-icons/ai';
+import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { IoIosStats } from 'react-icons/io';
 import { MdVerifiedUser } from 'react-icons/md';
+import { Accodions } from '../data';
 
 const valueImg = require("../Images/home1.jpg")
 const Value = () => {
-    const [toggle1,setToggle1] = useState(false)
-    const [toggle2,setToggle2] = useState(false)
-    const [toggle3,setToggle3] = useState(false)
-    const [toggle4,setToggle4] = useState(false)
+    const [clicked,setClicked] = useState(null)
+
+    const toggleAccordion = (id:any) => {
+        if (clicked === id) {
+            setClicked(null)
+        } else{
+            setClicked(id)
+        }
+    }
+
   return (
     <div className='px-4 lg:px-20 py-8'>
         <div className="flex">
@@ -28,70 +35,24 @@ const Value = () => {
                 <p className="mt-2 text-gray-400 md:w-2/3 text-sm">We are always ready to help by providing the best service for you.
                 We believe a good place to live can make your life better.</p>
                 <div className="mt-4 lg:w-3/4 grid gap-2 ">
-                    <div className="shadow-lg p-4">
+                    {Accodions.map((Accodion) => 
+                    <div className="shadow-lg p-4" key={Accodion.id}>
                         <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
-                         onClick={()=>setToggle1(!toggle1)}>
+                         onClick={() => toggleAccordion(Accodion.id)}>
                             <div className="flex items-center ">
-                                <TiPointOfInterestOutline />
-                                <h2 className="ml-2">Best interest rates on the market</h2>
+                                {Accodion.id === 1 ? <TiPointOfInterestOutline /> : Accodion.id === 2 ? <TiCancel />
+                                 :Accodion.id === 3 ? <IoIosStats /> : <MdVerifiedUser />}
+                                <h2 className="ml-2">{Accodion.intro}</h2>
                             </div>
                             <button className='' >
-                                {toggle1? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
+                                {clicked === Accodion.id ? <AiOutlineMinus /> : <AiOutlinePlus />}
                             </button>
                         </div>
                         <div className=''>
-                            {toggle1? <p className='text-gray-400 text-sm mt-2'>Price we provide is the best for you, we guarantee no price changes on your property
-                            due to various unexpected costs that may come</p> : null}
+                            {clicked === Accodion.id ? <p className='text-gray-400 text-sm mt-2'>{Accodion.paragraph}</p> : null}
                         </div>
                     </div>
-                    <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
-                        onClick={()=>setToggle2(!toggle2)}>
-                            <div className="flex items-center ">
-                                <TiCancel />
-                                <h2 className="ml-2">Prevent unstable prices</h2>
-                            </div>
-                            <button className='' >
-                                {toggle2? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
-                            </button>
-                        </div>
-                        <div>
-                            {toggle2? <p className='text-gray-400 text-sm mt-2'>Price we provide is the best for you, we guarantee no price changes on your property
-                            due to various unexpected costs that may come</p> : null}
-                        </div>
-                    </div>
-                    <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
-                        onClick={()=>setToggle3(!toggle3)}>
-                            <div className="flex items-center ">
-                                <IoIosStats />
-                                <h2 className="ml-2">Best price on the market</h2>
-                            </div>
-                            <button className='' >
-                                {toggle3? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
-                            </button>
-                        </div>
-                        <div>
-                            {toggle3? <p className='text-gray-400 text-sm mt-2'>Price we provide is the best for you, we guarantee no price changes on your property
-                            due to various unexpected costs that may come</p> : null}
-                        </div>
-                    </div>
-                    <div className="shadow-lg p-4">
-                        <div className="flex justify-between text-purple-700 text-sm sm:text-xl font-[600] cursor-pointer"
-                        onClick={()=>setToggle4(!toggle4)}>
-                            <div className="flex items-center ">
-                                <MdVerifiedUser />
-                                <h2 className="ml-2">Security of your data</h2>
-                            </div>
-                            <button className='' >
-                                {toggle4? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
-                            </button>
-                        </div>
-                        <div>
-                            {toggle4? <p className='text-gray-400 text-sm mt-2'>Price we provide is the best for you, we guarantee no price changes on your property
-                            due to various unexpected costs that may come</p> : null}
-                        </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>

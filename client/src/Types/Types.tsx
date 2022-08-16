@@ -52,3 +52,8 @@ export type Comment = {
     comment:string
 }
 
+export type Accordions = {
+    id:number | string,
+    intro:string,
+    paragraph:string,
+}
