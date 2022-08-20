@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from "axios"
+import i18next from 'i18next';
 import { Residence } from "../../Types/Types"
 import { getProperties } from '../../Redux/apiCalls'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -37,8 +38,8 @@ const AvailableResidences = () => {
   return (
     <div className='px-4 lg:px-20 py-8'>
         <div>
-            <h3 className="text-orange-600 text-lg font-[600]">Best Choise</h3>
-            <h1 className="text-purple-900 my-2 text-3xl font-[700]">Available Residences<span className="text-pink-500 ">.</span></h1>
+            <h3 className="text-orange-600 text-lg font-[600]">{i18next.t('bestChoice')as string} </h3>
+            <h1 className="text-purple-900 my-2 text-3xl font-[700]">{i18next.t('Available')as string} <span className="text-pink-500 ">.</span></h1>
             <div className='w-[80px] h-[5px] bg-gradient-to-r from-purple-400 via-pink-500 to-[#FF8A71] 
                 shadow-lg mb-[5px]'/>
         </div>

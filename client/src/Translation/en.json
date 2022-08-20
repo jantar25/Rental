@@ -3,7 +3,19 @@
     "about":"About",
     "contacts":"contacts",
     "signIn": "sign In",
-    "discover":"Discover",
+    "discover":"Discover Easily",
     "suitable":"Most suitable ",
-    "Property":"renting Residences"
-}
+    "Property":"renting Residences",
+    "jingle":"Find a variety of properties that suit you very easily,forget all dificulties in finding a residance for you.",
+    "searchPlaceholder":"Location...",
+    "searchButton":"Search",
+    "advert1a":"Premium",
+    "advert1b":"Properties",
+    "advert2a":"Happy",
+    "advert2b":"Customer",
+    "advert3a":"Awards",
+    "advert3b":"Winning",
+    "properties":"Properties",
+    "bestChoice":"Best Choice",
+    "Available":"Available Residences"
+} 

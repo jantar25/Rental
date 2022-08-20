@@ -1,4 +1,5 @@
 import React from 'react'
+import i18next from 'i18next';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
@@ -16,7 +17,7 @@ const DistrictResidence = ({districtResidence}:any) => {
             <h2 className="text-white font-[700] text-3xl">{districtResidence.district}</h2>
             <p className="font-[600] text-orange-500 text-2xl">
               {propertyNumber.length}
-            <span className="text-gray-200 text-lg ml-2">Properties</span>
+            <span className="text-gray-200 text-lg ml-2">{i18next.t('properties')as string}</span>
             </p>
           </div>
       </div>
