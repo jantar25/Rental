@@ -1,5 +1,5 @@
 import { Accordions,Logo,District,Comment,Member } from "./Types/Types"
-import { MdVerifiedUser } from 'react-icons/md';
+import i18next from './i18next/i18next';
 
 const Logo1 = require("./Images/image1.png")
 const Logo2 = require("./Images/image2.png")
@@ -78,37 +78,37 @@ export const ClientsComments : Comment[] = [
         id:1,
         names:'Sother Ndimubanzi',
         image:Client1,
-        comment:"Fell in love with the platform the moment I saw it. its clean and simple design was what sealed the deal for me."
+        comment:i18next.t('sotherComment') as string
     },
     {
         id:2,
         names:'Thedy Uwase',
         image:Client4,
-        comment:"This platform just made my life easy as I usually shift places"
+        comment:i18next.t('thedyComment') as string
     },
     {
         id:3,
         names:'Uwakabebe Mwiza',
         image:Client5,
-        comment:"I got a beautifull chip residence here,so far so good"
+        comment:i18next.t('uwakabebeComment') as string
     },
     {
         id:4,
         names:'Gigs Masaro',
         image:Client2,
-        comment:"Contacting support was simple and easy. I was suprise by how quickly they actually get back to you."
+        comment:i18next.t('gigsComment') as string
     },
     {
         id:5,
         names:'Chris Ndiwayesu',
         image:Client3,
-        comment:"The resources availability, that's what caugh my attention about this platform"
+        comment:i18next.t('chrisComment') as string
     },
     {
         id:6,
         names:'Penelope kabaye',
         image:Client6,
-        comment:"Easy and affordable way to find a residence"
+        comment:i18next.t('penelopeComment') as string
     },
 ]
 
@@ -141,22 +141,22 @@ export const OurMembers : Member[] = [
 export const Accodions : Accordions[] = [
     {
         id:1,
-        intro:'Best interest rate on the market',
-        paragraph:'We charge 5% on transaction which is the best interest rate on market that you can find compared to any other compagny or commissioner interest charge',
+        intro:i18next.t('accordeon1Into') as string,
+        paragraph:i18next.t('accordeon1Paragraph') as string,
     },
     {
         id:2,
-        intro:'Prevent unstable prices',
-        paragraph:'we guarantee no price changes on your property due to various unexpected costs that may come',
+        intro:i18next.t('accordeon2Into') as string,
+        paragraph:i18next.t('accordeon2Paragraph') as string,
     },
     {
         id:3,
-        intro:'Best price on the market',
-        paragraph:'Price we provide is the best for you, We consider everybody possibilities and give accordindly an adequate residence',
+        intro:i18next.t('accordeon3Into') as string,
+        paragraph:i18next.t('accordeon3Paragraph') as string,
     },
     {
         id:4,
-        intro:'Security of your data',
-        paragraph:'Every personal Information you entered is confidential and protected',
+        intro:i18next.t('accordeon4Into') as string,
+        paragraph:i18next.t('accordeon4Paragraph') as string,
     },
 ]

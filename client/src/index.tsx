@@ -15,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store} >
     <PersistGate loading={null} persistor={persistor} >
-      <App />
+      <React.Suspense fallback="Loading">
+        <App />
+      </React.Suspense>
     </PersistGate>
   </Provider>
 );

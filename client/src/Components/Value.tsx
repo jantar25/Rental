@@ -1,4 +1,5 @@
 import React,{useState} from 'react' 
+import i18next from 'i18next';
 import { TiPointOfInterestOutline,TiCancel } from 'react-icons/ti';
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai';
 import { IoIosStats } from 'react-icons/io';
@@ -28,12 +29,11 @@ const Value = () => {
                 </div>
             </div>
             <div className="flex-1">
-                <h3 className="text-orange-600 text-lg font-[600]">Our Value</h3>
-                <h1 className="text-purple-900 my-2 text-3xl font-[700]">Value we give to you<span className="text-pink-500 ">.</span></h1>
+                <h3 className="text-orange-600 text-lg font-[600]">{i18next.t('value')as string}</h3>
+                <h1 className="text-purple-900 my-2 text-3xl font-[700]">{i18next.t('valueIntro')as string}<span className="text-pink-500 ">.</span></h1>
                 <div className='w-[80px] h-[5px] bg-gradient-to-r from-purple-400 via-pink-500 to-[#FF8A71] 
                     shadow-lg mb-[5px]'/>
-                <p className="mt-2 text-gray-400 md:w-2/3 text-sm">We are always ready to help by providing the best service for you.
-                We believe a good place to live can make your life better.</p>
+                <p className="mt-2 text-gray-400 md:w-2/3 text-sm">{i18next.t('valueSentance')as string}</p>
                 <div className="mt-4 lg:w-3/4 grid gap-2 ">
                     {Accodions.map((Accodion) => 
                     <div className="shadow-lg p-4" key={Accodion.id}>
