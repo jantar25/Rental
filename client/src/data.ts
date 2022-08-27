@@ -119,21 +119,21 @@ export const OurMembers : Member[] = [
         names:'Glody Bulambo',
         image:Client1,
         title:"CEO and Founder",
-        comment:"It never too late to build something amazing"
+        comment:i18next.t('member1Comment') as string
     },
     {
         id:2,
         names:'Karen Anne',
         image:Client4,
         title:"Chief Director",
-        comment:"We work as we live"
+        comment:i18next.t('member2Comment') as string
     },
     {
         id:3,
         names:'Angel Marie',
         image:Client5,
         title:"Chief Commissioners",
-        comment:"Nothing worth a wonderfull day on work"
+        comment:i18next.t('member3Comment') as string
     },
 ]
 
