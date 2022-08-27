@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import decode from 'jwt-decode';
-import { Link } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaKey,FaSignOutAlt } from 'react-icons/fa';
 import { BsSignpostSplitFill } from 'react-icons/bs';
 import {landLordLogoutDone} from '../Redux/apiCalls'
@@ -53,49 +53,51 @@ const Navbar = () => {
     }
 
     const language = localStorage.getItem('Language') || 'en'
+    const navLinkActive = "bg-blue-300 rounded-full"
+    const LinkActive = "border-blue-300 border-b-4"
   return (
     <div className={`sticky top-0 z-30 bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 py-4  ${navbar? 'bg-[#000]' : 'bg-transparent'}`} >
         <div className='flex flex-col'>
             <div className='flex items-center justify-between'>
-                <Link to='/'>
+                <NavLink to='/'>
                     <div className='flex items-center text-orange-400'>
                         <FaHome style={{fontSize:'25px'}}/>
                         <h1 className='text-2xl font-[700] ml-2 text-white'>REN<span className='text-orange-400'>TAL</span></h1>
                     </div>
-                </Link>
+                </NavLink>
                 <div className='hidden md:flex w-1/3 justify-center'>
-                    <Link to='/residences/All'>
-                        <p className='mx-2 font-[600]'>{i18next.t('residence')as string}</p>
-                    </Link>
-                    <Link to='/about'>
-                        <p className='mx-2 font-[600]'>{i18next.t('about')as string}</p>
-                    </Link>
-                    <Link to='/contacts'>
-                        <p className='mx-2 font-[600]'>{i18next.t('contacts')as string}</p>
-                    </Link>
+                    <NavLink to='/residences/All' className={({isActive}) => isActive? LinkActive : ""}>
+                        <p className='m-2 font-[600]'>{i18next.t('residence')as string}</p>
+                    </NavLink>
+                    <NavLink to='/about' className={({isActive}) => isActive? LinkActive : ""}>
+                        <p className='m-2 font-[600]'>{i18next.t('about')as string}</p>
+                    </NavLink>
+                    <NavLink to='/contacts' className={({isActive}) => isActive? LinkActive : ""}>
+                        <p className='m-2 font-[600]'>{i18next.t('contacts')as string}</p>
+                    </NavLink>
                 </div>
                 <div className=' md:hidden bg-white fixed bottom-2 text-black left-0 right-0 w-[95%] sm:w-[60%] mx-auto shadow shadow-black rounded-md px-8 py-2'>
                     <ul className='flex items-center justify-between'>
-                        <Link to='/'>
-                            <li className='bg-blue-300 w-[33px] h-[33px] flex items-center justify-center rounded-full'>
+                        <NavLink to='/' className={({isActive}) => isActive? navLinkActive : ""}>
+                            <li className='w-[33px] h-[33px] flex items-center justify-center'>
                                 <FaHome style={{fontSize:'20px',color:'#002853'}} />
                             </li>
-                        </Link>
-                        <Link to='/residences/All'>
-                            <li>
+                        </NavLink>
+                        <NavLink to='/residences/All' className={({isActive}) => isActive? navLinkActive : ""}>
+                            <li className='w-[33px] h-[33px] flex items-center justify-center'>
                                 <FaBuilding style={{fontSize:'20px',color:'#002853'}} />
                             </li>
-                        </Link>
-                        <Link to='/about'>
-                            <li>
+                        </NavLink>
+                        <NavLink to='/about' className={({isActive}) => isActive? navLinkActive : ""}>
+                            <li className='w-[33px] h-[33px] flex items-center justify-center'>
                                 <FaLightbulb style={{fontSize:'20px',color:'#002853'}} />
                             </li>
-                        </Link>
-                        <Link to='/contacts'>
-                            <li>
+                        </NavLink>
+                        <NavLink to='/contacts' className={({isActive}) => isActive? navLinkActive : ""}>
+                            <li className='w-[33px] h-[33px] flex items-center justify-center'>
                                 <FaPhone style={{fontSize:'20px',color:'#002853'}} />
                             </li>
-                        </Link>
+                        </NavLink>
                     </ul>
                 </div>
                 <div className='flex items-center justify-around'>
