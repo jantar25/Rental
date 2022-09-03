@@ -1,4 +1,5 @@
 import React,{useEffect, useState} from 'react'
+import i18next from 'i18next';
 import { useSelector } from 'react-redux';
 import { storage } from '../Firebase/firebase'
 import {useDispatch} from 'react-redux'
@@ -116,7 +117,7 @@ const LandLordActivity = () => {
       <Navbar />
       <div className="my-8 p-2 md:px-8">
         <button className='flex items-center bg-[#002853] text-white my-8 font-[600] px-6 py-2 rounded' 
-          onClick={()=>setToggleCreate(!toggleCreate)}>ADD NEW PROPERTY
+          onClick={()=>setToggleCreate(!toggleCreate)}>{i18next.t('addProperty')as string}
           {toggleCreate? <AiOutlineCaretDown style={{fontSize:'20px'}}/>
           : <AiOutlineCaretUp style={{fontSize:'20px'}}/>} 
         </button>
@@ -213,7 +214,7 @@ const LandLordActivity = () => {
       </div>}
       
       <div className="my-8">
-        <h1 className="text-lg text-orange-600 font-[700]">Your Properties are listed here:</h1>
+        <h1 className="text-lg text-orange-600 font-[700]">{i18next.t('propertiesList')as string}</h1>
         <div className="">
           <LandlordProperties />
         </div>

@@ -1,4 +1,5 @@
 import React,{useEffect, useState} from 'react'
+import i18next from 'i18next';
 import {useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -147,24 +148,24 @@ const Residence = () => {
               <img src={residence.OtherImages[0]} alt="MainImg" className="w-full h-full object-cover rounded-lg" />
             </div>
             <div className="flex-1 p-2 h-[450px] overflow-auto">
-              <h2 className="text-2xl font-[600] text-orange-400">Property Details:</h2>
+              <h2 className="text-2xl font-[600] text-orange-400">{i18next.t('propertyDetails')as string}</h2>
               <div className="">
                 <button className="px-2 py-1 bg-gray-800 text-white rounded font-[600] text-sm my-2" onClick={()=>setToggleMap(true)}>
-                  View Map
+                {i18next.t('mapview')as string}
                 </button>
-                <div className="text-gray-500 my-2">Status: {residence.Avaiable ? (
-                  <span className='text-lg font-[700] text-green-500'>Available</span>
+                <div className="text-gray-500 my-2">{i18next.t('status')as string} {residence.Avaiable ? (
+                  <span className='text-lg font-[700] text-green-500'>{i18next.t('available')as string} </span>
                 ) : (
-                  <span className='text-lg font-[700] text-red-500'>Occupied</span>
+                  <span className='text-lg font-[700] text-red-500'>{i18next.t('occupied')as string} </span>
                 )}
               </div>
-                <p className="text-gray-500 my-2">Address: <span className='font-[600]'>{residence.address}/{residence.District}</span></p>
-                <p className="text-gray-500 my-2">Price/Month: <span className='font-[600] text-orange-400 text-lg'>{residence.price} Frw</span></p>
-                <p className="text-gray-500 my-2">Living Room: <span className='font-[600] text-gray-700 text-lg'>{residence.Livingrooms}</span></p>
-                <p className="text-gray-500 my-2">Bed Room: <span className='font-[600] text-gray-700 text-lg'>{residence.Bedroom}</span></p>
-                <p className="text-gray-500 my-2">Bath Room: <span className='font-[600] text-gray-700 text-lg'>{residence.BathRooms}</span></p>
-                <p className="text-gray-500 my-2">Kitchen: <span className='font-[600] text-gray-700 text-lg'>{residence.Kitchen}</span></p>
-                <p className="text-gray-500 my-2">Floors: <span className='font-[600] text-gray-700 text-lg'>{residence.Floors}</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('address')as string}<span className='font-[600]'>{residence.address}/{residence.District}</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('price')as string}<span className='font-[600] text-orange-400 text-lg'>{residence.price} Frw</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('livingRoom')as string}<span className='font-[600] text-gray-700 text-lg'>{residence.Livingrooms}</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('bedRoom')as string}<span className='font-[600] text-gray-700 text-lg'>{residence.Bedroom}</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('bathRoom')as string}<span className='font-[600] text-gray-700 text-lg'>{residence.BathRooms}</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('kitchen')as string}<span className='font-[600] text-gray-700 text-lg'>{residence.Kitchen}</span></p>
+                <p className="text-gray-500 my-2">{i18next.t('floor')as string}<span className='font-[600] text-gray-700 text-lg'>{residence.Floors}</span></p>
                 <p className="text-gray-500 my-2">{residence.Description}</p>
               </div>
             </div>

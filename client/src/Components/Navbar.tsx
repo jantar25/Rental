@@ -134,16 +134,16 @@ const Navbar = () => {
                                     <Link to='/profile'>
                                         <button className="flex items-center text-white font-Manrope my-1 text-base" onClick={menu}>
                                             <FaKey />
-                                            <span className='ml-2'>Account</span></button>
+                                            <span className='ml-2'>{i18next.t('account')as string}</span></button>
                                     </Link>
                                     <Link to='/activity'>
                                         <button className="flex items-center text-white font-Manrope my-1 text-base mb-4" onClick={menu}>
                                             <BsSignpostSplitFill />
-                                            <span className='ml-2'>Activity</span></button>
+                                            <span className='ml-2'>{i18next.t('activity')as string}</span></button>
                                     </Link>
                                     <hr />
                                     <button type='button' className="flex items-center text-lg text-[#FF4820] font-[800] mt-4" onClick={Logout}>
-                                       <FaSignOutAlt /><span className='ml-2'>Sign Out</span></button>
+                                       <FaSignOutAlt /><span className='ml-2'>{i18next.t('logOut')as string}</span></button>
                                 </div>
                             </div>
                         </div>

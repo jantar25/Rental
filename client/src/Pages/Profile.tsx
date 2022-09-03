@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import i18next from 'i18next';
 import { useSelector,useDispatch } from 'react-redux';
 import { BsCamera } from 'react-icons/bs'
 import { MdModeEditOutline } from 'react-icons/md';
@@ -90,18 +91,16 @@ const Profile = () => {
                 <input className='w-full text-black text-[16px] px-2 py-1' defaultValue={landLord.names} 
                 onChange={(e)=>setNames(e.target.value)} />
                 <div className='flex justify-between text-[15px] mt-2 px-4'>
-                  <button className='text-green-500 font-[700]' onClick={handleEditname}>Edit</button>
-                  <button className='text-red-500 font-[700]' onClick={() => setToggleEditName(false)}>Cancel</button>
+                  <button className='text-green-500 font-[700]' onClick={handleEditname}>{i18next.t('edit')as string}</button>
+                  <button className='text-red-500 font-[700]' onClick={() => setToggleEditName(false)}>{i18next.t('cancel')as string}</button>
                 </div>
               </div>
               }
           </div>
           <p className='font-[300] mb-4 text-gray-500'>{landLord.email}</p>
-          <p className='text-gray-400 text-center mb-8 text-sm w-2/3'>
-            This is not your username or pin. This name will be visible to your Rental customers
-          </p>
+          <p className='text-gray-400 text-center mb-8 text-sm w-2/3'>{i18next.t('profileText')as string}</p>
           <div className="flex items-center my-2 text-gray-400">
-            <span className='mr-4'>Portable:</span> 
+            <span className='mr-4'>{i18next.t('portable')as string}</span> 
             <span className='font-[700] mr-8 text-gray-700'>{landLord.line1}</span>
             <MdModeEditOutline style={{fontSize:'20px',color:'#002853',cursor:"pointer"}}
             onClick={() => setToggleEditLine1(true)} />
@@ -110,14 +109,14 @@ const Profile = () => {
                 <input className='w-full text-black text-[16px] px-2 py-1' defaultValue={landLord.line1} 
                 onChange={(e)=>setLine1(e.target.value)} />
                 <div className='flex justify-between text-[15px] mt-2 px-4'>
-                  <button className='text-green-500 font-[700]' onClick={handleEditline1}>Edit</button>
-                  <button className='text-red-500 font-[700]' onClick={() => setToggleEditLine1(false)}>Cancel</button>
+                  <button className='text-green-500 font-[700]' onClick={handleEditline1}>{i18next.t('edit')as string}</button>
+                  <button className='text-red-500 font-[700]' onClick={() => setToggleEditLine1(false)}>{i18next.t('cancel')as string}</button>
                 </div>
               </div>
               }
           </div>
           <div className="flex items-center my-2 text-gray-400">
-            <span className='mr-4'>Home:</span> 
+            <span className='mr-4'>{i18next.t('homePhone')as string}</span> 
             <span className='font-[700] mr-8 text-gray-700'>{landLord.line2}</span>
             <MdModeEditOutline style={{fontSize:'20px',color:'#002853',cursor:"pointer"}}
              onClick={() => setToggleEditLine2(true)} />
@@ -126,8 +125,8 @@ const Profile = () => {
                 <input className='w-full text-black text-[16px] px-2 py-1' defaultValue={landLord.line2} 
                 onChange={(e)=>setLine2(e.target.value)} />
                 <div className='flex justify-between text-[15px] mt-2 px-4'>
-                  <button className='text-green-500 font-[700]' onClick={handleEditline2}>Edit</button>
-                  <button className='text-red-500 font-[700]' onClick={() => setToggleEditLine2(false)}>Cancel</button>
+                  <button className='text-green-500 font-[700]' onClick={handleEditline2}>{i18next.t('edit')as string}</button>
+                  <button className='text-red-500 font-[700]' onClick={() => setToggleEditLine2(false)}>{i18next.t('cancel')as string}</button>
                 </div>
               </div>
               }

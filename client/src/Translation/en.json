@@ -107,5 +107,30 @@
     "confirmPasswordPlaceholder":"Confirm password",
     "privacyPolicy":"By creating an account,I consent to the processing of my personal data in accordance with the",
     "privacyPolicyText":"PRIVACY POLICY.",
-    "haveNoAccount":"Do you have an account?"
+    "haveNoAccount":"Do you have an account?",
+    "account":"Account",
+    "activity":"Activity",
+    "logOut":"Sign Out",
+    "profileText":"This is not your username or pin. This name will be visible to your Rental customers",
+    "edit":"Edit",
+    "cancel":"Cancel",
+    "portable":"Portable:",
+    "homePhone":"Home:",
+    "addProperty":"ADD NEW PROPERTY",
+    "propertiesList":"Your Properties are listed here:",
+    "propertyDetails":"Property Details:",
+    "mapview":"View Map",
+    "status":"Status: ",
+    "available":"Available",
+    "occupied":"Occupied",
+    "address":"Address: ",
+    "price":"Price/Month: ",
+    "livingRoom":"Living Room: ",
+    "bedRoom":"Bed Room: ",
+    "bathRoom":"Bath Room: ",
+    "kitchen":"Kitchen: ",
+    "floor":"Floors: "
+
+
+
 } 
