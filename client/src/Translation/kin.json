@@ -88,5 +88,25 @@
     "videoCall":"Duhamagare na videwo",
     "videoCallBtn":"Duhamagare na videwo none",
     "message":"Twandikire SMS ",
-    "messageBtn":"Twandikire SMS none"      
+    "messageBtn":"Twandikire SMS none",
+    "landLordLogin":"Ufite amazu akodeshwa?",
+    "landLordLoginIntro":"Ushaka abantu ba kodesha amazu yawe",
+    "landLordLoginIntro2":"Iyandikishe unashyireho amazu yawe akodeshwa",
+    "passwordPlaceholder":"Ijambo ry'ibanga",
+    "logging":"Kwinjira ...",
+    "login":"Injira",
+    "haveAccount":"Nta konti ugira?",
+    "register":"Iyandikishe",
+    "registering":"Kwiyandikisha ...",
+    "landLord":"Nyiri Inzu!",
+    "landLordRegistor":"Uzuza iyi fishi una yohereze",
+    "landLordRegistorIntro":"Tangira ku menyekanisha inzu zawe zikodeshwa hamwe na bantu barenga ibihumbi bazi keneye",
+    "namesPlaceholder":"Amazina",
+    "phone1Placeholder":"Inumero ya telephone 1",
+    "phone2Placeholder":"Inumero ya telephone 1",
+    "confirmPasswordPlaceholder":"Subiramo Ijambo ry'ibanga",
+    "privacyPolicy":"Gufungura konti, Nemeye gukurikiza",
+    "privacyPolicyText":"AMATEGEKO N'AMABWIRIZA.",
+    "haveNoAccount":"Ufite konti?"
+
 }

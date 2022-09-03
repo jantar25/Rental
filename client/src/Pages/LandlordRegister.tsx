@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import i18next from 'i18next';
 import { useNavigate } from "react-router"
 import { Link } from 'react-router-dom'
 import { publicRequest } from '../requestMethode'
@@ -60,27 +61,26 @@ const handleRegisterLandLord= async (e:any)=>{
         <div className=" flex justify-center my-8">
           <div className="bg-gray-200 rounded-lg p-4 md:w-2/3">
               <div className="">
-                  <h2 className="text-xl text-[#002853] font-[600]">Dear LandLord!</h2>
-                  <p className="text-2xl text-orange-500 font-[700] my-2">Please Fill the form and submit</p>
-                  <span className="text-md text-[#040C18] font-[400]">Start share your properties with more than thousands people in need</span>
+                  <h2 className="text-xl text-[#002853] font-[600]">{i18next.t('landLord')as string}</h2>
+                  <p className="text-2xl text-orange-500 font-[700] my-2">{i18next.t('landLordRegistor')as string}</p>
+                  <span className="text-md text-[#040C18] font-[400]">{i18next.t('landLordRegistorIntro')as string}</span>
               </div>
               <form className="mt-4">
                   <div className="flex flex-col mb-2">
-                      <input type="text" placeholder='Names' className="px-4 py-2 my-2 rounded" name='names' value={names} onChange={handleChange}/>
-                      <input type="text" placeholder='Email' className="px-4 py-2 my-2 rounded" name='email' value={email} onChange={handleChange}/>
-                      <input type="text" placeholder='Phone 1' className="px-4 py-2 my-2 rounded" name='phone1' value={phone1} onChange={handleChange}/>
-                      <input type="text" placeholder='Phone 2' className="px-4 py-2 my-2 rounded" name='phone2' value={phone2} onChange={handleChange}/>
-                      <input type="password" placeholder='Password' className='px-4 py-2 my-2 rounded' name='password' value={password} onChange={handleChange}/>
-                      <input type="password" placeholder='Confirm password' className='px-4 py-2 my-2 rounded' name='confirmedPassword' value={confirmedPassword} onChange={handleChange}/>
+                      <input type="text" placeholder={i18next.t('namesPlaceholder')as string} className="px-4 py-2 my-2 rounded" name='names' value={names} onChange={handleChange}/>
+                      <input type="text" placeholder={i18next.t('emailPlaceholder')as string} className="px-4 py-2 my-2 rounded" name='email' value={email} onChange={handleChange}/>
+                      <input type="text" placeholder={i18next.t('phone1Placeholder')as string} className="px-4 py-2 my-2 rounded" name='phone1' value={phone1} onChange={handleChange}/>
+                      <input type="text" placeholder={i18next.t('phone2Placeholder')as string} className="px-4 py-2 my-2 rounded" name='phone2' value={phone2} onChange={handleChange}/>
+                      <input type="password" placeholder={i18next.t('passwordPlaceholder')as string} className='px-4 py-2 my-2 rounded' name='password' value={password} onChange={handleChange}/>
+                      <input type="password" placeholder={i18next.t('confirmPasswordPlaceholder')as string} className='px-4 py-2 my-2 rounded' name='confirmedPassword' value={confirmedPassword} onChange={handleChange}/>
                   </div>
                   {error? <p className='text-red-900 font-bold text-sm my-2'>{`*${landLord.error}*`}</p> : null}
-                  <p className='text-sm my-2'>By creating an account,I consent to the processing of my personal data 
-                in accordance with the <b>PRIVACY POLICY</b></p>
-                  <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg" onClick={handleRegisterLandLord}>{loading?'Registering ...' : 'Register'}</button>
+                  <p className='text-sm my-2'>{i18next.t('privacyPolicy')as string}<b className='ml-1'>{i18next.t('privacyPolicyText')as string}</b></p>
+                  <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg" onClick={handleRegisterLandLord}>{loading? i18next.t('registering')as string : i18next.t('register')as string}</button>
                   <div className="flex items-center mt-4">
-                    <p className="text-[13px] text-gray-600">Do you have an account?
+                    <p className="text-[13px] text-gray-600">{i18next.t('haveNoAccount')as string}
                         <Link to='/login'>
-                            <span className="text-[#002853] ml-2 font-[700] text-sm cursor-pointer">Login</span>
+                            <span className="text-[#002853] ml-2 font-[700] text-sm cursor-pointer">{i18next.t('login')as string}</span>
                         </Link>
                     </p>
                 </div>

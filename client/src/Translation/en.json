@@ -88,6 +88,24 @@
     "videoCall":"Video Call",
     "videoCallBtn":"Video Call Now",
     "message":"Message",
-    "messageBtn":"Message Now"
-
+    "messageBtn":"Message Now",
+    "landLordLogin":"Are you a LandLord?",
+    "landLordLoginIntro":"Seeking for people to rent your house",
+    "landLordLoginIntro2":"Please Sign in and share your properties",
+    "passwordPlaceholder":"Password",
+    "logging":"Logging ...",
+    "login":"Login",
+    "haveAccount":"Don't you have an account?",
+    "register":"Register",
+    "registering":"Registering ...",
+    "landLord":"Dear LandLord!",
+    "landLordRegistor":"Please Fill the form and submit",
+    "landLordRegistorIntro":"Start share your properties with more than thousands people in need",
+    "namesPlaceholder":"Names",
+    "phone1Placeholder":"Phone 1",
+    "phone2Placeholder":"Phone 2",
+    "confirmPasswordPlaceholder":"Confirm password",
+    "privacyPolicy":"By creating an account,I consent to the processing of my personal data in accordance with the",
+    "privacyPolicyText":"PRIVACY POLICY.",
+    "haveNoAccount":"Do you have an account?"
 } 
