@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import i18next from 'i18next';
 import { useSelector } from 'react-redux';
 import { storage } from '../../Firebase/firebase'
 import {useDispatch} from 'react-redux'
@@ -97,59 +98,59 @@ const LandlordEditProperty = ({property}:any) => {
 
   return (
         <div className='border border-[#04AA6D] rounded p-2 bg-gray-200'>
-          <h1 className='text-xl text-orange-600'>Update Property</h1>
+          <h1 className='text-xl text-orange-600'>{i18next.t('updateProperty')as string}</h1>
           <form className='my-4 flex flex-col md:flex-row items-center justify-between'>
               <div className="flex-1 w-full md:mr-4">
                 <div className='flex flex-col my-2'>
-                    <label>Title</label>
+                    <label>{i18next.t('title')as string}</label>
                     <input className='px-4 py-2 my-2 rounded' name="title" value={title} type="text" onChange={handleChange} />
                 </div>
                 <div className='flex flex-col my-2'>
-                      <label>Description</label>
+                      <label>{i18next.t('description')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="Description" value={Description} type="text" onChange={handleChange}  />
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>Address</label>
+                      <label>{i18next.t('address')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="address" value={address} type="text" onChange={handleChange}  />
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>Price</label>
+                      <label>{i18next.t('price')as string}</label>
                       <input className='px-4 py-2 my-2 rounded'name="price" value={price} type="number" onChange={handleChange} />
                   </div>
               </div>
               <div className='flex-1 w-full md:mr-4'>
                   <div className='flex flex-col my-2'>
-                      <label>Bedroom</label>
+                      <label>{i18next.t('bedRoom')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="Bedroom" value={Bedroom} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>Livingroom</label>
+                      <label>{i18next.t('livingRoom')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="Livingrooms" value={Livingrooms} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>BathRoom</label>
+                      <label>{i18next.t('bathRoom')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="BathRooms" value={BathRooms} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>Kitchen</label>
+                      <label>{i18next.t('kitchen')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="Kitchen" value={Kitchen} type="number" onChange={handleChange} />
                   </div>
               </div>
               <div className='flex-1 w-full md:ml-4'>
                   <div className='flex flex-col my-2'>
-                      <label>Floor</label>
+                      <label>{i18next.t('floor')as string}</label>
                       <input className='px-4 py-2 my-2 rounded' name="Floors" value={Floors} type="number" onChange={handleChange} />
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>Status</label>
+                      <label>{i18next.t('status')as string}</label>
                       <select className='px-4 py-2 my-2 rounded' name="Avaiable" value={Avaiable} onChange={handleChange} >
                           <option value="">Select</option>
-                          <option value="true">Available</option>
-                          <option value="false">Occupied</option>
+                          <option value="true">{i18next.t('available')as string}</option>
+                          <option value="false">{i18next.t('occupied')as string}</option>
                       </select>
                   </div>
                   <div className='flex flex-col my-2'>
-                      <label>Disctict</label>
+                      <label>{i18next.t('district')as string}</label>
                       <select className='px-4 py-2 my-2 rounded' name="District" value={District} onChange={handleChange} >
                           <option value="">Select</option>
                           <option value="Nyarugenge">Nyarugenge</option>
@@ -159,9 +160,9 @@ const LandlordEditProperty = ({property}:any) => {
                   </div>
                   <div className="flex justify-between items-center">
                     <div className='flex flex-col my-2'>
-                        <label>Add Images</label>
+                        <label>{i18next.t('addImage')as string}</label>
                         <input className='rounded' type="file" id="file" multiple onChange={selectedImages} />
-                        <span className='font-[600] text-[12px]'>Up to 10 images</span>
+                        <span className='font-[600] text-[12px]'>{i18next.t('upto')as string}</span>
                     </div>
                   </div>
               </div>
@@ -181,7 +182,7 @@ const LandlordEditProperty = ({property}:any) => {
           </div>
           {eror? (<p className='text-red-500 font-[600] my-2'>{`*${inputs.eror}*`}</p>)
           : error? (<p className='text-red-500 font-[600] my-2'>{`*${error.payload}*`}</p>) : null}
-          <button className='py-2 px-8 my-4 bg-[#04AA6D] text-white rounded' onClick={handleClick} >{loading? 'Updating ...' : 'Update'}</button>
+          <button className='py-2 px-8 my-4 bg-[#04AA6D] text-white rounded' onClick={handleClick} >{loading? i18next.t('editing')as string : i18next.t('edit')as string}</button>
       </div>
   )
 }

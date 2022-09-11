@@ -129,8 +129,29 @@
     "bedRoom":"Bed Room: ",
     "bathRoom":"Bath Room: ",
     "kitchen":"Kitchen: ",
-    "floor":"Floors: "
-
-
-
+    "floor":"Floors: ",
+    "landlordContact":"Landlord Contact details:",
+    "landlordContactIntro":"Please use the details below to book or visit of the property.",
+    "booking":"Want to Book the Rent of this property?",
+    "bookingIntro1":"Please pay the equivalent of ",
+    "bookingMonth":"2(two)Months ",
+    "bookingIntro2":"via MTN Mobile money using the number ",
+    "bookingNumber":"0786120934 ",
+    "bookingInto3":"and send us the below request:",
+    "transactionNumber":"Transaction number",
+    "book":"Book",
+    "bookProcess":"Booking...",
+    "recommended":"Recommended Residences:",
+    "noProperty":"There is no related Properties",
+    "propertyTaken":"This Property is not Available for now",
+    "title":"Title",
+    "description":"Description",
+    "district":"District",
+    "addImage":"Add Images",
+    "upto":"Up to 10 Images",
+    "nb":"NB: ",
+    "note":"The first entering image will be used for advertising the property",
+    "creating":"Creating...",
+    "updateProperty":"Update Property",
+    "editing":"Editing..."
 } 

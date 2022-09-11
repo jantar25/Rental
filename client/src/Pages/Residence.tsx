@@ -204,8 +204,8 @@ const Residence = () => {
         </div>
         <div className="mt-8 p-2 md:p-8 bg-purple-50 rounded">
             <div className="mb-4">
-              <h1 className="text-2xl font-[600] text-orange-400">Landlord Contact details:</h1>
-              <p className="text-gray-500">Please use the details below to book or visit of the property.</p>
+              <h1 className="text-2xl font-[600] text-orange-400">{i18next.t('landlordContact')as string}</h1>
+              <p className="text-gray-500">{i18next.t('landlordContactIntro')as string}</p>
             </div>
             <div className='flex items-center justify-start flex-col lg:flex-row'>
               <div className="flex-1 flex flex-col sm:flex-row items-center p-2">
@@ -213,24 +213,24 @@ const Residence = () => {
                   <img src={residenceOwner.img? residenceOwner.img: avatar} alt="profileimg" className="w-full h-full rounded-full object-cover" />
                 </div>
                 <div className="">
-                  <p className="text-gray-500 my-2">Names: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.names}</span></p>
-                  <p className="text-gray-500 my-2">Call: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.line1}</span></p>
-                  <p className="text-gray-500 my-2">Mobile Money: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.line2}</span></p>
-                  <p className="text-gray-500 my-2">Email: <span className='font-[600] text-gray-700 text-lg'>{residenceOwner.email}</span></p>
+                  <p className="text-gray-500 my-2">{i18next.t('namesPlaceholder')as string}:<span className='font-[600] text-gray-700 text-lg'>{residenceOwner.names}</span></p>
+                  <p className="text-gray-500 my-2">{i18next.t('phone1Placeholder')as string}:<span className='font-[600] text-gray-700 text-lg'>{residenceOwner.line1}</span></p>
+                  <p className="text-gray-500 my-2">{i18next.t('phone2Placeholder')as string}:<span className='font-[600] text-gray-700 text-lg'>{residenceOwner.line2}</span></p>
+                  <p className="text-gray-500 my-2">{i18next.t('emailPlaceholder')as string}:<span className='font-[600] text-gray-700 text-lg'>{residenceOwner.email}</span></p>
                 </div>
               </div>
               {residence.Avaiable ?(
               <div className='flex-1 p-2 bg-purple-300 rounded sm:w-3/4 lg:w-full'>
                 <div>
-                  <h2 className='font-[700] text-[#002853] text-[20px] my-2'>Want to Book the Rent of this property?</h2>
-                  <p className='text-[13px] text-gray-800'>Please pay the equivalent of <strong>2(two)Months</strong> via MTN Mobile money using the number marked as 
-                  <strong> Mobile Money</strong> and send us the below request:</p>
+                  <h2 className='font-[700] text-[#002853] text-[20px] my-2'>{i18next.t('booking')as string}</h2>
+                  <p className='text-[13px] text-gray-800'>{i18next.t('bookingIntro1')as string}<strong>{i18next.t('bookingMonth')as string}</strong>
+                  {i18next.t('bookingIntro2')as string}<strong>{i18next.t('bookingNumber')as string}</strong>{i18next.t('bookingInto3')as string}</p>
                 </div>
                 <form className='mt-2 p-1 rounded-lg bg-purple-200' onSubmit={handleBooking}>
                   <div className='flex flex-col'>
-                    <input className='my-1 p-1 rounded' placeholder='Names' name="names" value={names} type="text" onChange={handleChange} />
-                    <input className='my-1 p-1 rounded' placeholder='Phone Number' name="number" value={number} onChange={handleChange}  />
-                    <input className='my-1 p-1 rounded' placeholder='Transaction Number' name="transactionId" value={transactionId} onChange={handleChange}  />
+                    <input className='my-1 p-1 rounded' placeholder={i18next.t('namesPlaceholder')as string} name="names" value={names} type="text" onChange={handleChange} />
+                    <input className='my-1 p-1 rounded' placeholder={i18next.t('phone1Placeholder')as string} name="number" value={number} onChange={handleChange}  />
+                    <input className='my-1 p-1 rounded' placeholder={i18next.t('transactionNumber')as string} name="transactionId" value={transactionId} onChange={handleChange}  />
                   </div>
                   {eror? (<p className='text-red-500 font-[600] my-2'>{`*${bookingInputs.eror}*`}</p>) : null}
                   {feedback && 
@@ -238,22 +238,22 @@ const Residence = () => {
                     <p className={` text-white font-[600] my-2 p-2 rounded text-center`}>{feedback}</p>
                     <AiOutlineClose style={{color:'white',fontSize:'20px',cursor:'pointer'}} onClick={()=>setFeedback(null)} />
                   </div>}
-                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]' type='submit' >{loading? 'Booking...' : 'Book Now'}</button>
+                  <button className='mt-3 px-3 py-1 rounded-md text-white font-[700] bg-[#002853]' type='submit' >{loading? i18next.t('bookProcess')as string : i18next.t('book')as string}</button>
                 </form>
               </div>
               ) : (
                 <div className='flex-1 p-2 bg-purple-200 rounded sm:w-3/4 lg:w-full'>
-                  <p className='text-xl text-red-700 font-[700] text-center'>This Property is not Available for now</p>
+                  <p className='text-xl text-red-700 font-[700] text-center'>{i18next.t('propertyTaken')as string}</p>
                 </div>
               )}
             </div>
           </div>
         <div className="">
-          <h1 className="text-2xl mt-12 mb-4 font-[700] text-[#002853]">Recommended Residences:</h1>
+          <h1 className="text-2xl mt-12 mb-4 font-[700] text-[#002853]">{i18next.t('recommended')as string}</h1>
           <div className="flex flex-wrap items-center justify-center">
             {filteredRecomendedResidences?.length > 0? filteredRecomendedResidences.slice(0,4).map((recomendedResidence:any) =>(
               <AvailableResidence residencesAvailable={recomendedResidence} key={recomendedResidence._id} />
-            )) : <p className='text-center m-4 text-orange-500 font-[600] text-lg'>There is no related Properties</p>}
+            )) : <p className='text-center m-4 text-orange-500 font-[600] text-lg'>{i18next.t('noProperty')as string}</p>}
           </div>
         </div>
       </div>

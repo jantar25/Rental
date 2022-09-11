@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import i18next from 'i18next';
 import {deletePropety} from '../../../Redux/apiCalls'
 import {useDispatch} from 'react-redux';
 import { AiFillDelete,AiOutlineClose } from 'react-icons/ai';
@@ -34,15 +35,15 @@ const LandLordProperty = ({property}:any) => {
                     <p className="font-[900] text-[#002853]">Rwf {property.price}</p>
                     <div className=" flex flex-col justify-between text-neutral-600 text-sm">
                         <div className=" flex items-center my-2">
-                            <h3 className="mr-1">District:</h3>
+                            <h3 className="mr-1">{i18next.t('address')as string}</h3>
                             <p className='text-md font-[700]'>{property.address}/{property.District}</p>
                         </div>
                         <div className="flex items-center">
-                            <h3 className="mr-1">Status:</h3>
+                            <h3 className="mr-1">{i18next.t('status')as string}</h3>
                             <p>{property.Avaiable ? (
-                                <span className='text-md font-[700] text-green-500'>Available</span>
+                                <span className='text-md font-[700] text-green-500'>{i18next.t('available')as string}</span>
                                     ) : (
-                                <span className='text-md font-[700] text-red-500'>Occupied</span>
+                                <span className='text-md font-[700] text-red-500'>{i18next.t('occupied')as string}</span>
                                     )}</p>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ const LandLordProperty = ({property}:any) => {
                         </div>
                     </div>
                     <div className="flex justify-between items-center py-4 px-2">
-                        <button className='bg-[#002853] text-white font-[600] px-2 rounded' onClick={handleToggleEdit}>Edit</button>
+                        <button className='bg-[#002853] text-white font-[600] px-2 rounded' onClick={handleToggleEdit}>{i18next.t('edit')as string}</button>
                         <AiFillDelete style={{'color':'red','cursor':'pointer',"fontSize":'25px'}}
                         onClick={() => handleDelete(property._id)}/>            
                     </div>

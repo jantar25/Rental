@@ -1,7 +1,6 @@
 import axios from "axios";
 
 
-
 const BASE_URL = "https://kigalirental.herokuapp.com/api/";
 
 const currentToken = localStorage.getItem("persist:root")
