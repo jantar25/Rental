@@ -120,10 +120,10 @@
     "propertiesList":"Inzu zawe ziboneka hano: ",
     "propertyDetails":"Amakuru y'Inzu:",
     "mapview":"Reba kuri Map",
-    "status":"Imimerere: ",
+    "status":"Imimerere",
     "available":"Irahari",
     "occupied":"ntago ihari",
-    "address":"Adiresi: ",
+    "address":"Adiresi",
     "price":"Ibiciro ku Kwezi: ",
     "livingRoom":"Uruganiriro(Salon): ",
     "bedRoom":"Aho Kurara: ",
@@ -153,5 +153,12 @@
     "note":"Ishusho winjiza ya mbere niyo iri bugaragare kuri page ya mbere",
     "creating":"Fungura...",
     "updateProperty":"Hindura amakuru yinzu",
-    "editing":"Hindura..."
+    "editing":"Hindura...",
+    "bookings":"Izishurwe",
+    "exipired": "yarangiye",
+    "Uptodate":"Iri kugihe",
+    "transation":"Inzu Bishuye",
+    "Customer": "Umuclient",
+    "Date":"Igihe",
+    "Amount":"Amafaranga"
 }

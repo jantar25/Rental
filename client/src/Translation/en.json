@@ -120,10 +120,10 @@
     "propertiesList":"Your Properties are listed here:",
     "propertyDetails":"Property Details:",
     "mapview":"View Map",
-    "status":"Status: ",
+    "status":"Status ",
     "available":"Available",
     "occupied":"Occupied",
-    "address":"Address: ",
+    "address":"Address ",
     "price":"Price/Month: ",
     "livingRoom":"Living Room: ",
     "bedRoom":"Bed Room: ",
@@ -153,5 +153,12 @@
     "note":"The first entering image will be used for advertising the property",
     "creating":"Creating...",
     "updateProperty":"Update Property",
-    "editing":"Editing..."
+    "editing":"Editing...",
+    "bookings":"Bookings",
+    "exipired": "Expired",
+    "Uptodate":"Up to Date",
+    "transation":"Latest transactions",
+    "Customer": "Customer",
+    "Date":"Date",
+    "Amount":"Amount"
 } 

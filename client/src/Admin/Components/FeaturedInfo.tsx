@@ -4,7 +4,7 @@ import { adminRequest } from '../../requestMethode';
 
 
 const FeaturedInfo = () => {
-    const [income,setIncome] = useState([]);
+    const [income,setIncome] = useState<any>([]);
     const [percentage,setPercentage] = useState(0)
     
     useEffect(()=>{
@@ -12,6 +12,7 @@ const FeaturedInfo = () => {
         try {
           const res = await adminRequest.get("/messages/income");
           setIncome(res.data);
+          setPercentage((res.data[1]?.total *100)/res.data[0]?.total -100)
         } catch (error) {
           console.log(error)
         }
@@ -19,15 +20,18 @@ const FeaturedInfo = () => {
       getIncome();
     },[]);
 
-    const currentIncome:any  = income.reduce((currentTotal:any,item:any) =>{
-      return currentTotal = currentTotal > item._id ? currentTotal : item
-    },0)
+    console.log(income)
+    console.log(percentage)
+
+    // const currentIncome:any  = income.reduce((currentTotal:any,item:any) =>{
+    //   return currentTotal = currentTotal > item._id ? currentTotal : item
+    // },0)
     
  
-    useEffect(()=>{
-      const lastIncome:any = income.filter((item:any) => item._id === currentIncome._id - 1)
-      setPercentage(currentIncome.total *100/lastIncome[0]?.total)
-    },[income,currentIncome])
+    // useEffect(()=>{
+    //   const lastIncome:any = income.filter((item:any) => item._id === currentIncome._id - 1)
+    //   setPercentage((currentIncome.total *100)/lastIncome[0]?.total -100)
+    // },[income,currentIncome])
 
 
   return (
@@ -35,7 +39,7 @@ const FeaturedInfo = () => {
         <div className="bg-gradient-to-b from-[#002853] to-[#040C18] text-white rounded-lg p-2 w-[270px] m-1">
             <h3 className="text-lg font-[700]">Revenue</h3>
             <div className="flex my-2 items-center justify-between">
-                <h1 className="text-3xl">{currentIncome.total}<span className='text-orange-600 text-lg'>Rwf</span></h1>
+                <h1 className="text-3xl">{income[1]?.total}<span className='text-orange-600 text-lg'>Rwf</span></h1>
                 <div className="flex items-center">
                 <span className='mr-2'>{Math.floor(percentage)}{""} % </span>
                     {percentage<0? <AiOutlineArrowDown style={{ color: 'red' }} /> :
@@ -48,7 +52,7 @@ const FeaturedInfo = () => {
         <div className="bg-gradient-to-b from-[#002853] to-[#040C18] text-white rounded-lg p-2 w-[270px] m-1">
             <h3 className="text-lg font-[700]">Our Profit</h3>
             <div className="flex my-2 items-center justify-between">
-                <h1 className="text-3xl">{currentIncome.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
+                <h1 className="text-3xl">{income[1]?.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
                 <div className="flex items-center">
                 <span className='mr-2'>{Math.floor(percentage)}{""} % </span>
                     {percentage<0? <AiOutlineArrowDown style={{ color: 'red' }} /> :
@@ -61,7 +65,7 @@ const FeaturedInfo = () => {
         <div className="bg-gradient-to-b from-[#002853] to-[#040C18] text-white rounded-lg p-2 w-[270px] m-1">
             <h3 className="text-lg font-[700]">Landlords Due</h3>
             <div className="flex my-2 items-center justify-between">
-                <h1 className="text-3xl">{currentIncome.total-currentIncome.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
+                <h1 className="text-3xl">{income[1]?.total-income[1]?.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
                 <div className="flex items-center">
                 <span className='mr-2'>{Math.floor(percentage)}{""} % </span>
                     {percentage<0? <AiOutlineArrowDown style={{ color: 'red' }} /> :

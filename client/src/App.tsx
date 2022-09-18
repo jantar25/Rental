@@ -9,6 +9,7 @@ import Residence from './Pages/Residence';
 import Residences from './Pages/Residences';
 import Profile from './Pages/Profile';
 import LandLordActivity from './Pages/LandLordActivity';
+import LandlordBookings from './Pages/LandlordBookings';
 import AboutUs from './Pages/AboutUs';
 import ScrollToTop from './Components/scrollToTop';
 import LoginAdmin from './Admin/Pages/LoginAdmin';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element= {!landLord? <LandlordLogin /> : <Navigate to="/" />} />
         <Route path="/profile" element= {landLord? <Profile /> : <Navigate to="/" />} />
+        <Route path="/bookings" element= {landLord? <LandlordBookings /> : <Navigate to="/" />} />
         <Route path="/activity" element= {landLord? <LandLordActivity /> : <Navigate to="/" />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/residence/:property" element={<Residence />} />

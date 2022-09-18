@@ -1,12 +1,11 @@
 import React,{ useEffect, useMemo, useState } from 'react'
-import { useSelector } from 'react-redux'
 import FeaturedInfo from '../Components/FeaturedInfo'
 import Chart from '../Components/Chart'
 import { adminRequest } from '../../requestMethode'
 
+
 const Dashboard = () => {
   const [useStats,setUserStats] = useState<any>([]);
-
   const MONTHS = useMemo(
     ()=>[
       "Jan",
@@ -37,7 +36,6 @@ const Dashboard = () => {
     }
     getStats();
   },[MONTHS])
-
 
 
   return (

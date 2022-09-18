@@ -46,7 +46,7 @@ router.post('/',async (req, res) => {
 
 
 //GET ALL BOOKING HOUSE
-router.get("/",verifyTokenandAdmin,async (req:any,res:any)=>{
+router.get("/",async (req:any,res:any)=>{
   try{
       const newBooking =  await Booking.find();
       res.status(200).json(newBooking)

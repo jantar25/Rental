@@ -4,6 +4,7 @@ import decode from 'jwt-decode';
 import { NavLink,Link } from 'react-router-dom'
 import { FaHome,FaLightbulb,FaPhone,FaBuilding,FaKey,FaSignOutAlt } from 'react-icons/fa';
 import { BsSignpostSplitFill } from 'react-icons/bs';
+import {MdLibraryBooks} from 'react-icons/md';
 import {landLordLogoutDone} from '../Redux/apiCalls'
 import useClickOutside from './Hooks/useClickOutside'
 import i18next from 'i18next';
@@ -137,9 +138,14 @@ const Navbar = () => {
                                             <span className='ml-2'>{i18next.t('account')as string}</span></button>
                                     </Link>
                                     <Link to='/activity'>
-                                        <button className="flex items-center text-white font-Manrope my-1 text-base mb-4" onClick={menu}>
+                                        <button className="flex items-center text-white font-Manrope my-1 text-base" onClick={menu}>
                                             <BsSignpostSplitFill />
                                             <span className='ml-2'>{i18next.t('activity')as string}</span></button>
+                                    </Link>
+                                    <Link to='/bookings'>
+                                        <button className="flex items-center text-white font-Manrope my-1 text-base mb-4" onClick={menu}>
+                                        <MdLibraryBooks />
+                                        <span className='ml-2'>{i18next.t('bookings')as string}</span></button>
                                     </Link>
                                     <hr />
                                     <button type='button' className="flex items-center text-lg text-[#FF4820] font-[800] mt-4" onClick={Logout}>
