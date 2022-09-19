@@ -5,7 +5,7 @@ import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
 import { publicRequest } from '../requestMethode'
 import { format } from 'timeago.js';
-import { parse } from 'node:path/win32';
+
 
 const LandlordBookings = () => {
     const [orders,setOrders] = useState<any>([]);

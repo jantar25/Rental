@@ -1,5 +1,7 @@
 import { format } from 'timeago.js';
+import { adminRequest } from '../../requestMethode';
 import { useSelector } from 'react-redux';
+import { MdDelete } from 'react-icons/md';
 
 const AdminResidences = () => {
   const properties = useSelector((state:any) => state.properties.properties);
@@ -8,7 +10,14 @@ const AdminResidences = () => {
     return new window.Date(b.createdAt).getTime()-new window.Date(a.createdAt).getTime();
   });
 
-
+  const DeleteProperty = async (id:any) => {
+    try {
+      const res = await adminRequest.delete(`/landLordAuth/${id}`)
+    } catch (error) {
+      console.log(error)
+    }
+   
+  }
   
   return (
     <div className='flex flex-col items-center text-sm py-4 px-2 w-full'>
@@ -23,6 +32,7 @@ const AdminResidences = () => {
             <th className='text-center py-2'>District</th>
             <th className='text-center py-2'>Owner</th>
             <th className='text-center py-2'>Creation Date</th>
+            <th className='text-center py-2'>Check</th>
           </tr>
           { newProperties && newProperties.map((property:any)=>(
               <tr key={property._id} className=''>
@@ -37,6 +47,11 @@ const AdminResidences = () => {
                 <td className='border-solid text-center py-1'>{property.District}</td>
                 <td className='border-solid text-center py-1'>{property.OwnerDetails[0].names}</td>
                 <td className='border-solid text-center py-1'>{format(property.createdAt)}</td>
+                <td className='border-solid flex items-center justify-center py-1'>
+                  <div className="text-red-600">
+                    <MdDelete style={{fontSize:'20px',cursor:'pointer'}} onClick={() => DeleteProperty(property._id)}/>
+                  </div>
+                </td>
             </tr>
         )) } 
           </tbody>

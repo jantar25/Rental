@@ -64,7 +64,6 @@ export const LandLordLogin = async (dispatch:any,landLord:any) =>{
     try {
         const res = (await publicRequest.post("/landLordAuth/login",landLord));
         dispatch(landLordLoginSuccess(res.data));
-        
     } catch (error:any) {
         console.log(error.response.data.message)
         dispatch(landLordLoginFailure(error.response.data.message));
@@ -84,7 +83,6 @@ export const adminLogin = async (dispatch:any,admin:any) =>{
     try {
         const res = (await publicRequest.post("/admin/login",admin));
         dispatch(adminLoginSuccess(res.data));
-        
     } catch (error:any) {
         console.log(error.response.data.message)
         dispatch(adminLoginFailure(error.response.data.message));

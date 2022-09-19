@@ -20,8 +20,6 @@ const FeaturedInfo = () => {
       getIncome();
     },[]);
 
-    console.log(income)
-    console.log(percentage)
 
     // const currentIncome:any  = income.reduce((currentTotal:any,item:any) =>{
     //   return currentTotal = currentTotal > item._id ? currentTotal : item
