@@ -32,9 +32,9 @@ const LandlordBookings = () => {
     const FarmerOrders = newOrders.filter(
         (order:any) => (order?.landlordName === landLord.names)
         );
-        const date =new Date(FarmerOrders[1]?.createdAt)
-        date.setMonth(date.getMonth() + 2)
-        const currentDate = new Date()
+      
+    const currentDate = new Date()
+        currentDate.setMonth(currentDate.getMonth() - 2)
 
   return (
     <div>
@@ -60,7 +60,7 @@ const LandlordBookings = () => {
                     <td className='border-solid text-center py-1'>{order.Amount}</td>
                     <td className='border-solid text-center py-1'>{order.transactionId}</td>
                     <td className='border-solid text-center py-1'>{format(order.createdAt)}</td>
-                    <td className="text-gray-500 my-2">{date > currentDate ? (
+                    <td className="text-gray-500 my-2">{new Date(order.createdAt) > currentDate ? (
                   <span className='text-md font-[700] text-green-500'>{i18next.t('Uptodate')as string} </span>
                 ) : (
                   <span className='text-md font-[700] text-red-500'>{i18next.t('exipired')as string} </span>

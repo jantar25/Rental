@@ -64,6 +64,7 @@ export const LandLordLogin = async (dispatch:any,landLord:any) =>{
     try {
         const res = (await publicRequest.post("/landLordAuth/login",landLord));
         dispatch(landLordLoginSuccess(res.data));
+        // localStorage.setItem("landlordToken",JSON.stringify(res.data.accessToken))
     } catch (error:any) {
         console.log(error.response.data.message)
         dispatch(landLordLoginFailure(error.response.data.message));
@@ -73,6 +74,7 @@ export const LandLordLogin = async (dispatch:any,landLord:any) =>{
 
 export const landLordLogoutDone = async (dispatch:any) =>{
     dispatch(landLordLogoutSuccess());
+    // localStorage.removeItem("landlordToken")
 }
 
 
@@ -83,6 +85,7 @@ export const adminLogin = async (dispatch:any,admin:any) =>{
     try {
         const res = (await publicRequest.post("/admin/login",admin));
         dispatch(adminLoginSuccess(res.data));
+        // localStorage.setItem("adminToken",JSON.stringify(res.data.accessToken))
     } catch (error:any) {
         console.log(error.response.data.message)
         dispatch(adminLoginFailure(error.response.data.message));
@@ -92,6 +95,7 @@ export const adminLogin = async (dispatch:any,admin:any) =>{
 
 export const adminLogoutDone = async (dispatch:any) =>{
     dispatch(adminLogoutSuccess());
+    // localStorage.removeItem("adminToken")
 }
 
 

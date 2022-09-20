@@ -73,7 +73,7 @@ router.get("/income",verifyTokenandAdmin,async (req,res)=>{
       ]);
       res.status(200).json(income)
       
-  } catch(err){
+  } catch(err){ 
       res.status(500).json(err)
   }
 })

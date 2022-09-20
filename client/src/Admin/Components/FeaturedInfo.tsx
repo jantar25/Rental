@@ -12,7 +12,7 @@ const FeaturedInfo = () => {
         try {
           const res = await adminRequest.get("/messages/income");
           setIncome(res.data);
-          setPercentage((res.data[1]?.total *100)/res.data[0]?.total -100)
+          setPercentage((res.data[0]?.total *100)/res.data[1]?.total -100)
         } catch (error) {
           console.log(error)
         }
@@ -37,7 +37,7 @@ const FeaturedInfo = () => {
         <div className="bg-gradient-to-b from-[#002853] to-[#040C18] text-white rounded-lg p-2 w-[270px] m-1">
             <h3 className="text-lg font-[700]">Revenue</h3>
             <div className="flex my-2 items-center justify-between">
-                <h1 className="text-3xl">{income[1]?.total}<span className='text-orange-600 text-lg'>Rwf</span></h1>
+                <h1 className="text-3xl">{income[0]?.total}<span className='text-orange-600 text-lg'>Rwf</span></h1>
                 <div className="flex items-center">
                 <span className='mr-2'>{Math.floor(percentage)}{""} % </span>
                     {percentage<0? <AiOutlineArrowDown style={{ color: 'red' }} /> :
@@ -50,7 +50,7 @@ const FeaturedInfo = () => {
         <div className="bg-gradient-to-b from-[#002853] to-[#040C18] text-white rounded-lg p-2 w-[270px] m-1">
             <h3 className="text-lg font-[700]">Our Profit</h3>
             <div className="flex my-2 items-center justify-between">
-                <h1 className="text-3xl">{income[1]?.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
+                <h1 className="text-3xl">{income[0]?.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
                 <div className="flex items-center">
                 <span className='mr-2'>{Math.floor(percentage)}{""} % </span>
                     {percentage<0? <AiOutlineArrowDown style={{ color: 'red' }} /> :
@@ -63,7 +63,7 @@ const FeaturedInfo = () => {
         <div className="bg-gradient-to-b from-[#002853] to-[#040C18] text-white rounded-lg p-2 w-[270px] m-1">
             <h3 className="text-lg font-[700]">Landlords Due</h3>
             <div className="flex my-2 items-center justify-between">
-                <h1 className="text-3xl">{income[1]?.total-income[1]?.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
+                <h1 className="text-3xl">{income[1]?.total-income[0]?.total*0.05}<span className='text-orange-600 text-lg'>Rwf</span></h1>
                 <div className="flex items-center">
                 <span className='mr-2'>{Math.floor(percentage)}{""} % </span>
                     {percentage<0? <AiOutlineArrowDown style={{ color: 'red' }} /> :

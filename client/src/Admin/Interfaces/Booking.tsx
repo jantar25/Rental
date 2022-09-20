@@ -24,7 +24,6 @@ const Booking = () => {
   });
 
 
-
   return (
     <div className='flex flex-col items-center text-[8px] sm:text-sm py-4 px-2 w-full'>
       <h1 className="text-2xl my-4 text-[#002853] font-[900]">Latest transactions</h1>
