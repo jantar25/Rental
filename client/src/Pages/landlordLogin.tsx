@@ -56,3 +56,4 @@ const LandlordLogin = () => {
 }
 
 export default LandlordLogin
+
