@@ -39,7 +39,7 @@ const LandlordLogin = () => {
                     </div>
                     <button className="px-8 py-2 bg-[#002853] text-white font-[600] rounded-md hover:shadow-lg" type='submit'>
                         {isFetching? i18next.t('logging')as string : i18next.t('login')as string}</button>
-                    
+                
                     <div className="flex items-center mt-4">
                         <p className="text-[13px] text-gray-600">{i18next.t('haveAccount')as string}
                             <Link to='/register'>
