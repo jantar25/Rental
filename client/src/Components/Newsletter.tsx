@@ -10,7 +10,7 @@ const Newsletter = () => {
     const HandleNewsletter = async(e:any) => {
         e.preventDefault();     
         try {
-            await axios.post('https://rentaltest.herokuapp.com/api/newsletter',{email:email});
+            await axios.post('https://kigalirental.fly.dev/api/newsletter',{email:email});
             setEmail('')
             setErr(null);
         } catch (error:any) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const BASE_URL = "https://kigalirental.herokuapp.com/api/";
-const BASE_URL = "https://rentaltest.herokuapp.com/api/";
+const BASE_URL = "https://kigalirental.fly.dev/api/";
 // const BASE_URL = "http://localhost:5000/api/";
 
 

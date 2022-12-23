@@ -15,7 +15,7 @@ const Header = () => {
     <div className='flex flex-col md:flex-row bg-gradient-to-r from-[#002853] to-[#040C18] text-white px-4 lg:px-20 pt-8'>
         <div className='flex-1 mb-8'>
             <h1 className='text-3xl md:text-5xl font-[600] leading-tight mb-4'>{i18next.t('discover')as string} 
-            <br />{i18next.t('suitable')as string} <br />{i18next.t('Property')as string} <span className='text-orange-500'>.</span></h1>
+            <br />{i18next.t('suitable')as string} <br />{i18next.t('Amazu')as string} <span className='text-orange-500'>.</span></h1>
             <p className='text-gray-500 text-sm md:text-md mb-8'>{i18next.t('jingle')as string} </p>
             <form className='flex items-center bg-white px-2 py-1 rounded-md mb-4 border border-2 border-gray-300'>
                 <FaMapMarkerAlt style={{fontSize:'20px',color:'#002853'}} />

@@ -17,7 +17,7 @@ const AvailableResidences = () => {
   useEffect(()=>{
     const getProperties= async ()=>{
         try {
-            const res = await axios.get("https://rentaltest.herokuapp.com/api/property")
+            const res = await axios.get("https://kigalirental.fly.dev/api/property")
             setProperties(res.data);
         } catch(err){
             console.log(err)

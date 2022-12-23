@@ -21,16 +21,16 @@ const Footer = () => {
                 <div className="flex flex-col">
                     <h3 className="font-[700] text-lg mb-4">{i18next.t('about')as string}</h3>
                     <Link to='/about'>
-                        <a href="" className="text-gray-500 hover:text-gray-200">{i18next.t('aboutUs')as string}</a>
+                        <p className="text-gray-500 hover:text-gray-200">{i18next.t('aboutUs')as string}</p>
                     </Link>
-                    <a href="" className="my-2 text-gray-500 hover:text-gray-200">{i18next.t('features')as string}</a>
-                    <a href="" className="text-gray-500 hover:text-gray-200">{i18next.t('news&blog')as string}</a>
+                    <p className="my-2 text-gray-500 hover:text-gray-200">{i18next.t('features')as string}</p>
+                    <p className="text-gray-500 hover:text-gray-200">{i18next.t('news&blog')as string}</p>
                 </div>
                 <div className="flex flex-col">
                     <h3 className="font-[700] text-lg mb-4">{i18next.t('comgagny')as string}</h3>
-                    <a href="" className="mb-2 text-gray-500 hover:text-gray-200">{i18next.t('howWeWork')as string}</a>
-                    <a href="" className="mb-2 text-gray-500 hover:text-gray-200">{i18next.t('capital')as string}</a>
-                    <a href="" className="mb-2 text-gray-500 hover:text-gray-200">{i18next.t('support')as string}</a>
+                    <p className="mb-2 text-gray-500 hover:text-gray-200">{i18next.t('howWeWork')as string}</p>
+                    <p className="mb-2 text-gray-500 hover:text-gray-200">{i18next.t('capital')as string}</p>
+                    <p className="mb-2 text-gray-500 hover:text-gray-200">{i18next.t('support')as string}</p>
                 </div>
             </div>
             <div className="flex-1 grid gap-2 grid-cols-2 my-2">
@@ -39,7 +39,7 @@ const Footer = () => {
                     <Link to='/admin'>
                         <span className="text-gray-500 hover:text-gray-200">{i18next.t('admin')as string}</span>
                     </Link>
-                    <a href="" className="my-2 text-gray-500 hover:text-gray-200">{i18next.t('supportCenter')as string}</a>
+                    <p className="my-2 text-gray-500 hover:text-gray-200">{i18next.t('supportCenter')as string}</p>
                     <Link to='/contacts'>
                         <a href="/contacts" className="text-gray-500 hover:text-gray-200">{i18next.t('callUs')as string}</a>
                     </Link>
@@ -47,9 +47,9 @@ const Footer = () => {
                 <div className="">
                     <h3 className="font-[700] text-lg mb-4">{i18next.t('followUs')as string}</h3>
                     <div className=" flex gap-x-3">
-                        <a href="" className="text-gray-500 hover:text-gray-200"><BsWhatsapp /></a>
-                        <a href="" className="text-gray-500 hover:text-gray-200"><BsFacebook /></a>
-                        <a href="" className="text-gray-500 hover:text-gray-200"><BsInstagram /></a>
+                        <p className="text-gray-500 hover:text-gray-200"><BsWhatsapp /></p>
+                        <p className="text-gray-500 hover:text-gray-200"><BsFacebook /></p>
+                        <p className="text-gray-500 hover:text-gray-200"><BsInstagram /></p>
                     </div>
                 </div>
             </div>
@@ -57,8 +57,8 @@ const Footer = () => {
         <hr className="" />
         <div className="m-8 flex flex-col">
             <div className="flex flex-col sm:flex-row justify-between mb-4 items-center">
-                <a href="" className="text-gray-500 hover:text-gray-200 my-2">{i18next.t('termsAgreement')as string}</a>
-                <a href="" className="text-gray-500 hover:text-gray-200 my-2">{i18next.t('privacyPolice')as string}</a>
+                <p className="text-gray-500 hover:text-gray-200 my-2">{i18next.t('termsAgreement')as string}</p>
+                <p className="text-gray-500 hover:text-gray-200 my-2">{i18next.t('privacyPolice')as string}</p>
             </div>
             <p className="text-center text-gray-300">{i18next.t('copyRight')as string}</p>
         </div>

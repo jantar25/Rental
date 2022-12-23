@@ -24,8 +24,8 @@ const AllResidences = ({sort,cat,search}:any) => {
   useEffect(()=>{
     const getProperties= async ()=>{
         try {
-            const res = await axios.get(cat==="All"? "https://rentaltest.herokuapp.com/api/property":
-             `https://rentaltest.herokuapp.com/api/property?district=${cat}`)
+            const res = await axios.get(cat==="All"? "https://kigalirental.fly.dev/api/property":
+             `https://kigalirental.fly.dev/api/property?district=${cat}`)
 
              setProperties(res.data);
         } catch(err){
