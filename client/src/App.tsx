@@ -2,8 +2,8 @@ import React from 'react';
 import {BrowserRouter,Routes,Route,Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Home from './Pages/Home';
-import LandlordRegister from './Pages/landlordRegister'
-import LandlordLogin from './Pages/LandlordLogin';
+import LandlordRegister from './Pages/LandlordRegister'
+import LandlordLogin from './Pages/landlordLogin';
 import Contacts from './Pages/contacts';
 import Residence from './Pages/Residence';
 import Residences from './Pages/Residences';
